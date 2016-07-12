@@ -17,7 +17,13 @@
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
-    return view('pages.home');
+	$data = array(
+		'homeactive' => 'active',
+		'aboutactive' => '',
+		'signinactive' => '',
+		'signupactive' => ''
+		);
+    return view('pages.home', $data);
 })->name('home');
 
 /*
@@ -26,5 +32,41 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 */
 Route::get('about', function () {
-	return view('pages.about');
+	$data = array(
+		'homeactive' => '',
+		'aboutactive' => 'active',
+		'signinactive' => '',
+		'signupactive' => ''
+		);
+	return view('pages.about',$data);
 })->name('about');
+
+/*
+|--------------------------------------------------------------------------
+| Route to Signin Page of the application
+|--------------------------------------------------------------------------
+*/
+Route::get('member_signup', function () {
+	$data = array(
+		'homeactive' => '',
+		'aboutactive' => '',
+		'signinactive' => '',
+		'signupactive' => 'active'
+		);
+	return view('pages.signup',$data);
+})->name('signup');
+
+/*
+|--------------------------------------------------------------------------
+| Route to Signin Page of the application
+|--------------------------------------------------------------------------
+*/
+Route::get('member_signin', function () {
+	$data = array(
+		'homeactive' => '',
+		'aboutactive' => '',
+		'signinactive' => 'active',
+		'signupactive' => ''
+		);
+	return view('pages.signin',$data);
+})->name('signin');
