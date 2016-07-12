@@ -13,10 +13,18 @@
 
 /*
 |--------------------------------------------------------------------------
-| Route to Homepage of the application
+| Route to Home Page of the application
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
+/*
+|--------------------------------------------------------------------------
+| Route to About Page of the application
+|--------------------------------------------------------------------------
+*/
+Route::get('about', function () {
+	return view('pages.about');
+})->name('about');
