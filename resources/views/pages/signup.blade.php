@@ -33,6 +33,9 @@
 							<input type="radio" name="gender" id="gender-female" />
 						</div>
 						<div class="form-group">
+							<input type="text" name="mobile" id="mobile" placeholder="Mobile Number" required="required" class="form-control" />
+						</div>
+						<div class="form-group">
 							<input type="password" name="password" id="password" placeholder="Password" required="required" class="form-control" />
 						</div>
 						<div class="form-group">

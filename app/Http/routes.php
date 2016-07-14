@@ -70,3 +70,30 @@ Route::get('member_signin', function () {
 		);
 	return view('pages.signin',$data);
 })->name('signin');
+
+
+/*
+|--------------------------------------------------------------------------
+| Route Group: prefix => user
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'user'], function () {
+	/*
+	|--------------------------------------------------------------------------
+	| Route to Client Home Page, Needed to be authenticated
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('/', function () {
+		return view('pages.client.home');
+	})->name('home_user');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route to Client Search Result, Needed to be authenticated
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('search', function () {
+		return view('pages.client.search');
+	})->name('search');
+
+});
