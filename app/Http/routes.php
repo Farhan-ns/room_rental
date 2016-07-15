@@ -38,7 +38,7 @@ Route::get('about', function () {
 		'signinactive' => '',
 		'signupactive' => ''
 		);
-	return view('pages.about',$data);
+	return view('pages.about2',$data);
 })->name('about');
 
 /*
@@ -55,6 +55,11 @@ Route::get('member_signup', function () {
 		);
 	return view('pages.signup',$data);
 })->name('signup');
+
+Route::post('user_signup', [
+		'uses' => 'UserController@userSignup'
+	]);
+
 
 /*
 |--------------------------------------------------------------------------
@@ -95,5 +100,22 @@ Route::group(['prefix' => 'user'], function () {
 	Route::get('search', function () {
 		return view('pages.client.search');
 	})->name('search');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route to Client Posts, Needed to be authenticated
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('posts', function () {
+		return view('pages.client.posts');
+	})->name('myposts');
+
+	Route::get('about', function () {
+		return view('pages.client.about');
+	})->name('client_about');
+
+	Route::get('browse', function () {
+		return view('pages.client.browse');
+	})->name('browse');
 
 });

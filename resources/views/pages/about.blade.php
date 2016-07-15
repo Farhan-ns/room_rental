@@ -3,7 +3,8 @@
 @section('title') About @endsection
 
 @section('content')
-@include('includes.navout')
+@yield('navigation')
+
 <div class="container">
 	<h2>About Room and Appartment Rentals</h2>
 	<p class="p-indent">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
