@@ -4,10 +4,28 @@
 |-----------------------------------------------------------------
 */
 
+textarea {
+	resize: none;
+}
+
 .p-indent {
 	text-indent: 50px;
 }
 
 .glyphicon-large {
     font-size: ;
+}
+
+.user-profile-img {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+}
+
+.img-posts {
+	width: 100%;
+	height: auto;
+	border-radius: 5px;
+	border: 2px solid grey;
+	position: relative;
 }

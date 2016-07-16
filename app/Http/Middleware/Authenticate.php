@@ -22,7 +22,7 @@ class Authenticate
                 return response('Unauthorized.', 401);
             }
 
-            return redirect()->guest('login');
+            return redirect()->route('signin')->with('signin', 'You need to signin first!');
         }
 
         return $next($request);

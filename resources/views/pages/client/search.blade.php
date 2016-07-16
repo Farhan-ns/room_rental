@@ -6,7 +6,7 @@
 @include('includes.navin')
 <div class="container">
 	<div class="panel panel-primary">
-		<div class="panel-heading">Search a Room/Appartment</div>
+		<div class="panel-heading"><b>Search a Room/Appartment</b></div>
 		<div class="panel-body">
 			<form action="#" method="post" role="form">
 				<div class="form-group">

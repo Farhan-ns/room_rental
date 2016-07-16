@@ -5,11 +5,12 @@
 | Application Routes:: Room and Appartment Rental
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
+| Note: Client is an authenticated user of the application
 |
 */
+use Illuminate\Support\Facades\Auth;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,11 @@ Route::get('/', function () {
 		'signinactive' => '',
 		'signupactive' => ''
 		);
+
+	if(Auth::check()) {
+		return redirect()->route('home_user');
+	}
+
     return view('pages.home', $data);
 })->name('home');
 
@@ -38,6 +44,11 @@ Route::get('about', function () {
 		'signinactive' => '',
 		'signupactive' => ''
 		);
+
+	if(Auth::check()) {
+		return redirect()->route('home_user');
+	}
+	
 	return view('pages.about2',$data);
 })->name('about');
 
@@ -53,11 +64,30 @@ Route::get('member_signup', function () {
 		'signinactive' => '',
 		'signupactive' => 'active'
 		);
+
+	if(Auth::check()) {
+		return redirect()->route('home_user');
+	}
+	
 	return view('pages.signup',$data);
 })->name('signup');
 
+/*
+|--------------------------------------------------------------------------
+| Singup Route using the UserController@userSignup method
+|--------------------------------------------------------------------------
+*/
 Route::post('user_signup', [
 		'uses' => 'UserController@userSignup'
+	]);
+
+/*
+|--------------------------------------------------------------------------
+| Signin Route using the UserController@userSignin method
+|--------------------------------------------------------------------------
+*/
+Route::post('user_signin', [
+		'uses' => 'UserController@userSignin'
 	]);
 
 
@@ -73,6 +103,11 @@ Route::get('member_signin', function () {
 		'signinactive' => 'active',
 		'signupactive' => ''
 		);
+
+	if(Auth::check()) {
+		return redirect()->route('home_user');
+	}
+	
 	return view('pages.signin',$data);
 })->name('signin');
 
@@ -80,9 +115,10 @@ Route::get('member_signin', function () {
 /*
 |--------------------------------------------------------------------------
 | Route Group: prefix => user
+| This Route Group is protected route: 'middleware' => 'auth'
 |--------------------------------------------------------------------------
 */
-Route::group(['prefix' => 'user'], function () {
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	/*
 	|--------------------------------------------------------------------------
 	| Route to Client Home Page, Needed to be authenticated
@@ -106,16 +142,74 @@ Route::group(['prefix' => 'user'], function () {
 	| Route to Client Posts, Needed to be authenticated
 	|--------------------------------------------------------------------------
 	*/
-	Route::get('posts', function () {
+	Route::get('posts', ['uses' => 'PostController@index'], function () {
 		return view('pages.client.posts');
 	})->name('myposts');
 
+	/*
+	|--------------------------------------------------------------------------
+	| This route is use to see or view specific post of user/client viewing it
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('post/{id}',[
+		'uses' => 'PostController@postView',
+		'as' => 'post'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to add post by the client
+	|--------------------------------------------------------------------------
+	*/
+	Route::post('postaddpost', [
+		'uses' => 'PostController@postAddPost',
+		'as' => 'postaddpost'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route to Client Add Posts view, Needed to be authenticated
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('addpost', function () {
+		return view('pages.client.addpost');
+	})->name('addpost');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route to Client About, Needed to be authenticated
+	|--------------------------------------------------------------------------
+	*/
 	Route::get('about', function () {
 		return view('pages.client.about');
 	})->name('client_about');
 
-	Route::get('browse', function () {
+	/*
+	|--------------------------------------------------------------------------
+	| Route to Client Browse Posts, Needed to be authenticated
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('browse', ['uses' => 'PostController@browsePosts'], function () {
 		return view('pages.client.browse');
 	})->name('browse');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route to Client Profile
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('profile', function () {
+		return view('pages.client.profile');
+	})->name('profile');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Logout route
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('logout', [
+		'uses' => 'UserController@getLogout',
+		'as' => 'logout'
+		]);
 
 });
