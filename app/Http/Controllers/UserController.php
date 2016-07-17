@@ -66,6 +66,11 @@ class UserController extends Controller
     	$remember = $request['remember'];
 
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']], $remember)) {
+
+            if(Auth::user()->privelege == 'Admin') {
+                Auth::logout();
+                return redirect()->route('signin')->with('errormessage', 'Privelege Error!');
+            }
     		return redirect()->route('home_user');
     	}
 

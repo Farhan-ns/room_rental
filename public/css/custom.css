@@ -29,3 +29,10 @@ textarea {
 	border: 2px solid grey;
 	position: relative;
 }
+
+.panel > .panel-admin {
+	background-image: none;
+    background-color: #222;
+    color: white;
+
+}

@@ -213,3 +213,42 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		]);
 
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Route to admin login using URI
+|--------------------------------------------------------------------------
+*/
+Route::get('admin', 'GeneralController@adminLogin');
+Route::get('administrator', 'GeneralController@adminLogin');
+
+Route::get('admin-login', function () {
+	Auth::logout();
+	return view('pages.adminlogin');
+})->name('adminlogin');
+
+/*
+|--------------------------------------------------------------------------
+| Route Group: prefix => admin
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin'], function () {
+
+	Route::get('home', function () {
+		return view('pages.admin.home');
+	})->name('admin_home');
+
+});
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Route to Show Errors
+|--------------------------------------------------------------------------
+*/
+Route::get('exception-error', function () {
+	return view('pages.exceptionerror');
+})->name('showerrors');
