@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
+
     /*
 	|--------------------------------------------------------------------------
 	| This method is use the user to create account in the application
@@ -68,10 +70,11 @@ class UserController extends Controller
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']], $remember)) {
 
             if(Auth::user()->privelege == 'Admin') {
-                Auth::logout();
-                return redirect()->route('signin')->with('errormessage', 'Privelege Error!');
+                return redirect()->route('admin_home');
             }
-    		return redirect()->route('home_user');
+            else {
+        		return redirect()->route('home_user');
+            }
     	}
 
     	return redirect()->route('signin')->with('errormessage','Incorrect Email or Password!')->withInput();

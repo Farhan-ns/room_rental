@@ -5,19 +5,31 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
-	<h2>Browse Rooms and Appartments</h2>
 
 	<div class="row">
-		
+		@if($posts->isEmpty())
+			<h3>No Available Post</h3>
+		@endif
 		@foreach($posts as $post)
-		<div class="col-md-3">
+		<div class="col-md-3 post">
+			<a href="{{ route('post', ['id' => $post->id]) }}">
 			<img src="/uploads/posts/default.jpg" title="" class="img-posts" />
-			<h3><a href="{{ route('post', ['id' => $post->id]) }}">{{ $post->title }}</a></h3>
-			<i>{{ $post->location }}</i>
-			<br/>
-			<b>{{ $post->price }}</b>
-			<br/>
-			{{ $post->description }}
+			<h3>{{ $post->title }}</h3>
+			</a>
+			<table>
+				<tr>
+					<td>Type:</td>
+					<td>{{ $post->type }}</td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td>{{ $post->price }}</td>
+				</tr>
+				<tr>
+					<td>Location:</td>
+					<td>{{ $post->location }}</td>
+				</tr>
+			</table>
 		</div>
 		@endforeach
 	</div>

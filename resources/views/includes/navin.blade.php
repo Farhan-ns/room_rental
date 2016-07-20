@@ -23,7 +23,7 @@
 						<ul class="dropdown-menu" aria-labelledby="dLabel">
 							<li><a href="{{ route('addpost') }}">Add Post</a></li>
 							<li><a href="{{ route('myposts') }}">View Posts</a></li>
-							<li><a href="#">Delete</a></li>
+							<li><a href="{{ route('showposttodelete') }}">Delete</a></li>
 						</ul>
 					</li>
 					<li class=""><a href="{{ route('client_about') }}">About</a></li>

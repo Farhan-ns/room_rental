@@ -20,7 +20,8 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->string('location');
             $table->string('image_id');
-            $table->string('status');
+            $table->string('status')->default('Active');
+            $table->string('type');
             $table->timestamps();
         });
     }

@@ -14,7 +14,13 @@
 					<b>Add Room/Appartment Form</b>
 				</div>
 				<div class="panel-body">
-					<form action="{{ route('postaddpost') }}" method="POST" role="form" enctype="multipart/form-data">
+					<form action="{{ route('postaddpost') }}" method="POST" role="form" enctype="multipart/form-data" autocomplete="off">
+						<div class="form-group">
+							<label for="room">Room</label>
+							<input type="radio" name="type" value="Room" id="room" />
+							<label for="appartment">Appartment</label>
+							<input type="radio" name="type" value="Appartment" id="appartment" />
+						</div>
 						<div class="form-group">
 							<input type="text" name="title" id="title" placeholder="Title" value="{{ old('title') }}" class="form-control" />
 						</div>

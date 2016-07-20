@@ -18,6 +18,11 @@
 					<b>{{ session('signin') }}</b>
 				</div>
 			@endif
+			@if(session('error_msg'))
+				<div class="alert alert-warning">
+					<b>{{ session('error_msg') }}
+				</div>
+			@endif
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<b>Signin</b>

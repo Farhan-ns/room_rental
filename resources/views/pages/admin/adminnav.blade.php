@@ -11,7 +11,7 @@
 		<div class="collapse navbar-collapse" id="appNavbar">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="#">Home</a></li>
+					<li><a href="{{ route('admin_home') }}">Home</a></li>
 					<li><a href="#">Members</a></li>
 					
 				</ul>

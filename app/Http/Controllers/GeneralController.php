@@ -10,10 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class GeneralController extends Controller
 {
-    public function adminLogin()
+    public function verifyAdmin()
     {
-    	Auth::logout();
     	
-    	return redirect()->route('adminlogin');
     }
 }

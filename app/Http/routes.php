@@ -114,6 +114,16 @@ Route::get('member_signin', function () {
 
 /*
 |--------------------------------------------------------------------------
+| Logout route
+|--------------------------------------------------------------------------
+*/
+Route::get('logout', [
+	'uses' => 'UserController@getLogout',
+	'as' => 'logout'
+]);
+
+/*
+|--------------------------------------------------------------------------
 | Route Group: prefix => user
 | This Route Group is protected route: 'middleware' => 'auth'
 |--------------------------------------------------------------------------
@@ -155,6 +165,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'uses' => 'PostController@postView',
 		'as' => 'post'
 		]);
+
 
 	/*
 	|--------------------------------------------------------------------------
@@ -204,38 +215,79 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Logout route
+	| Route use to delete post by the current user
 	|--------------------------------------------------------------------------
 	*/
-	Route::get('logout', [
-		'uses' => 'UserController@getLogout',
-		'as' => 'logout'
+	Route::get('delete-post/{id}', [
+		'uses' => 'PostController@deletePost',
+		'as' => 'delete-post'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to edit form
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('edit-post/{id}', [
+		'uses' => 'PostController@editPost',
+		'as' => 'edit-post'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Rout to form edti to edit requested post by the user/client
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('edit-post-form', function () {
+		return view('pages.client.postformedit');
+	})->name('edit-post-form');
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route to update post
+	|--------------------------------------------------------------------------
+	*/
+	Route::post('postupdatepost', [
+		'uses' => 'PostController@postUpdatePost',
+		'as' => 'postupdatepost'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route to go to delete multiple page
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('delete-post', [
+		'uses' => 'PostController@showPostToDelete',
+		'as' => 'showposttodelete'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route used in deleting multiple posts
+	|--------------------------------------------------------------------------
+	*/
+	Route::post('delete-multiple-post', [
+		'uses' => 'PostController@postDeleteMultiplePost',
+		'as' => 'delete_multiple_post'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route used to show search result of the client
+	|--------------------------------------------------------------------------
+	*/
+	Route::post('result',[
+		'uses' => 'PostController@searchResult',
+		'as' => 'searchresult'
 		]);
 
 });
 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
-/*
-|--------------------------------------------------------------------------
-| Route to admin login using URI
-|--------------------------------------------------------------------------
-*/
-Route::get('admin', 'GeneralController@adminLogin');
-Route::get('administrator', 'GeneralController@adminLogin');
-
-Route::get('admin-login', function () {
-	Auth::logout();
-	return view('pages.adminlogin');
-})->name('adminlogin');
-
-/*
-|--------------------------------------------------------------------------
-| Route Group: prefix => admin
-|--------------------------------------------------------------------------
-*/
-Route::group(['prefix' => 'admin'], function () {
-
-	Route::get('home', function () {
+	Route::get('/', function () {
 		return view('pages.admin.home');
 	})->name('admin_home');
 

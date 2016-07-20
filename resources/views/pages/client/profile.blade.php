@@ -19,6 +19,7 @@
 	<br/>
 	{{ Auth::user()->gender }}
 	<br/>
+	{{ Auth::user()->privelege }}
 
 </div>
 @endsection

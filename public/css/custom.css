@@ -8,6 +8,9 @@ textarea {
 	resize: none;
 }
 
+a:hover {
+	text-decoration: none;
+}
 .p-indent {
 	text-indent: 50px;
 }
@@ -35,4 +38,12 @@ textarea {
     background-color: #222;
     color: white;
 
+}
+
+.center-div {
+	maring: 0 auto;
+}
+
+.post, .post-img {
+	padding: 2px;
 }
