@@ -307,7 +307,19 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	| Route use to go to password change form
 	|--------------------------------------------------------------------------
 	*/
-	//Route::get();
+	Route::get('changepass', function () {
+		return view('pages.client.changepass');
+	})->name('changepass');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use update password
+	|--------------------------------------------------------------------------
+	*/
+	Route::post('updatepassw', [
+		'uses' => 'UserController@passwordUpdate',
+		'as' => 'updatepass'
+		]);
 
 });
 

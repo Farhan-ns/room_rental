@@ -13,8 +13,47 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    |This methos is to change password of client
+    |--------------------------------------------------------------------------
+    */
+    public function passwordUpdate(Request $request)
+    {
+
+        $user_id = $request['user_id'];
+        $old_password = $request['old_password'];
+        $new_password = $request['new_password'];
+        $new_password2 = $request['new_password2'];
+
+        $user = User::find($user_id);
+
+        $password_compare = password_verify($old_password, $user->password);
+        
+        if($password_compare == True) {
+
+            if($new_password == $new_password2) {
+                $user->password = bcrypt($new_password);
+                $user->save();
+
+                return redirect()->route('changepass')->with('message','Password Change Successfully');
+            }
+
+            return redirect()->route('changepass')->with('error_msg','Password not match.');
+        }
+
+        return redirect()->route('changepass')->with('error_msg', 'Wrong Password.');
+       
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    |This methos is use to update profile of the client
+    |--------------------------------------------------------------------------
+    */
     public function updateUserProfile(Request $request)
     {
+        //needs validation
         $firstname = $request['firstname'];
         $lastname = $request['lastname'];
         $email = $request['email'];
