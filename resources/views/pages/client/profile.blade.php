@@ -6,20 +6,42 @@
 @include('includes.navin')
 <div class="container">
 	<h2 class="">My Profile</h2>
-	<img src="/uploads/profiles/{{ Auth::user()->profile }}.jpg" class="user-profile-img" alt="{{ Auth::user()->firstname }}" />
-	<br/>
-	{{ Auth::user()->firstname }}
-	{{ Auth::user()->lastname }}
-	<br/>
-	{{ Auth::user()->email }}
-	<br/>
-	{{ Auth::user()->mobile }}
-	<br/>
-	{{ Auth::user()->birthday }}
-	<br/>
-	{{ Auth::user()->gender }}
-	<br/>
-	{{ Auth::user()->privelege }}
-
+	@include('includes.showerrors')
+	@include('includes.showerror')
+	@include('includes.showsuccess')
+	<img style="margin-bottom:10px;" src="/uploads/profiles/{{ Auth::user()->profile }}.jpg" class="user-profile-img" alt="{{ Auth::user()->firstname }}" />
+	<span><a href="{{ route('profile-edit') }}">Edit Profile</a></span>
+	<div class="row">
+		<div class="col-md-4">
+			<table class="table">
+				<tr>
+					<td>Full Name:</td>
+					<td>
+						{{ Auth::user()->firstname }}
+						{{ Auth::user()->lastname }}
+					</td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td>{{ Auth::user()->email }}</td>
+				</tr>
+				<tr>
+					<td>Mobile Number:</td>
+					<td>{{ Auth::user()->mobile }}</td>
+				</tr>
+				<tr>
+					<td>Birthday:</td>
+					<td>{{ Auth::user()->birthday }}</td>
+				</tr>
+				<tr>
+					<td>Gender:</td>
+					<td>{{ Auth::user()->gender }}</td>
+				</tr>
+					<td>Privelege:</td>
+					<td>{{ Auth::user()->privelege }}</td>
+				</table>
+			</table>
+		</div>
+	</div>
 </div>
 @endsection

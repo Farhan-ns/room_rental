@@ -13,7 +13,29 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function updateUserProfile(Request $request)
+    {
+        $firstname = $request['firstname'];
+        $lastname = $request['lastname'];
+        $email = $request['email'];
+        $mobile = $request['mobile'];
+        $birthday = $request['bday'];
+        $gender = $request['gender'];
+        $user_id = $request['user_id'];
 
+        $update = User::find($user_id);
+
+        $update->firstname = $firstname;
+        $update->lastname = $lastname;
+        $update->email = $email;
+        $update->mobile = $mobile;
+        $update->birthday = $birthday;
+        $update->gender = $gender;
+
+        $update->save();
+
+        return redirect()->route('profile')->with('message', 'Profile Successfully Updated!');
+    }
 
     /*
 	|--------------------------------------------------------------------------
@@ -68,7 +90,6 @@ class UserController extends Controller
     	$remember = $request['remember'];
 
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']], $remember)) {
-
             if(Auth::user()->privelege == 'Admin') {
                 return redirect()->route('admin_home');
             }
@@ -76,7 +97,6 @@ class UserController extends Controller
         		return redirect()->route('home_user');
             }
     	}
-
     	return redirect()->route('signin')->with('errormessage','Incorrect Email or Password!')->withInput();
     }
 
@@ -88,7 +108,6 @@ class UserController extends Controller
     public function getLogout(Request $request)
     {
     	Auth::logout();
-
     	return redirect()->route('home');
     }
 

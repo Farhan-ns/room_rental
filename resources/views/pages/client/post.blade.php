@@ -5,6 +5,7 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
+	<a href="#">Back</a>
 	<div class="row">
 		<div class="col-md-8">
 			<h3>{{ $title }}</h3>

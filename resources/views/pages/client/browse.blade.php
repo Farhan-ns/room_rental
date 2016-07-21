@@ -16,7 +16,7 @@
 			<img src="/uploads/posts/default.jpg" title="" class="img-posts" />
 			<h3>{{ $post->title }}</h3>
 			</a>
-			<table>
+			<table class="table">
 				<tr>
 					<td>Type:</td>
 					<td>{{ $post->type }}</td>

@@ -283,6 +283,32 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'as' => 'searchresult'
 		]);
 
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to go to edit profile form
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('profile-edit', function () {
+		return view('pages.client.profile-edit');
+	})->name('profile-edit');
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to update user profile
+	|--------------------------------------------------------------------------
+	*/
+	Route::post('profile-update', [
+		'uses' => 'UserController@updateUserProfile',
+		'as' => 'profile_update'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to go to password change form
+	|--------------------------------------------------------------------------
+	*/
+	//Route::get();
+
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
