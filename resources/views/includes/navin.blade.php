@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ route('home_user') }}">Welcome {{{ isset(Auth::user()->firstname) ? Auth::user()->firstname : Auth::user()->email }}}!</a>
+			<a class="navbar-brand" href="{{ route('home_user') }}">App</a>
 		</div>
 		<div class="collapse navbar-collapse" id="appNavbar">
 			<div class="container-fluid">
@@ -31,7 +31,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<a id="dLabel" data-target="#" href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-						    <span class="glyphicon glyphicon-cog"></span>
+						    <img src="/uploads/profiles/{{ Auth::user()->profile }}" style="width:20px; height:20px;border-radius: 50%;">
 						    <span class="caret"></span>
 						</a>
 

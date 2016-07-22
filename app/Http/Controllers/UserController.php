@@ -10,9 +10,27 @@ use App\User;
 
 use Illuminate\Support\Facades\Auth;
 
+use Image;
+
 
 class UserController extends Controller
 {
+
+    public function profileImage(Request $request)
+    {
+        if($request->hasFile('profile')) {
+            $profile = $request->file('profile');
+            $filename = time() . '.' . $profile->getClientOriginalExtension();
+            Image::make($profile)->resize(300, 300)->save(public_path('/uploads/profiles/' . $filename));
+
+            $user = Auth::user();
+            $user->profile = $filename;
+            $user->save();
+        }
+
+        return redirect()->route('profile-edit');
+    }
+
     /*
     |--------------------------------------------------------------------------
     |This methos is to change password of client

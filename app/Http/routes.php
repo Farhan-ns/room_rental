@@ -316,9 +316,19 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	| Route use update password
 	|--------------------------------------------------------------------------
 	*/
-	Route::post('updatepassw', [
+	Route::post('updatepass', [
 		'uses' => 'UserController@passwordUpdate',
 		'as' => 'updatepass'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to upload/update user image
+	|--------------------------------------------------------------------------
+	*/
+	Route::post('profile-img',[
+		'uses' => 'UserController@profileImage',
+		'as' => 'profile-image'
 		]);
 
 });

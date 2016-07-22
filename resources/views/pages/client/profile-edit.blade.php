@@ -7,7 +7,17 @@
 <div class="container">
 	<h2 class="">Edit My Profile</h2>
 	<div class="" style="margin-bottom:10px;">
-		<img src="/uploads/profiles/{{ Auth::user()->profile }}.jpg" class="user-profile-img" alt="{{ Auth::user()->firstname }}" />
+		<img src="/uploads/profiles/{{ Auth::user()->profile }}" class="user-profile-img" alt="{{ Auth::user()->firstname }}" />
+		<form action="{{ route('profile-image') }}" method="POST" enctype="multipart/form-data" class="form-inline">
+			<div class="form-group">
+				<label for="profile">Choose Image</label>
+				<input type="file" name="profile" id="profile" />
+			</div>
+			<div class="form-group">
+				<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+				<button type="submit" class="btn btn-primary btn-xs">Upload Profile Image</button>
+			</div>
+		</form>
 	</div>
 	<div class="row">
 		<div class="col-md-4">
@@ -41,7 +51,7 @@
 			<input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
 			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 			<button type="submit" class="btn btn-primary">Update</button>
-			<button class="btn btn-default"><a href="{{ route('profile') }}">Cancel</button>
+			<a href="{{ route('profile') }}" class="btn btn-default">Back to Profile</a>
 		</div>
 		</form>
 		</div>

@@ -9,7 +9,7 @@
 	@include('includes.showerrors')
 	@include('includes.showerror')
 	@include('includes.showsuccess')
-	<img style="margin-bottom:10px;" src="/uploads/profiles/{{ Auth::user()->profile }}.jpg" class="user-profile-img" alt="{{ Auth::user()->firstname }}" />
+	<img style="margin-bottom:10px;" src="/uploads/profiles/{{ Auth::user()->profile }}" class="user-profile-img" alt="{{ Auth::user()->firstname }}" />
 	<span><a href="{{ route('profile-edit') }}">Edit Profile</a></span>
 	<div class="row">
 		<div class="col-md-4">
