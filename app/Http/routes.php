@@ -283,6 +283,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'as' => 'searchresult'
 		]);
 
+
 	/*
 	|--------------------------------------------------------------------------
 	| Route use to go to edit profile form
@@ -330,6 +331,8 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'uses' => 'UserController@profileImage',
 		'as' => 'profile-image'
 		]);
+
+
 
 });
 

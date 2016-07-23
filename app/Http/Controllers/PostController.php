@@ -16,6 +16,17 @@ class PostController extends Controller
 {
     public function searchResult(Request $request)
     {
+        $type = $request['type'];
+        $max_price = $request['max_price'];
+        $location = $request['location'];
+
+        $results = DB::table('posts')->where('type', $type)
+                                    ->where('price', '<=',  $max_price)
+                                    ->where('location', 'like', "%$location%")
+                                    ->orderby('updated_at','desc')
+                                    ->paginate(4);
+
+        return view('pages.client.result', ['posts' => $results]);
 
     }
 
