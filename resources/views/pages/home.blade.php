@@ -6,12 +6,22 @@
 @include('includes.navout')
 <div class="container">
 	<h2 class="text-center">Welcome to Room and Appartment Rentals</h2>
+	<div class="clearfix"></div>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<form action="{{ route('guest-search') }}" method="POST" role="form">
+				<div class="form-group">
+					<div class="input-group">
+						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search for...">
+						<span class="input-group-btn">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+							<button class="btn btn-primary" type="submit">Go!</button>
+						</span>
+					</div>
+				</div>
 
-	<p class="p-indent">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</form>
+		</div>
+	</div>
 </div>
 @endsection

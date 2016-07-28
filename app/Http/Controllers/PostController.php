@@ -14,6 +14,32 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | This method methods is used by guest users to search for rooms
+    |--------------------------------------------------------------------------
+    */
+    public function guestSearch(Request $request)
+    {
+
+        $keyword = $request['keyword'];
+
+        $results = DB::table('posts')->where('location', 'like', "%$keyword%")
+                                    ->orwhere('type', 'like', "%$keyword%")
+                                    ->orwhere('title', 'like', "%$keyword%")
+                                    ->orwhere('price', 'like', "%$keyword%")
+                                    ->orwhere('description', 'like', "%$keyword")
+                                    ->orderby('updated_at', 'desc')
+                                    ->paginate(4);
+
+        return view('pages.results', ['posts' => $results]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | This method to search by loggedin users
+    |--------------------------------------------------------------------------
+    */
     public function searchResult(Request $request)
     {
         $type = $request['type'];
@@ -180,7 +206,7 @@ class PostController extends Controller
     */
 	public function browsePosts()
     {
-        $posts = DB::table('posts')->orderby('updated_at','desc')->paginate(4);
+        $posts = DB::table('posts')->where('status','Active')->orderby('updated_at','desc')->paginate(4);
         return view('pages.client.browse', ['posts' => $posts]);
     }
 
@@ -220,5 +246,12 @@ class PostController extends Controller
     	$post->save();
 
     	return redirect()->route('addpost')->with('message', 'Post Successfully Saved!');
+    }
+
+
+    public function pendingPosts()
+    {
+        $posts = DB::table('posts')->where('status', 'Inactive')->orderby('updated_at','desc')->paginate(4);
+        return view('pages.admin.pending_posts', ['posts' => $posts]);
     }
 }

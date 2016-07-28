@@ -13,6 +13,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ route('admin_home') }}">Home</a></li>
 					<li><a href="#">Members</a></li>
+					<li><a href="{{ route('pending-posts') }}">Pending Posts</a></li>
 					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

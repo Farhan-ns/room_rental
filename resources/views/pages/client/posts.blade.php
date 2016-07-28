@@ -26,6 +26,8 @@
 			<br/>
 			{{ $post->description }}
 			<br/>
+			{{ $post->status }}
+			<br/>
 			<a href="{{ route('edit-post',$post->id) }}"><button class="btn btn-primary btn-xs">Update</button></a>
 			<a href="{{ route('delete-post', $post->id) }}"><button class="btn btn-danger btn-xs">Delete</button></a>
 		</div>

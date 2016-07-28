@@ -34,6 +34,16 @@ Route::get('/', function () {
 
 /*
 |--------------------------------------------------------------------------
+| Route to search by guests
+|--------------------------------------------------------------------------
+*/
+Route::post('search', [
+	'uses' => 'PostController@guestSearch',
+	'as' => 'guest-search'
+	]);
+
+/*
+|--------------------------------------------------------------------------
 | Route to About Page of the application
 |--------------------------------------------------------------------------
 */
@@ -341,6 +351,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	Route::get('/', function () {
 		return view('pages.admin.home');
 	})->name('admin_home');
+
+	Route::get('pending-posts', [
+		'uses' => 'PostController@pendingPosts',
+		'as' => 'pending-posts'
+		]);
 
 });
 
