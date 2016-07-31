@@ -12,10 +12,29 @@ use Illuminate\Support\Facades\Auth;
 
 use Image;
 
+use DB;
+
 
 class UserController extends Controller
 {
 
+    /*
+    |--------------------------------------------------------------------------
+    | This method is use to show members of app
+    |--------------------------------------------------------------------------
+    */
+    public function showMembers()
+    {
+        $members = DB::table('users')->where('privelege', 'User')->orderBy('created_at','asc')->paginate(9);
+
+        return view('pages.admin.members', ['members' => $members]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | This method is used to update the profile picture of user
+    |--------------------------------------------------------------------------
+    */
     public function profileImage(Request $request)
     {
         if($request->hasFile('profile')) {

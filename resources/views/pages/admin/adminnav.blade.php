@@ -12,14 +12,14 @@
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ route('admin_home') }}">Home</a></li>
-					<li><a href="#">Members</a></li>
+					<li><a href="{{ route('members') }}">Members</a></li>
 					<li><a href="{{ route('pending-posts') }}">Pending Posts</a></li>
 					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
 						<a id="dLabel" data-target="#" href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-						    <span class="glyphicon glyphicon-cog"></span>
+						    <img src="/uploads/profiles/{{ Auth::user()->profile }}" style="width:20px; height:20px;border-radius: 50%;">
 						    <span class="caret"></span>
 						</a>
 

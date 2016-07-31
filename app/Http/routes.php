@@ -345,17 +345,58 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 
 
 });
-
+/*
+|--------------------------------------------------------------------------
+| Group Route admin
+|--------------------------------------------------------------------------
+*/
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-
+    /*
+    |--------------------------------------------------------------------------
+    | This route is admin home route
+    |--------------------------------------------------------------------------
+    */
 	Route::get('/', function () {
 		return view('pages.admin.home');
 	})->name('admin_home');
 
+    /*
+    |--------------------------------------------------------------------------
+    | Route to show all pending posts by users
+    |--------------------------------------------------------------------------
+    */
 	Route::get('pending-posts', [
 		'uses' => 'PostController@pendingPosts',
 		'as' => 'pending-posts'
 		]);
+    /*
+    |--------------------------------------------------------------------------
+    | Route get to approve posts by admin
+    |--------------------------------------------------------------------------
+    */
+	Route::get('aprove-post/{id}', [
+		'uses' => 'PostController@aprovePendingPost',
+		'as' => 'aprove-post'
+		]);
+    /*
+    |--------------------------------------------------------------------------
+    | Route get to delete unwanted posts by admin
+    |--------------------------------------------------------------------------
+    */
+	Route::get('delete-pending-post/{id}', [
+		'uses' => 'PostController@deletePendingPost',
+		'as' => 'delete-pending-post'
+		]);
+
+	/*
+    |--------------------------------------------------------------------------
+    | Route to show all members of the app
+    |--------------------------------------------------------------------------
+    */
+    Route::get('members', [
+    	'uses' => 'UserController@showMembers',
+    	'as' => 'members'
+    	]);
 
 });
 

@@ -16,6 +16,54 @@ class PostController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
+    | This method is delete pending posts by admin
+    |--------------------------------------------------------------------------
+    */
+    public function deletePendingPost($id)
+    {
+        $delete = DB::table('posts')->delete($id);
+
+        if($delete) {
+            return redirect()->route('pending-posts')->with('message', 'Post Successfully Deleted!');
+        }
+
+        return redirect()->route('pending-posts')->with('error_msg', 'Can\'t Delete Post!');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | This method is use to aprove pending posts by admin
+    |--------------------------------------------------------------------------
+    */
+    public function aprovePendingPost($id)
+    {
+        $post = \App\Post::find($id);
+
+        $post->status = 'Active';
+
+        if($post->save()) {
+            return redirect()->route('pending-posts')->with('message','Post is Active Now!');
+        }
+        else {
+            return redirect()->route('pending-posts')->with('error_msg','Error!');
+        }
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | This method methods is by admin to show pending posts
+    |--------------------------------------------------------------------------
+    */
+    public function showPendingPosts()
+    {
+        $result = DB::table('posts')->where('status','Inactive')
+                                    ->paginate(4);
+
+        return view('pages.admin.pending_posts',['posts' => $result]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | This method methods is used by guest users to search for rooms
     |--------------------------------------------------------------------------
     */
