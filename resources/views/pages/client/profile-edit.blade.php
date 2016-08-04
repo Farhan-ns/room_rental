@@ -11,7 +11,7 @@
 		<form action="{{ route('profile-image') }}" method="POST" enctype="multipart/form-data" class="form-inline">
 			<div class="form-group">
 				<label for="profile">Choose Image</label>
-				<input type="file" name="profile" id="profile" />
+				<input type="file" name="profiles" id="profile" required="" />
 			</div>
 			<div class="form-group">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}" />

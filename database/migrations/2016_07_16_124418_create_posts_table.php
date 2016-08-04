@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('image_id');
             $table->string('status')->default('Inactive');
             $table->string('type');
+            $table->string('post_id');
             $table->timestamps();
         });
     }

@@ -12,6 +12,11 @@ use DB;
 
 use Illuminate\Support\Facades\Auth;
 
+use Image;
+
+use App\PostImage;
+
+
 class PostController extends Controller
 {
     /*
@@ -282,6 +287,22 @@ class PostController extends Controller
     	$location = $request['location'];
     	$user_id = $request['user_id'];
 
+        $post_id = Auth::user()->id . "__" . time(); 
+
+        $images = $request->file('images');
+        $img = [];
+        $i = new PostImage();
+
+        foreach ($images as $image) {
+            $img = time() . "__n." . $image->getClientOriginalExtension();
+            Image::make($image)->resize(400, 400)->save(public_path('/uploads/posts/' . $img));
+
+            $i->name = $img;
+            $i->post_id = $post_id;
+
+            $i->save();
+        } 
+
     	$post = new Post();
 
     	$post->title = $title;
@@ -290,10 +311,11 @@ class PostController extends Controller
     	$post->location = $location;
     	$post->user_id = $user_id;
         $post->type = $type;
+        $post->post_id = $post_id;
 
     	$post->save();
 
-    	return redirect()->route('addpost')->with('message', 'Post Successfully Saved!');
+    	return redirect()->route('addpost')->with('message', 'Post Successfully Saved!'. count($images));
     }
 
 
