@@ -21,6 +21,18 @@ class PostController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
+    | Method use to show active posts in admin
+    |--------------------------------------------------------------------------
+    */
+    public function showActivePosts()
+    {
+        $posts = DB::table('posts')->where('status', 'Active')->orderby('updated_at','desc')->paginate(4);
+
+        return view('pages.admin.active_posts', ['posts' => $posts]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | This method is delete pending posts by admin
     |--------------------------------------------------------------------------
     */
@@ -240,6 +252,8 @@ class PostController extends Controller
     	$data['location'] = $post->location;
     	$data['user_id'] = $post->user_id;
         $data['type'] = $post->type;
+        $data['post_id'] = $post->post_id;
+        $data['image_id'] = $post->image_id;
 
     	$user = DB::table('users')->where('id', $post->user_id)->first();
 
@@ -247,6 +261,7 @@ class PostController extends Controller
     	$data['user_lname'] = $user->lastname;
     	$data['user_mobile'] = $user->mobile;
     	$data['user_email'] = $user->email;
+
 
         return view('pages.client.post', $data);
     }
@@ -290,7 +305,8 @@ class PostController extends Controller
         $post_id = Auth::user()->id . "__" . time(); 
 
         $images = $request->file('images');
-        $img = [];
+        // $img = [];
+
         $i = new PostImage();
 
         foreach ($images as $image) {
@@ -301,6 +317,7 @@ class PostController extends Controller
             $i->post_id = $post_id;
 
             $i->save();
+
         } 
 
     	$post = new Post();
@@ -312,6 +329,7 @@ class PostController extends Controller
     	$post->user_id = $user_id;
         $post->type = $type;
         $post->post_id = $post_id;
+        $post->image_id = $img;
 
     	$post->save();
 
@@ -321,7 +339,7 @@ class PostController extends Controller
 
     public function pendingPosts()
     {
-        $posts = DB::table('posts')->where('status', 'Inactive')->orderby('updated_at','desc')->paginate(4);
+        $posts = Post::where('status', 'Inactive')->orderby('updated_at','desc')->paginate(4);
         return view('pages.admin.pending_posts', ['posts' => $posts]);
     }
 }

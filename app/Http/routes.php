@@ -356,9 +356,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     | This route is admin home route
     |--------------------------------------------------------------------------
     */
-	Route::get('/', function () {
+    // this is the original style in calling the home/root directory
+	Route::get('/home', function () {
 		return view('pages.admin.home');
 	})->name('admin_home');
+
+	Route::get('/', [
+		'uses' => 'PostController@pendingPosts'
+		]);
 
     /*
     |--------------------------------------------------------------------------
@@ -396,6 +401,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('members', [
     	'uses' => 'UserController@showMembers',
     	'as' => 'members'
+    	]);
+
+	/*
+    |--------------------------------------------------------------------------
+    | Route to show all active posts in admin
+    |--------------------------------------------------------------------------
+    */
+    Route::get('active-posts', [
+    	'uses' => 'PostController@showActivePosts',
+    	'as' => 'active-posts'
     	]);
 
 });

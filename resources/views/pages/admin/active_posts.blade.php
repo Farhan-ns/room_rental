@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
-@section('title') Pending Posts @endsection
+@section('title') Active Posts @endsection
 
 @section('content')
 @include('pages.admin.adminnav')
 <div class="container">
-@include('includes.showerror')
-@include('includes.showsuccess')
 	<div class="row">
 		@if($posts->isEmpty())
 			<h3>No Available Pending Posts</h3>
@@ -15,10 +13,7 @@
 		<div class="col-md-3 post">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<a href="{{ route('post', ['id' => $post->id]) }}">
-					<img src="/uploads/posts" title="" class="img-posts" />
 					<h3>{{ $post->title }}</h3>
-					</a>
 				
 					<table class="table">
 						<tr>
@@ -34,14 +29,12 @@
 							<td>{{ $post->location }}</td>
 						</tr>
 						<tr>
-							<form action="{{ route('aprove-post',$post->id) }}" method="GET">
-								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<td><button class="btn btn-primary btn-lg">Aprove</button></td>
-							</form>
-							<form action="{{ route('delete-pending-post', $post->id) }}" method="GET">
-								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<td><button class="btn btn-danger btn-lg">Delete</button></td>
-							</form>
+							<td>Created:</td>
+							<td>{{ date('m-d-Y',strtotime($post->created_at)) }}</td>
+						</tr>
+						<tr>
+							<td>Modified:</td>
+							<td>{{ date('m-d-Y',strtotime($post->updated_at)) }}</td>
 						</tr>
 					</table>
 				</div>
@@ -51,5 +44,6 @@
 	</div>
 
 	{{ $posts->links() }}
+	</div>
 </div>
 @endsection

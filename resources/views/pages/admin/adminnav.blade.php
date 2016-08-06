@@ -14,6 +14,7 @@
 					<li><a href="{{ route('admin_home') }}">Home</a></li>
 					<li><a href="{{ route('members') }}">Members</a></li>
 					<li><a href="{{ route('pending-posts') }}">Pending Posts</a></li>
+					<li><a href="{{ route('active-posts') }}">Active Posts</a></li>
 					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

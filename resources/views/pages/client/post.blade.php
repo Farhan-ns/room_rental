@@ -16,13 +16,12 @@
 			<p>{{ $location }}</p>
 			<p>{{ $price }}</p>
 			<p>{{ $description }}</p>
+			<p>{{ $image_id }}</p>
 			
 			<div class="row">
-				@for($i = 0; $i <= 5; $i++)
 				<div class="col-md-6 post-img">
-					<img src="/uploads/posts/default.jpg" class="img-posts" alt="{{ $title }}" />
+					<img src="/uploads/posts/{{ $image_id }}" class="img-posts" alt="{{ $title }}" />
 				</div>
-				@endfor
 			</div>
 
 		</div>
