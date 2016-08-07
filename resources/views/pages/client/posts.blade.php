@@ -15,7 +15,7 @@
 	<div class="row"> 
 		@foreach($posts as $post)
 		<div class="col-md-3">
-			<img src="/uploads/posts/default.jpg" alt="{{ $post->title }}" class="img-posts" /> 
+			<img src="/uploads/posts/{{ $post->image_id }}" alt="{{ $post->title }}" class="img-posts" /> 
 			{{ $post->title }}
 			<br/>
 			{{ $post->type }}

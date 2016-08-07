@@ -16,7 +16,7 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<a href="{{ route('post', ['id' => $post->id]) }}">
-					<img src="/uploads/posts" title="" class="img-posts" />
+					<img src="/uploads/posts/{{ $post->image_id }}" title="" class="img-posts" />
 					<h3>{{ $post->title }}</h3>
 					</a>
 				

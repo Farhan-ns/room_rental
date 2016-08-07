@@ -8,6 +8,7 @@
 	<meata name="description" content="Online Posting and Rentals of Appartments and Rooms" />
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
+	<script src="{{ asset('js/angular.min.js') }}"></script>
 </head>
 <body>
 

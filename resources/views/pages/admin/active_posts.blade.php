@@ -7,7 +7,7 @@
 <div class="container">
 	<div class="row">
 		@if($posts->isEmpty())
-			<h3>No Available Pending Posts</h3>
+			<h3>No Available Active Posts</h3>
 		@endif
 		@foreach($posts as $post)
 		<div class="col-md-3 post">

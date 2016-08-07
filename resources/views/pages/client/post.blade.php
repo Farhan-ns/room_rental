@@ -7,20 +7,28 @@
 <div class="container">
 	<a href="#">Back</a>
 	<div class="row">
-		<div class="col-md-8">
-			<h3>{{ $title }}</h3>
-			<p>by {{ $user_fname . " " . $user_lname }}</p>
-			<p>Email: {{ $user_email }}</p>
-			<p>Mobile: {{ $user_mobile }}</p>
-			<p>{{ $type }}</p>
-			<p>{{ $location }}</p>
-			<p>{{ $price }}</p>
-			<p>{{ $description }}</p>
-			<p>{{ $image_id }}</p>
-			
+		<div class="col-md-8" ng-app ng-init="price={{ $price }}" >
+			<div class="row">
+				<div class="col-md-8">
+					<h3>{{ $title }}</h3>
+					<p>by {{ $user_fname . " " . $user_lname }}</p>
+					<p>Email: {{ $user_email }}</p>
+					<p>Mobile: {{ $user_mobile }}</p>
+					<p>{{ $type }}</p>
+					<p>{{ $location }}</p>
+					<p>{{ $price }}</p>
+					<p>{{ $description }}</p>
+				</div>
+				<div class="col-md-4">
+					<label>Month of Stay:</label>
+					<input type="number" name="number" id="number" value=0 ng-model="month_num" />
+					<!-- <input type="hidden" name="value" value={{ $price }} ng-model="price" /> -->
+					<h3>Estimated Cost: @{{ month_num * price }}</h3>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-md-6 post-img">
-					<img src="/uploads/posts/{{ $image_id }}" class="img-posts" alt="{{ $title }}" />
+					<img src="/uploads/posts/{{ $image_id }}" style="height:400px; width:400px;" alt="{{ $title }}" />
 				</div>
 			</div>
 
