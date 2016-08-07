@@ -20,7 +20,7 @@
 		@endif
 		@foreach($posts as $post)
 		<div class="col-md-3 post">
-			<a href="{{ route('post', ['id' => $post->id]) }}">
+			<a href="{{ route('post-guest', $post->id) }}">
 			<img src="/uploads/posts/default.jpg" title="" class="img-posts" />
 			<h3>{{ $post->title }}</h3>
 			</a>

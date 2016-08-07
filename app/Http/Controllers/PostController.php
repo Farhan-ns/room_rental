@@ -19,6 +19,27 @@ use App\PostImage;
 
 class PostController extends Controller
 {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Method use to show link in search result on guest
+    |--------------------------------------------------------------------------
+    */
+    public function showGuestResult($id)
+    {
+        $post = DB::table('posts')->where('id', $id)->first();
+
+        $data['title'] = $post->title;
+        $data['price'] = $post->price;
+        $data['description'] = $post->description;
+        $data['location'] = $post->location;
+        $data['type'] = $post->type;
+        $data['user_id'] = $post->user_id;
+        $data['image_id'] = $post->image_id;
+
+        return view('pages.post', $data);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Method use to show active posts in admin

@@ -28,7 +28,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-6 post-img">
-					<img src="/uploads/posts/{{ $image_id }}" style="height:400px; width:400px;" alt="{{ $title }}" />
+					<img src="/uploads/posts/{{ $image_id }}" class="img-responsive" alt="{{ $title }}" />
 				</div>
 			</div>
 
