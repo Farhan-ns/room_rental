@@ -17,6 +17,12 @@ use DB;
 
 class UserController extends Controller
 {
+    public function showUserProfile($id)
+    {
+        $user = User::where('id', $id)->first();
+        return view('pages.client.showuserprofile', $user);
+    }
+
 
     /*
     |--------------------------------------------------------------------------

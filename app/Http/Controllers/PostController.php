@@ -278,6 +278,7 @@ class PostController extends Controller
 
     	$user = DB::table('users')->where('id', $post->user_id)->first();
 
+        $data['user_id'] = $user->id;
     	$data['user_fname'] = $user->firstname;
     	$data['user_lname'] = $user->lastname;
     	$data['user_mobile'] = $user->mobile;

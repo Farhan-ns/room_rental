@@ -11,7 +11,7 @@
 			<div class="row">
 				<div class="col-md-8">
 					<h3>{{ $title }}</h3>
-					<p>by {{ $user_fname . " " . $user_lname }}</p>
+					<p>by <a href="{{ route('post-user-profile', $user_id) }}" target="_blank">{{ $user_fname . " " . $user_lname }}</a></p>
 					<p>Email: {{ $user_email }}</p>
 					<p>Mobile: {{ $user_mobile }}</p>
 					<p>{{ $type }}</p>
@@ -40,6 +40,9 @@
 				</div>
 				<div class="panel-body">
 					<form action="#" method="POST" role="form">
+						<div class="form-group">
+							<input type="text" name="title" id="title" class="form-control uppercase" value="{{ $title }} @ {{ $location }}" readonly="" />
+						</div>	
 						<div class="form-group">
 							<input type="text" name="name" id="name" class="form-control" placeholder="Name" required="" />
 						</div>

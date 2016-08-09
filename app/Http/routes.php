@@ -351,7 +351,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'as' => 'profile-image'
 		]);
 
-
+	Route::get('post-user-profile/{id}', [
+		'uses' => 'UserController@showUserProfile',
+		'as' => 'post-user-profile'
+		]);
 
 });
 /*
