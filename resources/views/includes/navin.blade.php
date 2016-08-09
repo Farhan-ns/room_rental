@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ route('home_user') }}">App</a>
+			<a class="navbar-brand" href="{{ route('home_user') }}">M R&amp;A</a>
 		</div>
 		<div class="collapse navbar-collapse" id="appNavbar">
 			<div class="container-fluid">

@@ -5,7 +5,7 @@
 @section('content')
 @include('includes.navout')
 <div class="container">
-	<h2 class="text-center">Welcome to Room and Appartment Rentals</h2>
+	<h2 class="text-center">Welcome to Maro Room and Apartel</h2>
 	<div class="clearfix"></div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>@yield('title') - Room and Appartment Rentals </title>
+	<title>@yield('title') - Maro Room and Apartel </title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="Keywords" content="appartment, room, rentals, rental, board, bording, house" />
