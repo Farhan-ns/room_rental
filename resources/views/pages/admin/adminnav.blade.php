@@ -25,8 +25,8 @@
 						</a>
 
 						<ul class="dropdown-menu" aria-labelledby="dLabel">
-							<li><a href="#">Admin Profile</a></li>
-							<li><a href="#">Change Password</a></li>
+							<li><a href="{{ route('admin_profile') }}">Admin Profile</a></li>
+							<li><a href="{{ route('change_admin_password') }}">Change Password</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="{{ route('logout') }}">Logout</a></li>
 						</ul>

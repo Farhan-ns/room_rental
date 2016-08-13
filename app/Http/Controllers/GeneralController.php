@@ -10,8 +10,5 @@ use Illuminate\Support\Facades\Auth;
 
 class GeneralController extends Controller
 {
-    public function verifyAdmin()
-    {
-    	
-    }
+	//
 }

@@ -12,7 +12,21 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    
+   	/*
+    |--------------------------------------------------------------------------
+    | This method is use to show admin profile
+    |--------------------------------------------------------------------------
+    */
+    public function showAdminProfile()
+    {
+    	return view('pages.admin.show_admin_profile');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | This method is use to verify the admin user
+    |--------------------------------------------------------------------------
+    */
     public function verifyAdmin()
     {
     	if(Auth::user()->privelege == 'Admin') {

@@ -26,6 +26,10 @@ Route::get('/', function () {
 		);
 
 	if(Auth::check()) {
+
+		if(Auth::user()->privelege == 'Admin') {
+			return redirect()->route('admin_home');
+		}
 		return redirect()->route('home_user');
 	}
 
@@ -374,7 +378,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 	})->name('admin_home');
 
 	Route::get('/', [
-		'uses' => 'PostController@pendingPosts'
+		'uses' => 'PostController@pendingPosts',
+		'middleware' => 'App\Http\Middleware\AdminMiddleware'
 		]);
 
     /*
@@ -424,6 +429,24 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     	'uses' => 'PostController@showActivePosts',
     	'as' => 'active-posts'
     	]);
+
+	/*
+    |--------------------------------------------------------------------------
+    | Route to show admin profile
+    |--------------------------------------------------------------------------
+    */
+    Route::get('admin-profile', [
+    	'uses' => 'AdminController@showAdminProfile',
+    	'as' => 'admin_profile'
+    	]);
+	/*
+    |--------------------------------------------------------------------------
+    | Route to show change password in admin
+    |--------------------------------------------------------------------------
+    */
+    Route::get('change-admin-password', function() {
+    	return view('pages.admin.change_admin_password');
+    })->name('change_admin_password');
 
 });
 
