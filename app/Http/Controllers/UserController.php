@@ -105,6 +105,15 @@ class UserController extends Controller
         $gender = $request['gender'];
         $user_id = $request['user_id'];
 
+        if($request->hasFile('profile')) {
+            $profile = $request->file('profile');
+            $filename = time() . '.' . $profile->getClientOriginalExtension();
+            Image::make($profile)->resize(300, 300)->save(public_path('/uploads/profiles/' . $filename));
+        }
+        else {
+            $filename = Auth::user()->profile;
+        }
+
         $update = User::find($user_id);
 
         $update->firstname = $firstname;
@@ -113,6 +122,7 @@ class UserController extends Controller
         $update->mobile = $mobile;
         $update->birthday = $birthday;
         $update->gender = $gender;
+        $update->profile = $filename;
 
         $update->save();
 
