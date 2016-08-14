@@ -5,12 +5,17 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: sans-serif;
+     font-feature-settings: "kern" 1;
+    font-family: 'Proxima Nova','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 81.25%;
+    color: #212126;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
+
 }
 body {
   margin: 0;
+  font-family: 'Proxima Nova';
 }
 article,
 aside,

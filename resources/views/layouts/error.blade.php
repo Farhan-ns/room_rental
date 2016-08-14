@@ -8,6 +8,7 @@
         <style>
             html, body {
                 height: 100%;
+
             }
 
             body {
@@ -26,6 +27,7 @@
                 vertical-align: middle;
             }
 
+
             .content {
                 text-align: center;
                 display: inline-block;
@@ -35,6 +37,7 @@
                 font-size: 72px;
                 margin-bottom: 40px;
             }
+          
         </style>
     </head>
     <body>

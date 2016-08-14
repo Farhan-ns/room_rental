@@ -41,9 +41,92 @@ a:hover {
 }
 
 .center-div {
-	maring: 0 auto;
+	margin: 0 auto;
 }
 
 .post, .post-img {
 	padding: 2px;
+}
+.conbody{
+	background-image: url('../img/backgroundhome.jpg');
+	background-size: cover;
+    background-position: center center;
+ background-position: fixed;	
+     width: 100%;
+     height: 762px;
+    margin-top: -137px;
+
+}
+
+.navbar-default .navbar-nav > .active{
+    color: #fff;
+   background: #5bc0de;
+ }
+ .navbar-default .navbar-nav > .active > a, 
+ .navbar-default .navbar-nav > .active > a:hover, 
+ .navbar-default .navbar-nav > .active > a:focus {
+      color: #fff;
+      background: #5bc0de;
+ }
+ .headline {
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 52px;
+    margin-bottom: 4px;
+     margin-left: 450px;
+     margin-top: 295px;
+    }
+    .sub-headline {
+      margin-bottom: 30px;
+    color: #636366;
+    font-size: 20px;
+    margin-top: 10px;
+    line-height: 24px;
+    margin-left: 450px;
+}
+
+.search-input-container {
+    display: inline-block;
+    position: relative;
+    width: 280px;
+}
+.input-group {
+    height: 48px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    padding: 14px;
+    background-color: rgba(255,255,255,.5);
+    border: 1px solid #e2e2e5;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+}
+ .break{
+ 	background: url("../img/el.jpg") repeat scroll 0 0/cover;
+	color:#5bc0de;
+	padding-top: 55px;
+	padding-bottom: 55px;
+	font-weight: 400px;
+		background-size: cover;
+    background-position: center center;
+ background-position: fixed;	
+     width: 100%;
+     height: 700px;
+	font-size: 19px;	
+
+ }
+.footer{
+	/*background: url("../img/el.jpg") repeat scroll 0 0/cover;*/
+	background-color: #212126;
+	color:#5bc0de;
+	padding-top: 55px;
+	padding-bottom: 55px;
+	font-weight: 400px;
+	font-size: 19px;	
+}
+
+.panel-info{
+  margin-top: 150px;
+  opacity: 0.8;
 }
