@@ -8,26 +8,14 @@
 	<h2 class="text-center">Room and Appartment Rentals</h2>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			@if(session('errormessage'))
-				<div class="alert alert-danger text-center">
-					<b>{{ session('errormessage') }}</b>
-				</div>
-			@endif
-			@if(session('signin'))
-				<div class="alert alert-warning text-center">
-					<b>{{ session('signin') }}</b>
-				</div>
-			@endif
-			@if(session('error_msg'))
-				<div class="alert alert-warning">
-					<b>{{ session('error_msg') }}
-				</div>
-			@endif
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<b>Signin</b>
 				</div>
 				<div class="panel-body">
+				@include('includes.showerror')
+				@include('includes.showerrors')
+				@include('includes.showsuccess')
 					<form action="user_signin" method="post" role="form" autocomplete="off">
 						<div class="form-group">
 							<input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required="required" {{ session('signin')? 'autofocus' : '' }} />

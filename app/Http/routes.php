@@ -45,6 +45,11 @@ Route::post('search', [
 	'uses' => 'PostController@guestSearch',
 	'as' => 'guest-search'
 	]);
+
+Route::get('search', function() {
+	return view('pages.results');
+})->name('getsearchresult');
+
 /*
 |--------------------------------------------------------------------------
 | Route to show search result on guest

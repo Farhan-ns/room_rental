@@ -189,7 +189,7 @@ class UserController extends Controller
         		return redirect()->route('home_user');
             }
     	}
-    	return redirect()->route('signin')->with('errormessage','Incorrect Email or Password!')->withInput();
+    	return redirect()->route('signin')->with('error_msg','Incorrect Email or Password!')->withInput();
     }
 
     /*

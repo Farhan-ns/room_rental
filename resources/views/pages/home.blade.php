@@ -9,6 +9,16 @@
 	<div class="col-md-6 col-xs-6 sub-headline">Search and apply to Hundreds of apartments</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
+		@if (count($errors) > 0)
+		    <div class="alert alert-danger">
+			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		        <ul>
+		            @foreach ($errors->all() as $error)
+		                <li>{{ $error }}</li>
+		            @endforeach
+		        </ul>
+		    </div>
+		@endif
 			<form action="{{ route('guest-search') }}" method="POST" role="form">
 				<div class="form-group">
 					<div class="input-group">
