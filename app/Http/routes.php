@@ -453,6 +453,35 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     	return view('pages.admin.change_admin_password');
     })->name('change_admin_password');
 
+
+	/*
+    |--------------------------------------------------------------------------
+    | Route to edit profile of admin
+    |--------------------------------------------------------------------------
+    */
+    Route::get('admin-profile-edit', [
+    	'uses' => 'AdminController@ProfileEdit',
+    	'as' => 'admin_profile_edit'
+    	]);
+
+	/*
+    |--------------------------------------------------------------------------
+    | Route to update admin profile
+    |--------------------------------------------------------------------------
+    */    
+    Route::post('admin-profile-update', [
+    	'uses' => 'AdminController@ProfileUpdate',
+    	'as' => 'admin_profile_update'
+    	]);
+    /*
+    |--------------------------------------------------------------------------
+    | Route to update the password of the admin
+    |--------------------------------------------------------------------------
+    */
+    Route::post('admin-password-update', [
+    	'uses' => 'AdminController@PasswordUpdate',
+    	'as' => 'update_admin_password'
+    	]);
 });
 
 
