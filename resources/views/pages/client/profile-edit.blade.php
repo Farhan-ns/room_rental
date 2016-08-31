@@ -13,7 +13,7 @@
 		
 			<div class="form-group">
 				<label for="profile">Choose Image</label>
-				<input type="file" name="profile" id="profile" accept="jpg, jpeg, png" />
+				<input type="file" name="profileimg" id="profile" accept="jpg, jpeg, png" />
 			</div>
 			<div class="form-group">
 				<div class="row">

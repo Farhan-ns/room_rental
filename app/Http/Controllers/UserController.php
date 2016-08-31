@@ -63,7 +63,7 @@ class UserController extends Controller
     */
     public function passwordUpdate(Request $request)
     {
-
+        //validation required
         $user_id = $request['user_id'];
         $old_password = $request['old_password'];
         $new_password = $request['new_password'];
@@ -105,14 +105,18 @@ class UserController extends Controller
         $gender = $request['gender'];
         $user_id = $request['user_id'];
 
-        if($request->hasFile('profile')) {
-            $profile = $request->file('profile');
+        // the current filename/profile name of the user
+        $filename = Auth::user()->profile;
+
+        if($request->hasFile('profileimg')) {
+            $profile = $request->file('profileimg');
             $filename = time() . '.' . $profile->getClientOriginalExtension();
             Image::make($profile)->resize(300, 300)->save(public_path('/uploads/profiles/' . $filename));
+
         }
-        else {
-            $filename = Auth::user()->profile;
-        }
+        // else {
+        //     $filename = Auth::user()->profile;
+        // }
 
         $update = User::find($user_id);
 

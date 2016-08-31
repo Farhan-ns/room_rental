@@ -282,6 +282,7 @@ class PostController extends Controller
     {
     	$post = DB::table('posts')->where('id', $id)->first();
 
+        $data['id'] = $id;
     	$data['title'] = $post->title;
     	$data['price'] = $post->price;
     	$data['description'] = $post->description;

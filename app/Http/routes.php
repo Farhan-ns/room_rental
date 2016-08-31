@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Auth;
 | Route to Home Page of the application
 |--------------------------------------------------------------------------
 */
+
+// Route::get('email', function () {
+// 	dd(Config::get('mail'));
+// });
+
 Route::get('/', function () {
 	$data = array(
 		'homeactive' => 'active',
@@ -360,9 +365,24 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'as' => 'profile-image'
 		]);
 
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to edit/update post of user 
+	|--------------------------------------------------------------------------	
+	*/
 	Route::get('post-user-profile/{id}', [
 		'uses' => 'UserController@showUserProfile',
 		'as' => 'post-user-profile'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to send message to seller/inquiry message/notify owner of post 
+	|--------------------------------------------------------------------------	
+	*/
+	Route::post('send-msg-post-owner', [
+		'uses' => 'GeneralController@sendMsgToOwner',
+		'as' => 'send_msg_post_owner'
 		]);
 
 });
