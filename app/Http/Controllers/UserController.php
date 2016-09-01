@@ -63,6 +63,13 @@ class UserController extends Controller
     */
     public function passwordUpdate(Request $request)
     {
+        $this->validate($request,[
+            'user_id' => 'required',
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'new_password2' => 'required'
+            ]);
+
         //validation required
         $user_id = $request['user_id'];
         $old_password = $request['old_password'];
@@ -96,7 +103,17 @@ class UserController extends Controller
     */
     public function updateUserProfile(Request $request)
     {
-        //needs validation
+        
+        $this->validate($request, [
+            'email' => 'required|email',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'bday' => 'required|date',
+            'mobile' => 'required',
+            'gender' => 'required',
+            'user_id' => 'required'
+            ]);
+
         $firstname = $request['firstname'];
         $lastname = $request['lastname'];
         $email = $request['email'];
