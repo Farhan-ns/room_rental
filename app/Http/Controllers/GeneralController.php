@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Mail;
 
 class GeneralController extends Controller
 {
-	//
+	// This method is used to send notifcation/inquiry to the owner of the posts via email and sms
 	public function sendMsgToOwner(Request $request)
 	{
 		$this->validate($request,[
@@ -56,8 +56,44 @@ class GeneralController extends Controller
 
     	});
 
+		// SMS Part
+		$api_user = "APIVBWZGFYTDN"; // This is the api username of onewaysms.ph
+		$api_pass = "APIVBWZGFYTDN914FO"; // This is the api password of onewaysms.ph
+		$recipient = $user->mobile;
+		$sms_msg = "This is a sample inquiry message.";  // customize your message here
+
+		$this->sendSMS($api_user, $api_pass, "M&R Rentals", $recipient, $sms_msg);
+
+
 		return redirect()->route('post', $id)->with('message', 'Inquiry Message Sent to Owner!');
 
 
+	}
+
+	// The method to send the sms
+	public function sendSMS($user,$pass,$sms_from,$sms_to,$sms_msg)
+    {
+         
+    	$query_string = "api.aspx?apiusername=".$user."&apipassword=".$pass;
+        $query_string .= "&senderid=".rawurlencode($sms_from)."&mobileno=".rawurlencode($sms_to);
+        $query_string .= "&message=".rawurlencode(stripslashes($sms_msg)) . "&languagetype=1";        
+        $url = "http://gateway.onewaysms.com.au:10001/".$query_string;       
+        $fd = @implode ('', file ($url));      
+        if ($fd) {                       
+		    if ($fd > 0) {
+				Print("MT ID : " . $fd);
+				$ok = "success";
+		    }        
+		    else {
+				print("Please refer to API on Error : " . $fd);
+				$ok = "fail";
+		    }
+        }           
+        else      
+        {                       
+            // no contact with gateway                      
+            $ok = "fail";       
+        }           
+        return $ok;  
 	}
 }
