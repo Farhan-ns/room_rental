@@ -14,8 +14,9 @@
 	@include('includes.showerrors')
 	<div class="row"> 
 		@foreach($posts as $post)
-		<div class="col-md-3">
+		<div class="col-md-3 postimg">
 			<img src="/uploads/posts/{{ $post->image_id }}" alt="{{ $post->title }}" class="img-posts" /> 
+			</br>
 			{{ $post->title }}
 			<br/>
 			{{ $post->type }}

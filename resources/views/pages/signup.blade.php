@@ -8,16 +8,14 @@
 	<h2 class="text-center">Room and Appartment Rentals</h2>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-
-			@include('includes.showerrors')
-			@include('includes.showsuccess')
-
-
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<b>Signup</b>
 				</div>
 				<div class="panel-body">
+					@include('includes.showerror')
+				@include('includes.showerrors')
+				@include('includes.showsuccess')
 					<form action="user_signup" method="POST" role="form" autocomplete="off">
 						<div class="form-group">
 							<input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required="required" class="form-control" />

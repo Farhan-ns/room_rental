@@ -6,11 +6,13 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ route('home_user') }}">M R&amp;A</a>
+			<a class="navbar-brand" href="{{ route('home_user') }}">Welcome Seeker's </a>
 		</div>
 		<div class="collapse navbar-collapse" id="appNavbar">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
+					<!-- <li><img src="img/logo.png" alt="processing" class="img-responsive rest"></a></li> 
+					<li><span class="icon-bar">&nbsp;&nbsp;&nbsp;&nbsp;</span></li> -->
 					<li class=""><a href="{{ route('home_user') }}">Home</a></li>
 					<li class=""><a href="{{ route('browse') }}">Browse Posts</a></li>
 					<li class=""><a href="{{ route('search') }}">Search</a></li>

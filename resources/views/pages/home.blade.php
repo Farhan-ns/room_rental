@@ -61,12 +61,26 @@
 						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+						<br>
+				<br>
+				<br>
+				<br>
+
+						<center><b><h5 class="gr">© By Neofita Room And Apartel 2016</h5></b></center>
 					</div>
 					<div class="col-lg-6 ">
 						<div class="pad-top">
 							<!-- <div class="boxshadow"> -->
 							<img src="img/sample.png" alt="processing" class="img-responsive boxshadow">
 							<!-- </div> -->
+
 						</div>
 					</div>
 				</div>
@@ -74,7 +88,7 @@
 		</div>
 		<!-- <hr/> -->
 		</div>
-		<div class="row">
+<!-- 		<div class="row">
 	<section class="footer">
    			<div class="container">
    				<div class="row">
@@ -92,8 +106,8 @@
    							<li><a href="">Instagram</a></li>
    							<li><a href="">Youtube</a></li>
    						</ul>
-   					</div>
-   					<div class="col-lg-6">
+   					</div> -->
+   		<!-- <div class="col-lg-6">
    						<div class="row">
    							<div class="col-lg-4"></div>
    							<div class="col-lg-8">
@@ -111,14 +125,14 @@
    								</form>
    							</div>
    						</div>
-   					</div>
-   				</div>
-   				<div class="row">
+   					</div> 
+   				</div>-->
+   	<!-- 			<div class="row copyright">
    					<div class="col-lg-12">
-   						<h4 class="gr">COPYRIGHT By Maro Room And Apartel 2016</h4>
+   						<center><h6 class="gr">© By Neofita Room And Apartel 2016</h6></center>
    					</div>
    				</div>
-   			</div>
+   			</div> -->
    			</section>
 
 

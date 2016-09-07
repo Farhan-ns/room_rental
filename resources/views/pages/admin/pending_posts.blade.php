@@ -36,11 +36,11 @@
 						<tr>
 							<form action="{{ route('aprove-post',$post->id) }}" method="GET">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<td><button class="btn btn-primary btn-lg">Aprove</button></td>
+								<td><button class="btn btn-info btn-sm">Aprove</button></td>
 							</form>
 							<form action="{{ route('delete-pending-post', $post->id) }}" method="GET">
 								<input type="hidden" name="_token" value="{{ csrf_token() }}">
-								<td><button class="btn btn-danger btn-lg">Delete</button></td>
+								<td><button class="btn btn-info btn-sm">Delete</button></td>
 							</form>
 						</tr>
 					</table>
