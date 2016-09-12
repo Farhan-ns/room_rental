@@ -4,10 +4,10 @@
 
 @section('content')
 @include('includes.navin')
-<div class="container">
+<div class="container searchpost">
 	<div class="row">
 	<div class="col-md-4 col-md-offset-4">
-	<div class="panel panel-primary">
+	<div class="panel panel-info">
 		<div class="panel-heading"><b>Search a Room/Appartment</b></div>
 		<div class="panel-body">
 			<form action="{{ route('searchresult') }}" method="POST" role="form">
@@ -25,8 +25,8 @@
 				</div>
 				<div class="form-group">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-					<button type="submit" class="btn btn-primary">Search</button>
-					<button type="reset" class="btn btn-danger">Clear Fields</button>
+					<button type="submit" class="btn btn-info">Search</button>
+					<button type="reset" class="btn btn-info">Clear Fields</button>
 				</div>
 			</form>
 		</div>

@@ -4,7 +4,7 @@
 
 @section('content')
 @include('includes.navin')
-<div class="container">
+<div class="container postrest">
 	<a href="#">Back</a>
 	<div class="row">
 	@include('includes.showsuccess')
@@ -16,10 +16,10 @@
 					<p>by <a href="{{ route('post-user-profile', $user_id) }}" target="_blank">{{ $user_fname . " " . $user_lname }}</a></p>
 					<p>Email: {{ $user_email }}</p>
 					<p>Mobile: {{ $user_mobile }}</p>
-					<p>{{ $type }}</p>
-					<p>{{ $location }}</p>
-					<p>{{ $price }}</p>
-					<p>{{ $description }}</p>
+					<p>Type:  {{ $type }}</p>
+					<p>Location:  {{ $location }}</p>
+					<p>Price:  {{ $price }}</p>
+					<p>Dexcription:  {{ $description }}</p>
 				</div>
 				<div class="col-md-4">
 					<label>Month of Stay:</label>
@@ -36,7 +36,7 @@
 
 		</div>
 		<div class="col-md-4">
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<b>Send Message to Owner</b>
 				</div>
@@ -61,8 +61,8 @@
 							<input type="hidden" name="id" value="{{ $id }}" />
 							<input type="hidden" name="post_id" value="{{ $post_id }}" />
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-							<button type="sumbit" class="btn btn-primary">Send</button>
-							<button type="reset" class="btn btn-danger">Clear</button>
+							<button type="sumbit" class="btn btn-info">Send</button>
+							<button type="reset" class="btn btn-info">Clear</button>
 						</div>
 					</form>
 				</div>

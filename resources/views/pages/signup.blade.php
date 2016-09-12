@@ -36,7 +36,7 @@
 							<input type="radio" name="gender" id="gender-female" value="Female" />
 						</div>
 						<div class="form-group">
-							<input type="number" name="mobile" id="mobile" value="{{ old('mobile') }}" placeholder="Mobile Number Ex: 09123456789" required="required" class="form-control" />
+							<input type="number" name="mobile" id="mobile" value="{{ old('mobile') }}" placeholder="Mobile Number Ex: 09234567890" required="required" class="form-control" />
 						</div>
 						<div class="form-group">
 							<input type="password" name="password" id="password" placeholder="Password" required="required" class="form-control" />
