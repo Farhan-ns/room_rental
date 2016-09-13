@@ -18,7 +18,7 @@
 				@include('includes.showsuccess')
 					<form action="user_signin" method="post" role="form" autocomplete="off">
 						<div class="form-group">
-							<input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required="required" {{ session('signin')? 'autofocus' : '' }} />
+							<input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required="required" {{ session('signin')? 'autofocus' : '' }} autofocus="" />
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required" />

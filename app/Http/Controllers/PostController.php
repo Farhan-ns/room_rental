@@ -68,6 +68,14 @@ class PostController extends Controller
         $delete = DB::table('posts')->delete($id);
 
         if($delete) {
+
+            $user_log = new UserLog();
+
+            $user_log->action = 'Delete Pending Post.';
+            $user_log->user_id = Auth::user()->id;
+
+            $user_log->save();
+
             return redirect()->route('pending-posts')->with('message', 'Post Successfully Deleted!');
         }
 
@@ -86,6 +94,14 @@ class PostController extends Controller
         $post->status = 'Active';
 
         if($post->save()) {
+
+            $user_log = new UserLog();
+
+            $user_log->action = 'Approve a post.';
+            $user_log->user_id = Auth::user()->id;
+
+            $user_log->save();
+            
             return redirect()->route('pending-posts')->with('message','Post is Active Now!');
         }
         else {
@@ -171,6 +187,14 @@ class PostController extends Controller
         $ids = $request->input('postid');
 
         if(DB::table('posts')->whereIn('id',$ids)->delete()) {
+
+            $user_log = new UserLog();
+
+            $user_log->action = 'Delete posts.';
+            $user_log->user_id = Auth::user()->id;
+
+            $user_log->save();
+
             return redirect()->route('showposttodelete')->with('message', 'Posts Successfully Delete!');
         }
 
@@ -218,7 +242,16 @@ class PostController extends Controller
         $post->location = $location;
 
         if($post->save()) {
+
+            $user_log = new UserLog();
+
+            $user_log->action = 'Updated post.';
+            $user_log->user_id = Auth::user()->id;
+
+            $user_log->save();
+
             return redirect()->route('myposts')->with('message', 'Successfully Updated!');
+
         }
 
         return redirect()->route('myposts')->with('error_msg', 'Error Occured. Please try again later.');
@@ -257,6 +290,14 @@ class PostController extends Controller
         $delete = DB::table('posts')->delete($id);
 
         if($delete) {
+
+            $user_log = new UserLog();
+
+            $user_log->action = 'Deleted a post';
+            $user_log->user_id = Auth::user()->id;
+
+            $user_log->save();
+
             return redirect()->route('myposts')->with('message', 'Post Successfully Deleted!');
         }
 
@@ -353,7 +394,7 @@ class PostController extends Controller
 
         foreach ($images as $image) {
             $img = time() . "__n." . $image->getClientOriginalExtension();
-            Image::make($image)->resize(400, 400)->save(public_path('/uploads/posts/' . $img));
+            Image::make($image)->resize(500, 800)->save(public_path('/uploads/posts/' . $img));
 
             // $i->name = $img;
             // $i->post_id = $post->id;
@@ -373,7 +414,7 @@ class PostController extends Controller
 
         $user_log->save();
 
-    	return redirect()->route('addpost')->with('message', 'Post Successfully Saved!'. count($images));
+    	return redirect()->route('addpost')->with('message', 'Post Successfully Saved!');
     }
 
 

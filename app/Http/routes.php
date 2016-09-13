@@ -517,6 +517,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     	'uses' => 'AdminController@PasswordUpdate',
     	'as' => 'update_admin_password'
     	]);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Route to go to log of admin
+    |--------------------------------------------------------------------------
+    */
+    Route::get('log', [
+    	'uses' => 'AdminController@adminLog',
+    	'as' => 'admin_log'
+    	]);
+
 });
 
 

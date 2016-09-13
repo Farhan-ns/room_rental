@@ -12,8 +12,18 @@ use DB;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\UserLog;
+
 class AdminController extends Controller
 {
+
+    public function adminLog()
+    {
+        $logs = UserLog::where('user_id', Auth::user()->id)->orderBy('created_at','desc')->paginate(10);
+
+        return view('pages.admin.log',['logs' => $logs]);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | This Method is use to update password of the admin
@@ -31,6 +41,13 @@ class AdminController extends Controller
         $update->password = bcrypt($password);
 
         $update->save();
+
+        $admin_log = new UserLog();
+
+        $admin_log->action = 'Admin Updated Password';
+        $admin_log->user_id = Auth::user()->id;
+
+        $admin_log->save();
 
         return redirect()->route('admin_home')->with('message', 'Successfully Updated Password!');
     }
@@ -56,6 +73,13 @@ class AdminController extends Controller
         $update->birthday = $bday;
 
         $update->save();
+
+        $admin_log = new UserLog();
+
+        $admin_log->action = 'Admin Updated Profile';
+        $admin_log->user_id = Auth::user()->id;
+
+        $admin_log->save();
 
         return redirect()->route('admin_profile')->with('message', 'Successfully Updated Profile');
     }

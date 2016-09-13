@@ -14,6 +14,10 @@ use App\User;
 
 use Illuminate\Support\Facades\Mail;
 
+use App\MessageLog;
+
+use App\UserLog;
+
 
 class GeneralController extends Controller
 {
@@ -64,6 +68,26 @@ class GeneralController extends Controller
 
 		$this->sendSMS($api_user, $api_pass, "M&R Rentals", $recipient, $sms_msg);
 
+		// Save Message Log to database
+		// new message log instance
+		$msg_log = new MessageLog();
+
+		$msg_log->post_id = $id;
+		$msg_log->inquirer = Auth::user()->id;
+		$msg_log->email = $user->email;
+		$msg_log->mobile = $user->mobile;
+		$msg_log->message = $message;
+
+		$msg_log->save();
+
+		// user log, sending inquiry message
+		// new instance of user log
+		$user_log = new UserLog();
+
+		$user_log->action = 'Send inquiry message to post owner. (Email/SMS)';
+		$user_log->user_id = Auth::user()->id;
+
+		$user_log-save();
 
 		return redirect()->route('post', $id)->with('message', 'Inquiry Message Sent to Owner!');
 

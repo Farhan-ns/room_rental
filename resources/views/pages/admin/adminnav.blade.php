@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ route('home_user') }}">Welcome Admin!</a>
+			<a class="navbar-brand" href="{{ route('admin_home') }}">Welcome Admin!</a>
 		</div>
 		<div class="collapse navbar-collapse" id="appNavbar">
 			<div class="container-fluid">
@@ -27,6 +27,7 @@
 						<ul class="dropdown-menu" aria-labelledby="dLabel">
 							<li><a href="{{ route('admin_profile') }}">Admin Profile</a></li>
 							<li><a href="{{ route('change_admin_password') }}">Change Password</a></li>
+							<li><a href="{{ route('admin_log') }}">Admin Log</a></li>
 							<li role="separator" class="divider"></li>
 							<li><a href="{{ route('logout') }}">Logout</a></li>
 						</ul>

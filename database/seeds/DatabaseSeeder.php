@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             'firstname' => 'Admin',
             'lastname' => 'Admin',
             'email' => 'admin@admin.com',
+            'mobile' => '09502810005',
             'password' => bcrypt('admin'),
             'privelege' => 'Admin'
         ]);
@@ -24,13 +25,23 @@ class DatabaseSeeder extends Seeder
         	'firstname' => 'Joshua',
         	'lastname' => 'Paredes',
         	'email' => 'joshuapards@gmail.com',
+            'mobile' => '09502810005',
         	'password' => bcrypt('paredes')
         	]);
 
         DB::table('users')->insert([
-            'firstname' => 'a',
-            'lastname' => 't',
+            'firstname' => 'Adam',
+            'lastname' => 'Trinidad',
             'email' => 'madamt0001@gmail.com',
+            'mobile' => '09156119134',
+            'password' => bcrypt('adam')
+            ]);
+
+        DB::table('users')->insert([
+            'firstname' => 'Michael',
+            'lastname' => 'Adam',
+            'email' => 'michaeladamtrinidad@gmail.com',
+            'mobile' => '09156119134',
             'password' => bcrypt('adam')
             ]);
     }
