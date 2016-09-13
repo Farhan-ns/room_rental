@@ -7,6 +7,7 @@
 <div class="container">
 
 	<div class="row">
+		<br/><br/>
 		@if($posts->isEmpty())
 			<h3>No Result for your search</h3>
 			<p>Back to <a href="{{ route('search') }}">search</a></p>

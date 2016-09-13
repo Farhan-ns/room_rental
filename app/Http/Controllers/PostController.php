@@ -16,6 +16,10 @@ use Image;
 
 use App\PostImage;
 
+use App\UserLog;
+
+use App\User;
+
 
 class PostController extends Controller
 {
@@ -268,7 +272,7 @@ class PostController extends Controller
 	public function index()
     {
     	$id = Auth::user()->id;
-        $posts = DB::table('posts')->where('user_id', '=', $id)->orderby('updated_at','desc')->paginate(4);
+        $posts = Post::where('user_id', $id)->paginate(4);
         return view('pages.client.posts', ['posts' => $posts]);
     }
 
@@ -280,28 +284,12 @@ class PostController extends Controller
     */
     public function postView($id)
     {
-    	$post = DB::table('posts')->where('id', $id)->first();
+    	$post = Post::find($id);
 
-        $data['id'] = $id;
-    	$data['title'] = $post->title;
-    	$data['price'] = $post->price;
-    	$data['description'] = $post->description;
-    	$data['location'] = $post->location;
-    	$data['user_id'] = $post->user_id;
-        $data['type'] = $post->type;
-        $data['post_id'] = $post->post_id;
-        $data['image_id'] = $post->image_id;
+        $user = User::find($post->user_id);
 
-    	$user = DB::table('users')->where('id', $post->user_id)->first();
+        return view('pages.client.post', ['post' => $post, 'user' => $user]);
 
-        $data['user_id'] = $user->id;
-    	$data['user_fname'] = $user->firstname;
-    	$data['user_lname'] = $user->lastname;
-    	$data['user_mobile'] = $user->mobile;
-    	$data['user_email'] = $user->email;
-
-
-        return view('pages.client.post', $data);
     }
 
 
@@ -312,7 +300,10 @@ class PostController extends Controller
     */
 	public function browsePosts()
     {
-        $posts = DB::table('posts')->where('status','Active')->orderby('updated_at','desc')->paginate(4);
+        $posts = Post::where('status','Active')
+                ->where('user_id', '!=', Auth::user()->id)
+                ->orderby('updated_at','desc')
+                ->paginate(4);
         return view('pages.client.browse', ['posts' => $posts]);
     }
 
@@ -340,36 +331,47 @@ class PostController extends Controller
     	$location = $request['location'];
     	$user_id = $request['user_id'];
 
-        $post_id = Auth::user()->id . "__" . time(); 
 
         $images = $request->file('images');
         // $img = [];
 
-        $i = new PostImage();
+        $post = new Post();
+
+        $post->title = $title;
+        $post->price = $price;
+        $post->description = $description;
+        $post->location = $location;
+        $post->user_id = $user_id;
+        $post->type = $type;
+
+        $post->save();
+
+
+        // $i = new PostImage();
+
+        $post_img_insert = array();
 
         foreach ($images as $image) {
             $img = time() . "__n." . $image->getClientOriginalExtension();
             Image::make($image)->resize(400, 400)->save(public_path('/uploads/posts/' . $img));
 
-            $i->name = $img;
-            $i->post_id = $post_id;
+            // $i->name = $img;
+            // $i->post_id = $post->id;
 
-            $i->save();
+            // $i->save();
 
-        } 
+            $post_img_insert[] =  array('name' => $img, 'post_id' => $post->id );
 
-    	$post = new Post();
+        }
 
-    	$post->title = $title;
-    	$post->price = $price;
-    	$post->description = $description;
-    	$post->location = $location;
-    	$post->user_id = $user_id;
-        $post->type = $type;
-        $post->post_id = $post_id;
-        $post->image_id = $img;
+        DB::table('post_images')->insert($post_img_insert);
 
-    	$post->save();
+        $user_log = new UserLog();
+
+        $user_log->action = 'New Post';
+        $user_log->user_id = Auth::user()->id;
+
+        $user_log->save();
 
     	return redirect()->route('addpost')->with('message', 'Post Successfully Saved!'. count($images));
     }

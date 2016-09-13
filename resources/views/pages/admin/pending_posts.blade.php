@@ -16,7 +16,10 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<a href="{{ route('post', ['id' => $post->id]) }}">
-					<img src="/uploads/posts/{{ $post->image_id }}" title="" class="img-posts" />
+					@foreach($post->postImage as $img)
+						<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /> 
+						@break
+					@endforeach
 					<h3>{{ $post->title }}</h3>
 					</a>
 				

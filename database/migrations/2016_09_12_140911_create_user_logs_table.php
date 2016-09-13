@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration
+class CreateUserLogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,18 +12,15 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('user_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->string('title');
-            $table->integer('price');
-            $table->string('description');
-            $table->string('location');
-            $table->string('status')->default('Inactive');
-            $table->string('type');
+            $table->string('action')->nullable();
+            $table->string('location')->nullable();
+            $table->string('host')->nullable();
+            $table->string('browser')->nullable();
             $table->timestamps();
-
         });
     }
 
@@ -34,6 +31,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('posts');
+        Schema::drop('user_logs');
     }
 }

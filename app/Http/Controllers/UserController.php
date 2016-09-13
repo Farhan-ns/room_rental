@@ -14,9 +14,30 @@ use Image;
 
 use DB;
 
+use App\UserLog;
+
 
 class UserController extends Controller
 {
+
+    /*
+    |--------------------------------------------------------------------------
+    | Method use to show user log
+    |-------------------------------------------------------------------------- 
+    */
+    public function userLog()
+    {
+        $logs = UserLog::where('user_id', Auth::user()->id)->orderBy('created_at','desc')->paginate(10);
+
+        return view('pages.client.log',['logs' => $logs]);
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Method use to show user profile
+    |-------------------------------------------------------------------------- 
+    */
     public function showUserProfile($id)
     {
         $user = User::where('id', $id)->first();
@@ -36,25 +57,6 @@ class UserController extends Controller
         return view('pages.admin.members', ['members' => $members]);
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | This method is used to update the profile picture of user
-    |--------------------------------------------------------------------------
-    */
-    public function profileImage(Request $request)
-    {
-        if($request->hasFile('profile')) {
-            $profile = $request->file('profile');
-            $filename = time() . '.' . $profile->getClientOriginalExtension();
-            Image::make($profile)->resize(300, 300)->save(public_path('/uploads/profiles/' . $filename));
-
-            $user = Auth::user();
-            $user->profile = $filename;
-            $user->save();
-        }
-
-        return redirect()->route('profile-edit');
-    }
 
     /*
     |--------------------------------------------------------------------------
@@ -85,6 +87,13 @@ class UserController extends Controller
             if($new_password == $new_password2) {
                 $user->password = bcrypt($new_password);
                 $user->save();
+
+                $user_log = new UserLog();
+
+                $user_log->action = 'Change Password';
+                $user_log->user_id = Auth::user()->id;
+
+                $user_log->save();
 
                 return redirect()->route('changepass')->with('message','Password Change Successfully');
             }
@@ -147,6 +156,13 @@ class UserController extends Controller
 
         $update->save();
 
+        $user_log = new UserLog();
+
+        $user_log->action = 'Updated User Profile';
+        $user_log->user_id = $user_id;
+
+        $user_log->save();
+
         return redirect()->route('profile')->with('message', 'Profile Successfully Updated!');
     }
 
@@ -203,10 +219,25 @@ class UserController extends Controller
     	$remember = $request['remember'];
 
     	if(Auth::attempt(['email' => $request['email'], 'password' => $request['password']], $remember)) {
+                
+            $user_log = new UserLog();
+
             if(Auth::user()->privelege == 'Admin') {
+
+                $user_log->user_id = Auth::user()->id;
+                $user_log->action = 'Login';
+
+                $user_log->save();
+
                 return redirect()->route('admin_home');
             }
             else {
+
+                $user_log->user_id = Auth::user()->id;
+                $user_log->action = 'Login';
+
+                $user_log->save();
+
         		return redirect()->route('home_user');
             }
     	}
@@ -220,7 +251,16 @@ class UserController extends Controller
 	*/
     public function getLogout(Request $request)
     {
-    	Auth::logout();
+
+        $user_log = new UserLog();
+
+        $user_log->user_id = Auth::user()->id;
+        $user_log->action = 'Logout';
+
+        $user_log->save();
+
+        Auth::logout();
+
     	return redirect()->route('home');
     }
 

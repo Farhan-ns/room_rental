@@ -5,6 +5,7 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
+	<br/><br/>
 	@if($posts->isEmpty())
 		<h3>No Post to Show</h3>
 		<a href="{{ route('addpost') }}" class="btn btn-link">Create Post</a>
@@ -15,7 +16,12 @@
 	<div class="row"> 
 		@foreach($posts as $post)
 		<div class="col-md-3 postimg">
-			<img src="/uploads/posts/{{ $post->image_id }}" alt="{{ $post->title }}" class="img-posts" /> 
+
+			@foreach($post->postImage as $img)
+				<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /> 
+				@break
+			@endforeach
+
 			</br>
 			{{ $post->title }}
 			<br/>

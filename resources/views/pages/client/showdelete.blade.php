@@ -5,6 +5,7 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
+	<br/><br/><br/>
 	@if(empty($posts))
 		<h3>No Post to Delete</h3>
 	@endif

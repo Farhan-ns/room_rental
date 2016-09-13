@@ -316,6 +316,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'as' => 'searchresult'
 		]);
 
+	Route::get('result', function () {
+		return redirect()->route('search');
+	});
+
 
 	/*
 	|--------------------------------------------------------------------------
@@ -383,6 +387,17 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	Route::post('send-msg-post-owner', [
 		'uses' => 'GeneralController@sendMsgToOwner',
 		'as' => 'send_msg_post_owner'
+		]);
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to go to users log 
+	|--------------------------------------------------------------------------	
+	*/
+	Route::get('logs', [
+		'uses' => 'UserController@userLog',
+		'as' => 'user_log'
 		]);
 
 });

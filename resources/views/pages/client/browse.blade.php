@@ -7,13 +7,17 @@
 <div class="container">
 
 	<div class="row">
-		@if($posts->isEmpty())
+		<br/><br/>
+		@if(count($posts) < 1)
 			<h3>No Available Post</h3>
 		@endif
 		@foreach($posts as $post)
 		<div class="col-md-3 post">
 			<a href="{{ route('post', ['id' => $post->id]) }}">
-			<img src="/uploads/posts/{{ isset($post->image_id) ? $post->image_id : 'default.jpg' }}" title="" class="img-posts" />
+			@foreach($post->postImage as $img)
+				<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /> 
+				@break
+			@endforeach
 			<h3>{{ $post->title }}</h3>
 			</a>
 			<table class="table">
