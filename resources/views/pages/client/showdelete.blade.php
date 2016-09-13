@@ -29,14 +29,18 @@
 	</div>
 	<br/>
 	<br/>
-	<div class="form-group">
-		<input type="checkbox" name="confirm" id="confirm" required="required" />
-		<label for="confirm">Check This Box For Confirm Deletion</label>
-	</div>
-	<div class="form-group">
-		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-		<button type="submit" class="btn btn-danger btn-large">Delete</button>
-	</div>
+	@if(count($posts) < 1)
+		<h3>No Post to Delete</h3>
+	@else
+		<div class="form-group">
+			<input type="checkbox" name="confirm" id="confirm" required="required" />
+			<label for="confirm">Check This Box For Confirm Deletion</label>
+		</div>
+		<div class="form-group">
+			<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+			<button type="submit" class="btn btn-danger btn-large">Delete</button>
+		</div>
+	@endif
 	</form>
 	@endif
 </div>

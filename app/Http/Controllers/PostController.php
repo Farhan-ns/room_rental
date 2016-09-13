@@ -208,9 +208,11 @@ class PostController extends Controller
     */
     public function showPostToDelete()
     {
-        $posts = DB::table('posts')->select()->get();
+        $posts = Post::where('user_id', '=',Auth::user()->id)->paginate(10);
 
         return view('pages.client.showdelete',['posts' => $posts]);
+
+
     }
 
     /*
@@ -388,24 +390,18 @@ class PostController extends Controller
         $post->save();
 
 
-        // $i = new PostImage();
-
         $post_img_insert = array();
 
         foreach ($images as $image) {
             $img = time() . "__n." . $image->getClientOriginalExtension();
-            Image::make($image)->resize(500, 800)->save(public_path('/uploads/posts/' . $img));
+            Image::make($image)->resize(800, 500)->save(public_path('/uploads/posts/' . $img));
 
-            // $i->name = $img;
-            // $i->post_id = $post->id;
 
-            // $i->save();
-
-            $post_img_insert[] =  array('name' => $img, 'post_id' => $post->id );
+            $post_img_insert[] = array('name' => $img, 'post_id' => $post->id);
 
         }
 
-        DB::table('post_images')->insert($post_img_insert);
+        PostImage::insert($post_img_insert);
 
         $user_log = new UserLog();
 
