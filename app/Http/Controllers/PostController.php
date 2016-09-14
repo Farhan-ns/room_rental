@@ -31,19 +31,9 @@ class PostController extends Controller
     */
     public function showGuestResult($id)
     {
-        $post = DB::table('posts')->where('id', $id)
-                                ->where('status', 'Active')
-                                ->first();
+        $post = Post::find($id);
 
-        $data['title'] = $post->title;
-        $data['price'] = $post->price;
-        $data['description'] = $post->description;
-        $data['location'] = $post->location;
-        $data['type'] = $post->type;
-        $data['user_id'] = $post->user_id;
-        $data['image_id'] = $post->image_id;
-
-        return view('pages.post', $data);
+        return view('pages.post', ['post' => $post]);
     }
 
     /*
@@ -137,14 +127,14 @@ class PostController extends Controller
 
         $keyword = $request['keyword'];
 
-        $posts = DB::table('posts')->where('status', '=', "Active")
+        $posts = Post::where('status', '=', "Active")
                                     ->where('location', 'like', "%$keyword%")
                                     ->orwhere('type', 'like', "%$keyword%")
                                     ->orwhere('title', 'like', "%$keyword%")
                                     ->orwhere('price', 'like', "%$keyword%")
                                     ->orwhere('description', 'like', "%$keyword")
                                     ->orderby('updated_at', 'desc')
-                                    ->paginate(2);
+                                    ->paginate(4);
 
         return view('pages.results', ['posts' => $posts]);
     }
@@ -166,12 +156,12 @@ class PostController extends Controller
         $max_price = $request['max_price'];
         $location = $request['location'];
 
-        $results = DB::table('posts')->where('type', $type)
-                                    ->where('status', 'Active')
-                                    ->where('price', '<=',  $max_price)
-                                    ->where('location', 'like', "%$location%")
-                                    ->orderby('updated_at','desc')
-                                    ->paginate(2);
+        $results = Post::where('type', $type)
+                        ->where('status', 'Active')
+                        ->where('price', '<=',  $max_price)
+                        ->where('location', 'like', "%$location%")
+                        ->orderby('updated_at','desc')
+                        ->paginate(4);
 
         return view('pages.client.result', ['posts' => $results]);
 

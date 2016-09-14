@@ -52,7 +52,7 @@ Route::post('search', [
 	]);
 
 Route::get('search', function() {
-	return view('pages.results');
+	return redirect()->route('home');
 })->name('getsearchresult');
 
 /*

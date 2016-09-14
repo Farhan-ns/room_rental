@@ -29,11 +29,12 @@ class GeneralController extends Controller
 			]);
 
 		$id = $request['id'];
+		$post_id = $request['post_id'];
 		$message = $request['message'];
 
-		$post = Post::find($id);
+		$post = Post::find($post_id);
 
-		$user = User::find($post->user->id);
+		$user = User::find($id);
 
 		// info of the user
 		$data['user'] = Auth::user()->firstname . ' ' . Auth::user()->lastname;
@@ -64,7 +65,7 @@ class GeneralController extends Controller
 		$api_user = "APIVBWZGFYTDN"; // This is the api username of onewaysms.ph
 		$api_pass = "APIVBWZGFYTDN914FO"; // This is the api password of onewaysms.ph
 		$recipient = $user->mobile;
-		$sms_msg = "this is a test for our system if u receive this reply me to this no.09502810005 its me joshuaGwapo hahahah :D";  // customize your message here
+		$sms_msg = $message;  // customize your message here
 
 		$this->sendSMS($api_user, $api_pass, "M&R Rentals", $recipient, $sms_msg);
 
@@ -87,7 +88,7 @@ class GeneralController extends Controller
 		$user_log->action = 'Send inquiry message to post owner. (Email/SMS)';
 		$user_log->user_id = Auth::user()->id;
 
-		$user_log-save();
+		$user_log->save();
 
 		return redirect()->route('post', $id)->with('message', 'Inquiry Message Sent to Owner!');
 

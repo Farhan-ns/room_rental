@@ -5,7 +5,7 @@
 @section('content')
 @include('includes.navin')
 <div class="container postrest">
-	<a href="{{ route('browse') }}">Back</a>
+	<a href="{{ route('search') }}">Search</a> or <a href="{{ route('browse') }}">Browse</a>
 	<div class="row">
 	@include('includes.showsuccess')
 	@include('includes.showerrors')

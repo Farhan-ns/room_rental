@@ -12,14 +12,16 @@
 @section('content')
 @include('includes.navout')
 <div class="container guestpost">
-	<div class="row" ng-app ng-init="price={{$price}}">
+	<div class="row" ng-app ng-init="price={{$post->price}}">
 		<div class="col-md-8">
-			<h3>{{ $title }}</h3>
-			<p>{{ $type }}</p>
-			<p>{{ $location }}</p>
-			<p>{{ $price }}</p>
-			<p>{{ $description }}</p>
-			<img src="/uploads/posts/{{ $image_id }}" clas="img-responsive" />
+			<h3>{{ $post->title }}</h3>
+			<p>{{ $post->type }}</p>
+			<p>{{ $post->location }}</p>
+			<p>{{ $post->price }}</p>
+			<p>{{ $post->description }}</p>
+			@foreach($post->postImage as $img)
+				<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts responsive" /> 
+			@endforeach
 		</div>
 		<div class="col-md-4">
 			<h4>Cost Calculator</h4>

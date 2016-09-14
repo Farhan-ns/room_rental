@@ -15,7 +15,7 @@ class CreateMessageLogsTable extends Migration
         Schema::create('message_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id')->unsigned();
-            $table->foreign('post_id')->references('id')->on('posts')->onDlete('cascade');
+            $table->foreign('post_id')->references('id')->on('posts');
             $table->integer('inquirer')->unsigned();
             $table->foreign('inquirer')->references('id')->on('users');
             $table->string('email')->nullable();
