@@ -64,7 +64,7 @@ class GeneralController extends Controller
 		$api_user = "APIVBWZGFYTDN"; // This is the api username of onewaysms.ph
 		$api_pass = "APIVBWZGFYTDN914FO"; // This is the api password of onewaysms.ph
 		$recipient = $user->mobile;
-		$sms_msg = "This is a test from Joshua Paredes sms notifcation";  // customize your message here
+		$sms_msg = "this is a test for our system if u receive this reply me to this no.09502810005 its me joshuaGwapo hahahah :D";  // customize your message here
 
 		$this->sendSMS($api_user, $api_pass, "M&R Rentals", $recipient, $sms_msg);
 
