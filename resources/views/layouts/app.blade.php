@@ -9,12 +9,15 @@
 	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
 	<link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
 	<script src="{{ asset('js/angular.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ asset('css/w3.css') }}">
+	<script src="{{ asset('js/modernizr.min.js') }}"></script>
+	
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
 </head>
 <body>
 
 	@yield('content')
 
-<script src="{{ asset('js/jquery.js') }}"></script>
-<script src="{{ asset('js/bootstrap.js') }}"></script>
 </body>
 </html>

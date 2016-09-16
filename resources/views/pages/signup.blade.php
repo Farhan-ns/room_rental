@@ -13,7 +13,7 @@
 					<b>Signup</b>
 				</div>
 				<div class="panel-body">
-					@include('includes.showerror')
+				@include('includes.showerror')
 				@include('includes.showerrors')
 				@include('includes.showsuccess')
 					<form action="user_signup" method="POST" role="form" autocomplete="off">

@@ -203,9 +203,16 @@ class UserController extends Controller
     	$user->mobile = $mobile;
     	$user->password = bcrypt($password);
 
-    	$user->save();
+        if($this->validate == false) {
+            return redirect()->route('home')->with('error_msg', 'Errors!')->withInput(); 
+        }
 
-    	return redirect()->route('signup')->with('message', 'Successfully Signedup!');
+    	if($user->save()) {
+            return redirect()->route('home')->with('message', 'Successfully Signedup!');    
+        }
+
+        return redirect()->route('home')->with('error_msg', 'Errors!')->withInput(); 
+    	
 
     }
 
@@ -241,7 +248,7 @@ class UserController extends Controller
         		return redirect()->route('home_user');
             }
     	}
-    	return redirect()->route('signin')->with('error_msg','Incorrect Email or Password!')->withInput();
+    	return redirect()->route('home')->with('error_msg','Incorrect Email or Password!')->withInput();
     }
 
     /*
