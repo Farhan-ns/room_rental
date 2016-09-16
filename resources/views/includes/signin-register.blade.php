@@ -122,7 +122,6 @@ function openForm(formName) {
 </script>
 @if(session('error_msg'))
 	<script>
-		// $('#auth').click();
 		$(document).ready(function(){
 		  $('#auth').click();
 		});
@@ -130,7 +129,14 @@ function openForm(formName) {
 @endif
 @if (count($errors) > 0)
 	<script>
-		// $('#auth').click();
+		$(document).ready(function(){
+		  $('#auth').click();
+		  openForm('Register');
+		});
+	</script>
+@endif
+@if (session('message'))
+	<script>
 		$(document).ready(function(){
 		  $('#auth').click();
 		  openForm('Register');

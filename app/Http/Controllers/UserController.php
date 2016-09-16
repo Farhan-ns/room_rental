@@ -203,10 +203,6 @@ class UserController extends Controller
     	$user->mobile = $mobile;
     	$user->password = bcrypt($password);
 
-        if($this->validate == false) {
-            return redirect()->route('home')->with('error_msg', 'Errors!')->withInput(); 
-        }
-
     	if($user->save()) {
             return redirect()->route('home')->with('message', 'Successfully Signedup!');    
         }
