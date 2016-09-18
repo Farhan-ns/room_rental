@@ -30,7 +30,7 @@
 							<input type="text" name="location" id="location" value="{{ $location }}" placeholder="City Location Ex: Manila" class="form-control" />
 						</div>
 						<div class="form-group">
-							<input type="file" name="images" id="images" accept=".jpg, .jpeg" />
+							<input type="file" name="images[]" id="images" accept=".jpg, .jpeg" multiple="" />
 						</div>
 						<div class="form-group">
 							<input type="hidden" name="post_id" value="{{ $id }}" />

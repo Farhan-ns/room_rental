@@ -1,14 +1,4 @@
-@extends('layouts.app')
-
-@section('title') Inquiry @endsection
-
-@section('content')
-<div class="contianer">
-<<<<<<< HEAD
-	
-
-	
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -73,29 +63,3 @@ article {
 
 </body>
 </html>
-
-
-
-	<div class="panel panel-default">
-		
-	</div>
-=======
-	<p>
-		Name: {{ $user }}
-		Email: {{ $email }}
-		Mobile #: {{ $mobile }}
-	</p>
-
-	<p>Message: {{ $msg }}</p>
-
-	<p>
-		{{ $post_type }}
-		{{ $post_address }}
-		{{ $post_price }}
-	</p>
->>>>>>> b1db60db27c7d9c0aea19d45ac113804e5bf3e3a
-
-	<br/><br/>
-
-</div>
-@endsection

@@ -5,35 +5,60 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
-	<br/><br/>
+	<br/><br/><br/>
 	@if($posts->isEmpty())
 		<h3>No Post to Show</h3>
 		<a href="{{ route('addpost') }}" class="btn btn-link">Create Post</a>
+	@endif
+	@if(count($posts) > 0)
+		<strong>My Posts</strong>
+		<br/><br/>
 	@endif
 	@include('includes.showerror')
 	@include('includes.showsuccess')
 	@include('includes.showerrors')
 	<div class="row"> 
 		@foreach($posts as $post)
-		<div class="col-md-3 postimg">
-
+		<div class="col-md-3">
+			@if($post->availability == 'Available')
+				<form action="{{ route('make_reserved') }}" method="POST">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+					<input type="hidden" name="post_id" value="{{ $post->id }}" />
+					<button type="submit" class="btn btn-primary btn-xs">Mark as Reserved</button>
+				</form>
+			@endif
+			@if($post->availability == 'Not Available')
+				<form action="{{ route('make_available') }}" method="POST">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+					<input type="hidden" name="post_id" value="{{ $post->id }}" />
+					<button type="submit" class="btn btn-primary btn-xs">Mark as Available</button>
+				</form>
+			@endif
+			<br/>
 			@foreach($post->postImage as $img)
 				<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /> 
 				@break
 			@endforeach
 
-			</br>
-			{{ $post->title }}
+			</br><br/>
+			@if($post->availability == 'Available')
+				<span class="btn btn-success btn-xs">Available</span>
+			@endif
+			@if($post->availability == 'Not Available')
+				<span class="btn btn-warning btn-xs">Reserved</span>
+			@endif
 			<br/>
-			{{ $post->type }}
+			Title: <strong>{{ $post->title }}</strong>
 			<br/>
-			{{ $post->price }}
+			Type: <strong>{{ $post->type }}</strong>
 			<br/>
-			{{ $post->location }}
+			Price: <strong>{{ $post->price }}</strong>
 			<br/>
-			{{ $post->description }}
+			Location: <strong>{{ $post->location }}</strong>
 			<br/>
-			{{ $post->status }}
+			Description: <p><i>{{ $post->description }}</i></p>
+
+			Status: <strong>{{ $post->status }}</strong>
 			<br/>
 			<a href="{{ route('edit-post',$post->id) }}"><button class="btn btn-info btn-xs">Update</button></a>
 			<a href="{{ route('delete-post', $post->id) }}"><button class="btn btn-info btn-xs">Delete</button></a>
@@ -41,7 +66,9 @@
 		@endforeach
 	</div>
 	<div class="center-div">
-		{{ $posts->links() }}
+		<br/>
+		<strong>{{ $posts->count() }} of {{ $posts->total() }}</strong>
+		{{ $posts->render() }}
 	</div>
 </div>
 @endsection

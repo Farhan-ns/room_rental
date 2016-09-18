@@ -46,7 +46,7 @@ a:hover {
 
 .post, .post-img {
 	padding: 2px;
-    margin-top: 76px;
+  margin-top: 25px;
 }
 .conbody{
 	background-image: url('../img/backgroundhome.jpg');
@@ -134,7 +134,7 @@ background-color: #5bc0de;
 }
 
 .panel-info{
-  margin-top: 150px;
+  /*margin-top: 150px;*/
   opacity: 0.8;
 }
 
@@ -173,4 +173,13 @@ background-color: #5bc0de;
 }
 .searchpost{
   padding-top: 10px;
+}
+
+.label-as-badge {
+    border-radius: 1em;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
 }

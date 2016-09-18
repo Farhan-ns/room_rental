@@ -12,14 +12,21 @@
 		<div class="col-md-8" ng-app ng-init="price={{ $post->price }}" >
 			<div class="row">
 				<div class="col-md-8">
+					<br/>
+					@if($post->availability == 'Available')
+						<span class="btn btn-success btn-xs">Available</span>
+					@endif
+					@if($post->availability == 'Not Available')
+						<span class="btn btn-warning btn-xs">Reserved</span>
+					@endif
 					<h3>{{ $post->title }}</h3>
-					<p>by <a href="{{ route('post-user-profile', $post->user_id) }}" target="_blank">{{ $user->firstname . ' ' . $user->lastname }}</a></p>
-					<p>Email: {{ $user->email }}</p>
-					<p>Mobile: {{ $user->mobile }}</p>
-					<p>Type:  {{ $post->type }}</p>
-					<p>Location:  {{ $post->location }}</p>
-					<p>Price:  {{ $post->price }}</p>
-					<p>Dexcription:  {{ $post->description }}</p>
+					<p>by <a href="{{ route('post-user-profile', $post->user_id) }}" target="_blank"><strong>{{ $user->firstname . ' ' . $user->lastname }}</strong></a></p>
+					<p>Email: <strong>{{ $user->email }}</strong></p>
+					<p>Mobile: <strong>{{ $user->mobile }}</strong></p>
+					<p>Type:  <strong>{{ $post->type }}</strong></p>
+					<p>Location:  <strong>{{ $post->location }}</strong></p>
+					<p>Price:  <strong>{{ $post->price }}</strong></p>
+					<p>Dexcription:  <i>{{ $post->description }}</i></p>
 				</div>
 				<div class="col-md-4">
 					<label>Month of Stay:</label>
@@ -30,7 +37,7 @@
 			</div>
 			<div class="row">
 				@foreach($post->postImage as $img)
-					<div class="col-md-6 post-img">
+					<div class="col-md-6 col-xs-6 post-img">
 						<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /> 
 					</div>
 				@endforeach

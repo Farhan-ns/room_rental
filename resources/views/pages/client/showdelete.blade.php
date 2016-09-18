@@ -5,8 +5,8 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
-	<br/><br/><br/>
 	@if(empty($posts))
+		<br/>
 		<h3>No Post to Delete</h3>
 	@endif
 	@include('includes.showerror')
@@ -14,6 +14,7 @@
 	@if(!empty($posts))
 	<form action="{{ route('delete_multiple_post') }}" method="POST"> 
 	<div class="row">
+		<br/><br/><br/>
 	@foreach($posts as $post)
 		<div class="col-md-2">
 		<div class="form-group">
