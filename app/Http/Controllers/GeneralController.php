@@ -62,8 +62,8 @@ class GeneralController extends Controller
     	});
 
 		// SMS Part
-		$api_user = "APIVBWZGFYTDN"; // This is the api username of onewaysms.ph
-		$api_pass = "APIVBWZGFYTDN914FO"; // This is the api password of onewaysms.ph
+		$api_user = "APIJFV7PWCYXD"; // This is the api username of onewaysms.ph
+		$api_pass = "APIJFV7PWCYXDJFV7P"; // This is the api password of onewaysms.ph
 		$recipient = $user->mobile;
 		$sms_msg = $message;  // customize your message here
 
