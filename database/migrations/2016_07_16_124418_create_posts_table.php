@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('description');
             $table->string('location');
             $table->string('status')->default('Inactive');
+            $table->string('availability')->default('Available');
             $table->string('type');
             $table->timestamps();
 

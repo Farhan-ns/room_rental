@@ -5,6 +5,7 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
+	<br/><br/><br/>
 	<div class="row">
 		<div class="col-md-6">
 			<h3>User Contact Information</h3>

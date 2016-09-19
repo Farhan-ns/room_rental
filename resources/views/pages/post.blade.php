@@ -14,14 +14,20 @@
 <div class="container guestpost">
 	<div class="row" ng-app ng-init="price={{$post->price}}">
 		<div class="col-md-8">
+			<a href="javascript:void(0)" onclick="window.history.back();" class="btn btn-primary btn-xs">Back</a>
 			<h3>{{ $post->title }}</h3>
-			<p>{{ $post->type }}</p>
-			<p>{{ $post->location }}</p>
-			<p>{{ $post->price }}</p>
-			<p>{{ $post->description }}</p>
+			<p>Type: <strong>{{ $post->type }}</strong></p>
+			<p>Location: <strong>{{ $post->location }}</strong></p>
+			<p>Price: <storng>{{ $post->price }}</storng></p>
+			<p>Description: <i>{{ $post->description }}</i></p>
+			<br/>
+			<div class="row"> 
 			@foreach($post->postImage as $img)
-				<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts responsive" /> 
+				<div class="col-md-6 post-img">
+					<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts responsive" />
+				</div>
 			@endforeach
+			</div>
 		</div>
 		<div class="col-md-4">
 			<h4>Cost Calculator</h4>
@@ -31,4 +37,5 @@
 		</div>
 	</div>
 </div>
+@include('includes.signin-register')
 @endsection

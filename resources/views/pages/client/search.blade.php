@@ -7,6 +7,7 @@
 <div class="container searchpost">
 	<div class="row">
 	<div class="col-md-4 col-md-offset-4">
+	<br/><br/><br/>
 	<div class="panel panel-info">
 		<div class="panel-heading"><b>Search a Room/Appartment</b></div>
 		<div class="panel-body">

@@ -4,7 +4,8 @@
 
 @section('content')
 @include('includes.navout')
-<div class="container conbody">
+<div class="container-fluid">
+	<br/><br/><br/>
 	<h2 class="text-center">Room and Appartment Rentals</h2>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
@@ -38,4 +39,5 @@
 		</div>
 	</div>
 </div>
+@include('includes.signin-register')
 @endsection

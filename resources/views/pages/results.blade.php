@@ -12,6 +12,7 @@
 @section('content')
 @include('includes.navout')
 <div class="container">
+	<br/><br/><br/>
 	<h2>Search Result</h2>
 	<div class="row">
 		@if($posts->isEmpty())
@@ -49,4 +50,7 @@
 	</p>
 	{{ $posts->links() }}
 </div>
+
+@include('includes.signin-register')
+
 @endsection

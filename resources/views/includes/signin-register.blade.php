@@ -22,7 +22,7 @@
 							@include('includes.showerror')
 							@include('includes.showerrors')
 							@include('includes.showsuccess')
-								<form action="user_signin" method="post" role="form" autocomplete="off">
+								<form action="{{ route('user_signin') }}" method="post" role="form" autocomplete="off">
 									<div class="form-group">
 										<input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required="required" {{ session('signin')? 'autofocus' : '' }} autofocus="" />
 									</div>
@@ -60,7 +60,7 @@
 						@include('includes.showerror')
 						@include('includes.showerrors')
 						@include('includes.showsuccess')
-						<form action="user_signup" method="POST" role="form" autocomplete="off">
+						<form action="{{ route('user_signup') }}" method="POST" role="form" autocomplete="off">
 							<div class="form-group">
 								<input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required="required" class="form-control" />
 							</div>

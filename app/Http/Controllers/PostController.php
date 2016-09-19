@@ -26,6 +26,45 @@ class PostController extends Controller
 
     /*
     |--------------------------------------------------------------------------
+    | Method use to update post to make it reserved
+    |--------------------------------------------------------------------------
+    */
+    public function makeReserved(Request $request)
+    {
+        $id = $request['post_id'];
+
+        $post = Post::find($id);
+
+        $post->availability = 'Not Available';
+
+        $post->save();
+
+        return redirect()->route('myposts');
+    }
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Method use to update post to make it available
+    |--------------------------------------------------------------------------
+    */
+    public function makeAvailable(Request $request)
+    {
+        $id = $request['post_id'];
+
+        $post = Post::find($id);
+
+        $post->availability = 'Available';
+
+        $post->save();
+
+        return redirect()->route('myposts');
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Method use to show link in search result on guest
     |--------------------------------------------------------------------------
     */
@@ -167,6 +206,23 @@ class PostController extends Controller
 
     }
 
+        public function searchResultHome(Request $request)
+    {
+        $this->validate($request, [
+            'keyword' => 'required|min:2'
+            ]);
+
+        $keyword = $request['keyword'];
+
+        $results = Post::where('type', 'like', "%$keyword%")
+                        ->orWhere('location', 'like', "%$keyword%")
+                        ->orderby('updated_at','desc')
+                        ->paginate(4);
+
+        return view('pages.client.result', ['posts' => $results]);
+
+    }
+
     /*
     |--------------------------------------------------------------------------
     | This method is use to delete multiple selected posts ids
@@ -216,8 +272,9 @@ class PostController extends Controller
             'title' => 'required|min:6|max:150',
             'price' => 'required',
             'description' => 'required|min:25',
-            'location' => 'required'
+            'location' => 'required',
             // upload multiple images for the room/appartment
+            'images' => 'max:10240'
             ]); 
             
         $id = $request['post_id'];
@@ -225,8 +282,9 @@ class PostController extends Controller
         $price = $request['price'];
         $description = $request['description'];
         $location = $request['location'];
+        $images = $request['images'];
 
-        $post = \App\Post::find($id);
+        $post = Post::find($id);
 
         $post->title = $title;
         $post->price = $price;
@@ -234,6 +292,24 @@ class PostController extends Controller
         $post->location = $location;
 
         if($post->save()) {
+
+            if(!empty($images)) {
+                $post_img_insert = array();
+
+                foreach ($images as $image) {
+                    $img = time() . "__n." . $image->getClientOriginalExtension();
+                    Image::make($image)->resize(800, 500)->save(public_path('/uploads/posts/' . $img));
+
+                    $post_img_insert[] = array('name' => $img, 'post_id' => $post->id);
+
+                }
+
+                $delete_post_img = PostImage::where('post_id', $post->id);
+
+                $delete_post_img->delete();
+            }
+
+            PostImage::insert($post_img_insert);
 
             $user_log = new UserLog();
 
@@ -353,8 +429,9 @@ class PostController extends Controller
     		'title' => 'required|min:6|max:150',
     		'price' => 'required',
     		'description' => 'required|min:25',
-    		'location' => 'required'
+    		'location' => 'required',
     		// upload multiple images for the room/appartment
+            'images' => 'max:10240'
     		]);
 
         $type = $request['type'];

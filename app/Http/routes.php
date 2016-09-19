@@ -111,8 +111,13 @@ Route::get('member_signup', function () {
 |--------------------------------------------------------------------------
 */
 Route::post('user_signup', [
-		'uses' => 'UserController@userSignup'
+		'uses' => 'UserController@userSignup',
+		'as' => 'user_signup'
 	]);
+
+Route::get('user_signup', function () {
+	return redirect()->route('home');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -120,8 +125,13 @@ Route::post('user_signup', [
 |--------------------------------------------------------------------------
 */
 Route::post('user_signin', [
-		'uses' => 'UserController@userSignin'
+		'uses' => 'UserController@userSignin',
+		'as' => 'user_signin'
 	]);
+
+Route::get('user_signin', function () {
+	return redirect()->route('home');
+});
 
 
 /*
@@ -210,6 +220,10 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'as' => 'postaddpost'
 		]);
 
+	Route::get('postaddpost', function () {
+		return redirect()->route('addpost');
+	});
+
 	/*
 	|--------------------------------------------------------------------------
 	| Route to Client Add Posts view, Needed to be authenticated
@@ -245,6 +259,17 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	Route::get('profile', function () {
 		return view('pages.client.profile');
 	})->name('profile');
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route to User Profile
+	|--------------------------------------------------------------------------
+	*/
+	Route::get('user-profile/{id}', [
+		'uses' => 'UserController@userProfile',
+		'as' => 'show_profile'
+		]);
 
 	/*
 	|--------------------------------------------------------------------------
@@ -319,6 +344,11 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	Route::get('result', function () {
 		return redirect()->route('search');
 	});
+
+	Route::post('results', [
+		'uses' => 'PostController@searchResultHome',
+		'as' => 'searchresult_home'
+		]);
 
 
 	/*
@@ -399,6 +429,101 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'uses' => 'UserController@userLog',
 		'as' => 'user_log'
 		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to update post and make it available
+	|--------------------------------------------------------------------------	
+	*/
+	Route::post('make-available', [
+		'uses' => 'PostController@makeAvailable',
+		'as' => 'make_available'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to update post and make it reserved
+	|--------------------------------------------------------------------------	
+	*/
+	Route::post('make-reserved', [
+		'uses' => 'PostController@makeReserved',
+		'as' => 'make_reserved'
+		]);
+
+	Route::get('messages/inbox', [
+		'uses' => 'GeneralController@inbox',
+		'as' => 'inbox'
+		]);
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to read message in inbox
+	|--------------------------------------------------------------------------	
+	*/
+	Route::post('message/inbox/read', [
+		'uses' => 'GeneralController@readInboxMsg',
+		'as' => 'read_msg'
+		]);
+
+	Route::get('message/inbox/read', function () {
+		return redirect()->route('inbox');
+	});
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to delete message
+	|--------------------------------------------------------------------------	
+	*/
+	Route::post('message/delete', [
+		'uses' => 'GeneralController@msgDelete',
+		'as' => 'delete_msg'
+		]);
+
+	Route::get('message/delete', function () {
+		return redirect()->route('inbox');
+	});
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to show sent items
+	|--------------------------------------------------------------------------	
+	*/
+	Route::get('message/sent', [
+		'uses' => 'GeneralController@sentMessage',
+		'as' => 'sent_msg'
+		]);
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to view sent item
+	|--------------------------------------------------------------------------	
+	*/
+	Route::post('message/read/sent', [
+		'uses' => 'GeneralController@viewSentMessage',
+		'as' => 'read_sent'
+		]);
+
+	Route::get('message/read/sent', function () {
+		return redirect()->route('sent_msg');
+	});
+
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to delete sent items
+	|--------------------------------------------------------------------------	
+	*/
+	Route::post('message/delete', [
+		'uses' => 'GeneralController@deleteSentMsg',
+		'as' => 'delte_sent'
+		]);
+
+	Route::get('message/delete', function () {
+		return redirect()->route('sent_msg');
+	});
 
 });
 /*

@@ -28,6 +28,18 @@
 							<li><a href="{{ route('showposttodelete') }}">Delete</a></li>
 						</ul>
 					</li>
+					<li class="dropdown">
+						<a id="dLabel" data-target="#" href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<?php $unread = App\Message::where('recipient', Auth::user()->id)->where('status', 'Unread')->orderby('created_at', 'desc')->get() ?>
+						    My Messages <span class="label label-danger label-as-badge">{{ count($unread) }}</span>
+						    <span class="caret"></span>
+						</a>
+
+						<ul class="dropdown-menu" aria-labelledby="dLabel">
+							<li><a href="{{ route('inbox') }}">Inbox <span class="label label-danger label-as-badge">{{ count($unread) }}</span></a></li>
+							<li><a href="{{ route('sent_msg') }}">Sent Inquiry Message</a></li>
+						</ul>
+					</li>
 					<li class=""><a href="{{ route('client_about') }}">About</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

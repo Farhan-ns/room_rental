@@ -19,7 +19,7 @@
 		        </ul>
 		    </div>
 		@endif
-			<form action="{{ route('guest-search') }}" method="POST" role="form">
+			<form action="{{ route('searchresult_home') }}" method="POST" role="form">
 				<div class="form-group">
 					<div class="input-group">
 

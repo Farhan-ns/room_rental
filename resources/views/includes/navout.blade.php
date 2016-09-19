@@ -20,7 +20,7 @@
 					<!-- <li class="{{ $signinactive }}"><a href="{{ route('signin') }}">Signin</a></li>
 					<li class="{{ $signupactive }}"><a href="{{ route('signup') }}">Signup</a></li> -->
 
-					<li class="w3-right"><a class="" href="#" id="auth"
+					<li class="w3-right"><a class="" href="javascript:void(0)" id="auth"
 			onclick="document.getElementById('authentication').style.display='block'">SignIn/SignUp</a></li>
 				</ul>
 			</div>

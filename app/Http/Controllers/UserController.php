@@ -47,12 +47,25 @@ class UserController extends Controller
 
     /*
     |--------------------------------------------------------------------------
+    | Route to Client Profile
+    |--------------------------------------------------------------------------
+    */
+    public function userProfile($id = null)
+    {
+        $user = User::find($id);
+        return view('pages.client.showuserprofile', $user);
+        
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
     | This method is use to show members of app
     |--------------------------------------------------------------------------
     */
     public function showMembers()
     {
-        $members = DB::table('users')->where('privelege', 'User')->orderBy('created_at','asc')->paginate(9);
+        $members = User::where('privelege', 'User')->orderBy('created_at','asc')->paginate(9);
 
         return view('pages.admin.members', ['members' => $members]);
     }
