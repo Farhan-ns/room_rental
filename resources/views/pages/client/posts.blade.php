@@ -36,7 +36,7 @@
 			@endif
 			<br/>
 			@foreach($post->postImage as $img)
-				<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /> 
+				<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class=" round img-posts " /> 
 				@break
 			@endforeach
 

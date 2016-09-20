@@ -31,7 +31,7 @@
 								<form action="{{ route('read_sent') }}" method="POST">
 									<input type="hidden" name="msg_id" value="{{ $msg->id }}" />
 									<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-									<button class="btn btn-primary btn-xs" type="submit">View</button>
+									<button class="btn btn-info btn-xs" type="submit">View</button>
 								</form>
 								</div>
 								<div class="col-md-6 nopadding">

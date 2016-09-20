@@ -307,7 +307,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	|--------------------------------------------------------------------------
 	*/
 	Route::post('postupdatepost', [
-		'uses' => 'PostController@postUpdatePost',
+		'uses' => 'PostController@postupdatepost',
 		'as' => 'postupdatepost'
 		]);
 
@@ -475,7 +475,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	| Route use to delete message
 	|--------------------------------------------------------------------------	
 	*/
-	Route::post('message/delete', [
+	Route::post('message/inbox/delete', [
 		'uses' => 'GeneralController@msgDelete',
 		'as' => 'delete_msg'
 		]);
@@ -516,9 +516,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	| Route use to delete sent items
 	|--------------------------------------------------------------------------	
 	*/
-	Route::post('message/delete', [
+	Route::post('message/sent/delete', [
 		'uses' => 'GeneralController@deleteSentMsg',
-		'as' => 'delte_sent'
+		'as' => 'delete_sent'
 		]);
 
 	Route::get('message/delete', function () {

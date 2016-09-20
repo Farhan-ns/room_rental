@@ -31,10 +31,10 @@
 							<input type="text" name="price" id="price" placeholder="Price Rate" value="{{ old('price') }}" class="form-control" />
 						</div>
 						<div class="form-group">
-							<textarea name="description" id="description" class="form-control" value="{{ old('description') }}" placeholder="Enter Description" rows="8"></textarea>
+							<textarea name="description" id="description" class="form-control" value="{{ old('description') }}" placeholder="Please Descibe your Property/Place." rows="8"></textarea>
 						</div>
 						<div class="form-group">
-							<input type="text" name="location" id="location" value="{{ old('location') }}" placeholder="City Location Ex: Tagbilaran" class="form-control" />
+							<input type="text" name="location" id="location" value="{{ old('location') }}" placeholder="Please input your complete address" class="form-control" />
 						</div>
 						<div class="form-group">
 							<input type="file" name="images[]" id="images" accept=".jpg, .jpeg" required="" multiple="" />

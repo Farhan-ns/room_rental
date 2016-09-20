@@ -11,7 +11,7 @@
 			@include('includes.showerrors')
 			@include('includes.showerror')
 			@include('includes.showsuccess')
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<b>Update Post Form</b>
 				</div>
@@ -35,8 +35,8 @@
 						<div class="form-group">
 							<input type="hidden" name="post_id" value="{{ $id }}" />
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-							<button class="btn btn-primary" type="submit">Update Post</button>
-							<button class="btn btn-danger" type="reset">Revert Changes</button>
+							<button class="btn btn-info" type="submit">Update Post</button>
+							<button class="btn btn-info" type="reset">Revert Changes</button>
 						</div>
 					</form>
 				</div>

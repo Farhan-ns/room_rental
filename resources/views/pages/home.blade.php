@@ -5,10 +5,10 @@
 @section('content')
 @include('includes.navout')
 <div class="container conbody">
-	<div class="col-md-6 col-xs-6 headline" >Make your move</div>
+<div class="col-md-6 col-xs-6 headline" >Make your move</div>
 	<div class="col-md-6 col-xs-6 sub-headline">Search and apply to Hundreds of apartments</div>
 	<div class="row">
-		<div class="col-md-4 col-md-offset-4">
+		<div class="col-md-4 col-md-offset-4 searchbox">
 		<!-- @if (count($errors) > 0)
 		    <div class="alert alert-danger">
 			    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -21,7 +21,7 @@
 		@endif -->
 			<form action="{{ route('guest-search') }}" method="POST" role="form">
 				<div class="form-group">
-					<div class="input-group">
+					<div class="input-group ">
 
 						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search for...">
 
@@ -46,7 +46,7 @@
 						<p> Book a room and get all possible comfort of a five star hotel. We work for you to enjoy your stay.</p>	
 					</div>
 					<div class="col-lg-12" style="padding-top:50px;">
-						<p class="p-font"><span class="glyphicon glyphicon-map-marker icon"></span> 6300 Booy Dstrict,Tagbilaran City Bohol</p>
+						<p class="p-font"><span class="glyphicon glyphicon-map-marker icon"></span> 6300 Booy District,Tagbilaran City Bohol</p>
 						<p class="p-font"><span class="glyphicon glyphicon-earphone icon"></span> 0950-2810-005</p>
 						<p class="p-font"><span class="glyphicon glyphicon-envelope icon"></span> joshuapards@gmail.com</p>
 					</div>
@@ -55,25 +55,11 @@
 			<div class="col-lg-8">
 				<div class="row">
 					<div class="col-lg-6 pad-top">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua.</p><p>Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-						<br>
-				<br>
-				<br>
-				<br>
-
-						<center><b><h5 class="gr">© By Neofita Room And Apartel 2016</h5></b></center>
+							<p>&nbsp; &nbsp;Neofita Apartelle & Rooms Advertisement And Informtion System is a small and wildly ambitious startup tackling a problem that affects over Millions renters across the Philippines.We believe that renters shouldn't engage with technology only to search for their next home or apartment rental.</p>
+<p>&nbsp; &nbsp; We believe that you should be able to walk into an open house or appointment, pull out your phone, and make a binding application and offer for that unit right there. This is how the next generation of the rental market will function, and Neofita Apartelle & Rooms Adverticement And Informtion System  — with a unique twinned B2B (business-to-business) and Consumer approach — is leading the way.</p>
+					<br>
+					<br>
+				<center><b><h5 class="gr">© By Neofita Room And Apartel 2016</h5></b></center>
 					</div>
 					<div class="col-lg-6 ">
 						<div class="pad-top">
@@ -106,7 +92,7 @@
    							<li><a href="">Instagram</a></li>
    							<li><a href="">Youtube</a></li>
    						</ul>
-   					</div> -->
+   					</div>  -->
    		<!-- <div class="col-lg-6">
    						<div class="row">
    							<div class="col-lg-4"></div>
