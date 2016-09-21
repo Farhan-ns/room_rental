@@ -31,6 +31,7 @@ a:hover {
 	border-radius: 5px;
 	border: 2px solid grey;
 	position: relative;
+  
 }
 
 .panel > .panel-admin {
@@ -56,6 +57,9 @@ a:hover {
      width: 100%;
      height: 775px;
     margin-top: -137px;
+    font-family:CastroScript;
+    src: url('/fonts/CastroScript.tff');
+
 
 }
 .foot{

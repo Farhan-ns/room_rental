@@ -4,6 +4,15 @@
 
 @section('content')
 @include('includes.navin')
+<!DOCTYPE html>
+<html>
+<head>
+ <style>
+    @font-face {
+        font-family: CastroScript;
+        src: url('{{ public_path('fonts/CastroScript.tff') }}');
+    }
+  </style>
 <div class="container conbody">
 	<div class="col-md-6 col-xs-6 headline" >Make your move</div>
 	<div class="col-md-6 col-xs-6 sub-headline">Search and apply to Hundreds of apartments</div>

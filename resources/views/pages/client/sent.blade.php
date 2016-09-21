@@ -4,6 +4,7 @@
 
 @section('content')
 @include('includes.navin')
+ 
 <div class="container-fluid">
 	<br/><br/><br/>
 	<div class="row">
