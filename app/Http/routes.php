@@ -154,6 +154,57 @@ Route::get('member_signin', function () {
 	return view('pages.signin',$data);
 })->name('signin');
 
+/*
+|--------------------------------------------------------------------------
+| Route use to send reset password of a user in email
+|--------------------------------------------------------------------------
+*/
+Route::get('forgot-password', function () {
+	return view('pages.forgot_password');
+})->name('forgot_password');
+
+Route::post('forgot-password', [
+	'uses' => 'UserController@passwordReset',
+	'as' => 'reset_password'
+	]);
+
+/*
+|--------------------------------------------------------------------------
+| Route to reset password link
+|--------------------------------------------------------------------------
+*/
+Route::get('reset', [
+	'uses' => 'UserController@resetPassworkLink'
+	]);
+
+
+/*
+|--------------------------------------------------------------------------
+| Route to change the password
+|--------------------------------------------------------------------------
+*/
+
+Route::post('password-reset', [
+	'uses' => 'UserController@postPasswordReset',
+	'as' => 'password_reset'
+
+	]);
+
+Route::get('password-reset', function () {
+	return redirect()->route('forgot_password');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Route use to invalid link
+|--------------------------------------------------------------------------
+*/
+Route::get('invalid-link', function () {
+	return view('pages.invalid_link');
+})->name('invalid_link');
+
+
 
 /*
 |--------------------------------------------------------------------------
