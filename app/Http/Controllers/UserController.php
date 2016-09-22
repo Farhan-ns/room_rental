@@ -16,9 +16,130 @@ use DB;
 
 use App\UserLog;
 
+use Illuminate\Support\Facades\Mail;
+
+use App\PasswordReset;
+
+
 
 class UserController extends Controller
 {
+   public function postPasswordReset(Request $request)
+   {
+        $this->validate($request,[
+            'id' => 'required',
+            'password' => 'required|confirmed|min:6|max:64',
+            'password_confirmation' => 'required'
+            ]);
+
+        $id = $request['id'];
+        $password = $request['password'];
+
+        $r = PasswordReset::find($id);
+
+        if($r->status == 1) {
+            if($r->expiration <= strtotime(date('Y-m-d h:i:s')) + 3600) {
+
+                // reset password here
+                $user = User::where('email', $r->email)->first();
+
+                $user->password = bcrypt($password);
+
+                $user->save();
+
+                // update password reset record to invalid
+                $r->status = 0;
+                $r->save();
+
+
+                return redirect()->route('home')->with('message', 'Successfully Reset Password!');
+
+
+            }
+            else {
+                // expired link
+                return redirect()->route('invalid_link')->with('error_msg', 'Expired Reset Link!');
+            }
+        }
+        else {
+            //invalid link
+            return redirect()->route('invalid_link')->with('error_msg', 'Invalid Reset Link!');
+        }
+        // Something wrong
+        return redirect()->route('invalid_link')->with('error_msg', 'Something Gone Wrong. Please Repeat Process of Resetting Password.');
+
+   }
+
+    // validate the link of the reset password 
+    public function resetPassworkLink()
+    {
+        $token = $_GET['t'];
+        $email = $_GET['e'];
+
+        $r = PasswordReset::where('token', $token)->where('email', $email)->first();
+
+        if($r->status == 1) {
+            if($r->expiration <= strtotime(date('Y-m-d h:i:s')) + 3600) {
+
+                // return "Reset Password View";
+                return view('pages.passwordreset', ['id' => $r->id]);
+
+            }
+            else {
+                // expired link
+                return redirect()->route('invalid_link')->with('error_msg', 'Expired Reset Link!');
+            }
+        }
+        else {
+            //invalid link
+            return redirect()->route('invalid_link')->with('error_msg', 'Invalid Reset Link!');
+        }
+
+        // Something wrong
+        return redirect()->route('invalid_link')->with('error_msg', 'Something Gone Wrong. Please Repeat Process of Resetting Password.');
+
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Method use to send link reset user password
+    |-------------------------------------------------------------------------- 
+    */
+    public function passwordReset(Request $request)
+    {
+        $this->validate($request,[
+            'email' => 'required|email'
+            ]);
+
+        $email = $request['email'];
+
+        $user = User::where('email', '=', $email)->first();
+
+        if(!empty($user)) {
+            // end recovery link to email
+            $owner_email = $user->email;
+            $token = csrf_token();
+            $expiration = strtotime(date('Y-m-d h:i:s')) + 3600;
+
+            $data['link'] = url('/') . '/reset/' . '?t=' . $token . '&e=' . $user->email;
+
+            Mail::send('pages.client.resetpassword', $data, function ($message) use ($owner_email) {
+                $message->from('reset-password@rental-domain.cf', 'Password Reset');
+                $message->to($owner_email)->subject('Reset Your Account Password');
+            });
+
+            $rr = new PasswordReset();
+            $rr->email = $owner_email;
+            $rr->token = $token;
+            $rr->expiration = $expiration;
+
+            $rr->save();
+
+            return redirect()->route('forgot_password')->with('message', 'Reset Link Sent to Email! Valid Only For 1 Hour');
+        }
+
+        return redirect()->route('forgot_password')->with('error_msg', 'Email Address Not Found!');
+    }
 
     /*
     |--------------------------------------------------------------------------

@@ -187,3 +187,7 @@ background-color: #5bc0de;
    padding: 0 !important;
    margin: 0 !important;
 }
+
+.top-margin-50 {
+  margin-top: 10%;
+}

@@ -32,6 +32,7 @@
 									<div class="form-group">
 										<input type="checkbox" name="remember" id="remember"/>
 										<label for="remember">Remember Me?</label>
+										<a href="{{ route('forgot_password') }}" class="pull-right"><label>Forgot Password?</label></a>
 									</div>
 									<div class="form-group">
 										<input type="hidden" name="_token" value="{{ csrf_token() }}" />
