@@ -184,10 +184,14 @@ background-color: #5bc0de;
 }
 
 .nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .top-margin-50 {
   margin-top: 10%;
+}
+
+.img-responsive {
+  margin: 0 auto;
 }

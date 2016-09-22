@@ -38,7 +38,20 @@
 			<div class="row">
 				@foreach($post->postImage as $img)
 					<div class="col-md-6 col-xs-6 post-img">
-						<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /> 
+						<a href="javascript:void(0)" data-toggle="modal" data-target="#myModal{{ $img->id }}"><img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /></a> 
+
+						<div class="modal fade" id="myModal{{ $img->id }}" role="dialog">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+									<div class="modal-body">
+										<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-responsive" />
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				@endforeach
 			</div>
