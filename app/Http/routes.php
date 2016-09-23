@@ -491,6 +491,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'as' => 'make_available'
 		]);
 
+	Route::get('make-available', function () {
+		return redirect()->route('myposts');
+	});
 
 	/*
 	|--------------------------------------------------------------------------
@@ -502,6 +505,29 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'as' => 'make_reserved'
 		]);
 
+	Route::get('make-reserved', function () {
+		return redirect()->route('myposts');
+	});
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to update post and make it occupied
+	|--------------------------------------------------------------------------	
+	*/
+	Route::post('make-occupied', [
+		'uses' => 'PostController@makeOccupied',
+		'as' => 'make_occupied'
+		]);
+
+	Route::get('make-occupied', function () {
+		return redirect()->route('myposts');
+	});
+
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to go to inbox
+	|--------------------------------------------------------------------------	
+	*/
 	Route::get('messages/inbox', [
 		'uses' => 'GeneralController@inbox',
 		'as' => 'inbox'

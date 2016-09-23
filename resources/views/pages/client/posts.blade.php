@@ -26,9 +26,32 @@
 					<input type="hidden" name="post_id" value="{{ $post->id }}" />
 					<button type="submit" class="btn btn-info btn-xs">Mark as Reserved</button>
 				</form>
+				<form action="{{ route('make_occupied') }}" method="POST">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+					<input type="hidden" name="post_id" value="{{ $post->id }}" />
+					<button type="submit" class="btn btn-info btn-xs">Mark as Occupied</button>
+				</form>
 			@endif
 
 			@if($post->availability == 'Not Available')
+				<form action="{{ route('make_available') }}" method="POST">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+					<input type="hidden" name="post_id" value="{{ $post->id }}" />
+					<button type="submit" class="btn btn-info btn-xs">Mark as Available</button>
+				</form>
+				<form action="{{ route('make_occupied') }}"" method="POST>
+					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+					<input type="hidden" name="post_id" value="{{ $post->id }}" />
+					<button type="submit" class="btn btn-info btn-xs">Mark as Occupied</button>
+				</form>
+			@endif
+
+			@if($post->availability == 'Occupied')
+				<form action="{{ route('make_reserved') }}" method="POST">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
+					<input type="hidden" name="post_id" value="{{ $post->id }}" />
+					<button type="submit" class="btn btn-info btn-xs">Mark as Reserved</button>
+				</form>
 				<form action="{{ route('make_available') }}" method="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 					<input type="hidden" name="post_id" value="{{ $post->id }}" />
@@ -50,6 +73,10 @@
 			
 			@if($post->availability == 'Not Available')
 				<span class="btn btn-warning btn-xs">Reserved</span>
+			@endif
+
+			@if($post->availability == 'Occupied')
+				<span class="btn btn-warning btn-xs">Occupied</span>
 			@endif
 
 			<br/>

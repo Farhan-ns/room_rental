@@ -22,6 +22,9 @@
 			@if($post->availability == 'Not Available')
 				<span class="btn btn-warning btn-xs">Reserved</span>
 			@endif
+			@if($post->availability == 'Occupied')
+				<span class="btn btn-warning btn-xs">Occupied</span>
+			@endif
 			<br/><br/>
 			<a href="{{ route('post', ['id' => $post->id]) }}">
 			@foreach($post->postImage as $img)

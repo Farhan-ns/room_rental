@@ -23,6 +23,23 @@ use App\User;
 
 class PostController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Method use to update post to make it reserved
+    |--------------------------------------------------------------------------
+    */
+    public function makeOccupied(Request $request)
+    {
+        $id = $request['post_id'];
+
+        $post = Post::find($id);
+
+        $post->availability = 'Occupied';
+
+        $post->save();
+
+        return redirect()->route('myposts');
+    }
 
     /*
     |--------------------------------------------------------------------------
