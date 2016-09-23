@@ -24,10 +24,10 @@
 						<div class="form-group">
 							<input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required" />
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<input type="checkbox" name="remember" id="remember"/>
 							<label for="remember">Remember Me?</label>
-						</div>
+						</div>  -->
 						<div class="form-group">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 							<button type="submit" class="btn btn-info">Login</button>

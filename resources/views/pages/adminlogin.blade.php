@@ -21,7 +21,7 @@
 						</div>
 						<div class="form-group">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-							<button type="submit" class="btn btn-primary">Login</button>
+							<button type="submit" class="btn btn-info">Login</button>
 						</div>
 					</form>
 				</div>

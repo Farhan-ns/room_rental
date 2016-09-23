@@ -3,10 +3,10 @@
 @section('title') Reset Password Form @endsection
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid ">
 	<div class="row top-margin-50">
 		<div class="col-md-offset-4 col-md-4">
-			<p><a href="{{ route('home') }}" class="btn btn-primary btn-xs">Back to Home</a></p>
+			<p><a href="{{ route('home') }}" class="btn btn-info btn-md">Back to Home</a></p>
 
 			@include('includes.showerror')
 			@include('includes.showsuccess')
@@ -18,7 +18,7 @@
 				</div>
 				<div class="form-group">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-					<button class="btn btn-primary pull-right" type="submit">Continue</button>
+					<button class="btn btn-info pull-right" type="submit">Continue</button>
 				</div>
 			</form>
 			

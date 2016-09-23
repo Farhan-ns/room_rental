@@ -491,6 +491,7 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		'as' => 'make_available'
 		]);
 
+
 	/*
 	|--------------------------------------------------------------------------
 	| Route use to update post and make it reserved

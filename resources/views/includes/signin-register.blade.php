@@ -30,8 +30,8 @@
 										<input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required" />
 									</div>
 									<div class="form-group">
-										<input type="checkbox" name="remember" id="remember"/>
-										<label for="remember">Remember Me?</label>
+									<!-- 	<input type="checkbox" name="remember" id="remember"/>
+										<label for="remember">Remember Me?</label> -->
 										<a href="{{ route('forgot_password') }}" class="pull-right"><label>Forgot Password?</label></a>
 									</div>
 									<div class="form-group">

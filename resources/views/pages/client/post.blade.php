@@ -14,11 +14,13 @@
 				<div class="col-md-8">
 					<br/>
 					@if($post->availability == 'Available')
-						<span class="btn btn-success btn-xs">Available</span>
+						<span class="btn btn-info btn-md">Available</span>
 					@endif
+
 					@if($post->availability == 'Not Available')
-						<span class="btn btn-warning btn-xs">Reserved</span>
+						<span class="btn btn-warning btn-md">Reserved</span>
 					@endif
+
 					<h3>{{ $post->title }}</h3>
 					<p>by <a href="{{ route('post-user-profile', $post->user_id) }}" target="_blank"><strong>{{ $user->firstname . ' ' . $user->lastname }}</strong></a></p>
 					<p>Email: <strong>{{ $user->email }}</strong></p>
@@ -29,8 +31,10 @@
 					<p>Dexcription:  <i>{{ $post->description }}</i></p>
 				</div>
 				<div class="col-md-4">
-					<label>Month of Stay:</label>
-					<input type="number" name="number" id="number" value=0 ng-model="month_num" autofocus="" />
+					<label>Month of Stay: <br>
+					(please input 1 for 1 month
+					and for half of a month or 15 days just put .5)<br>For example: 1 and a half month just put 1.5</label>
+					<input type="number" name="number" id="number" value=0 ng-model="month_num" autofocus=""  required="numbers" />
 					<!-- <input type="hidden" name="value" value={{ $post->price }} ng-model="price" /> -->
 					<h3>Estimated Cost: @{{ month_num * price }}</h3>
 				</div>
@@ -38,7 +42,20 @@
 			<div class="row">
 				@foreach($post->postImage as $img)
 					<div class="col-md-6 col-xs-6 post-img">
-						<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /> 
+						<a href="javascript:void(0)" data-toggle="modal" data-target="#myModal{{ $img->id }}"><img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts" /></a> 
+
+						<div class="modal fade" id="myModal{{ $img->id }}" role="dialog">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+									<div class="modal-body">
+										<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-responsive" />
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				@endforeach
 			</div>

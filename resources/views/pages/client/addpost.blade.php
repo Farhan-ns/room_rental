@@ -23,6 +23,8 @@
 							<input type="radio" name="type" value="Room" id="room" />
 							<label for="appartment">Appartment</label>
 							<input type="radio" name="type" value="Appartment" id="appartment" />
+							<!-- <label for="others">Others</label>
+							<input type="radio" name="type" value="Others" id="appartment" /> -->
 						</div>
 						<div class="form-group">
 							<input type="text" name="title" id="title" placeholder="Title" value="{{ old('title') }}" class="form-control" />

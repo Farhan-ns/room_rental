@@ -24,17 +24,20 @@
 				<form action="{{ route('make_reserved') }}" method="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 					<input type="hidden" name="post_id" value="{{ $post->id }}" />
-					<button type="submit" class="btn btn-primary btn-xs">Mark as Reserved</button>
+					<button type="submit" class="btn btn-info btn-xs">Mark as Reserved</button>
 				</form>
 			@endif
+
 			@if($post->availability == 'Not Available')
 				<form action="{{ route('make_available') }}" method="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 					<input type="hidden" name="post_id" value="{{ $post->id }}" />
-					<button type="submit" class="btn btn-primary btn-xs">Mark as Available</button>
+					<button type="submit" class="btn btn-info btn-xs">Mark as Available</button>
 				</form>
 			@endif
 			<br/>
+			
+
 			@foreach($post->postImage as $img)
 				<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class=" round img-posts " /> 
 				@break
@@ -44,9 +47,11 @@
 			@if($post->availability == 'Available')
 				<span class="btn btn-success btn-xs">Available</span>
 			@endif
+			
 			@if($post->availability == 'Not Available')
 				<span class="btn btn-warning btn-xs">Reserved</span>
 			@endif
+
 			<br/>
 			Title: <strong>{{ $post->title }}</strong>
 			<br/>

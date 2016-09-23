@@ -188,8 +188,8 @@ background-color: #5bc0de;
 }
 
 .nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 <<<<<<< HEAD
 =======
@@ -197,4 +197,14 @@ background-color: #5bc0de;
 .top-margin-50 {
   margin-top: 10%;
 }
+<<<<<<< HEAD
 >>>>>>> caedc786e8c9872a2b5a197ffd5d22c68fb24737
+=======
+
+.img-responsive {
+  margin: 0 auto;
+}
+>>>>>>> 89827a159988f23975d19e3f1324e0200aba4d86
+#navigation,.navbar .navbar-fixed-top{
+      background-color: #5bc0de;
+    }

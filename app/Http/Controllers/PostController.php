@@ -43,7 +43,6 @@ class PostController extends Controller
     }
 
 
-
     /*
     |--------------------------------------------------------------------------
     | Method use to update post to make it available

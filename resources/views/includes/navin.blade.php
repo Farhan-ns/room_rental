@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-fixed-top id=navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#appNavbar">
@@ -17,7 +17,7 @@
 					<li class=""><a href="{{ route('browse') }}">Browse Posts</a></li>
 					<li class=""><a href="{{ route('search') }}">Search</a></li>
 					<li class="dropdown">
-						<a id="dLabel" data-target="#" href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						<a id="dLabel" data-target="#"  href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 						    My Posts
 						    <span class="caret"></span>
 						</a>

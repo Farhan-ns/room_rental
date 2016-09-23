@@ -50,9 +50,9 @@
 			<div class="col-lg-4">
 				<div class="row">
 					<div class="col-lg-12">
-						<h3>About Hotel</h3>
+						<h3>About</h3>
 						<p>A good Apartelle shouldn’t be necessarily expensive. Check this out yourself.</p>
-						<p> Book a room and get all possible comfort of a five star hotel. We work for you to enjoy your stay.</p>	
+						<p> Book a room and get all possible comfort we offer to you. We work for you to enjoy your stay.</p>	
 					</div>
 					<div class="col-lg-12" style="padding-top:50px;">
 						<p class="p-font"><span class="glyphicon glyphicon-map-marker icon"></span> 6300 Booy Dstrict,Tagbilaran City Bohol</p>
