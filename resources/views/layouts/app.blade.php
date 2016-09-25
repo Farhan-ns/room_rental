@@ -21,6 +21,28 @@
 <body>
 
 	@yield('content')
+	<div style="display:none" id="popup">
+		<br/><br/><br/><br/>
+		<div id="popup_msg">
+			<h3 class="text-center">"Welcome to Neofita's Rooms &amp; Apartelle we will Help you find your Sweet Home"</h3>
+		</div>
+	</div>
+	<script>
+		$(document).ready(function() {
+		    if(localStorage.getItem('popState') != 'shown'){
+		        $("#popup").delay(2000).fadeIn();
+		        localStorage.setItem('popState','shown')
+		    }
 
+		    $('#popup-close').click(function(e) // You are clicking the close button
+		    {
+		    $('#popup').fadeOut(); // Now the pop up is hiden.
+		    });
+		    $('#popup').click(function(e) 
+		    {
+		    $('#popup').fadeOut(); 
+		    });
+		});
+	</script>
 </body>
 </html>

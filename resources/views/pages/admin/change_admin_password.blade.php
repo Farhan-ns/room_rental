@@ -7,13 +7,16 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
+			@include('includes.showerrors')
+			@include('includes.showerror')
+			@include('includes.showsuccess')
 			<h3>Admin Password</h3>
 			<form action="{{ route('update_admin_password') }}" method="POST" role="form">
 				<div class="form-group">
 					<input type="password" name="password" id="password" class="form-control" required="" placeholder="Enter New Password" />
 				</div>
 				<div class="form-group">
-					<input type="password" name="newpass" id="newpass" class="form-control" required="" placeholder="Re-enter New Password" />
+					<input type="password" name="password_confirmation" id="newpass" class="form-control" required="" placeholder="Re-enter New Password" />
 				</div>
 				<div class="form-group">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
