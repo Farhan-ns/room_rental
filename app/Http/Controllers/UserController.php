@@ -202,15 +202,15 @@ class UserController extends Controller
         $this->validate($request,[
             'user_id' => 'required',
             'old_password' => 'required',
-            'new_password' => 'required',
-            'new_password2' => 'required'
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required'
             ]);
 
         //validation required
         $user_id = $request['user_id'];
         $old_password = $request['old_password'];
-        $new_password = $request['new_password'];
-        $new_password2 = $request['new_password2'];
+        $new_password = $request['password'];
+        $new_password2 = $request['password_confirmation'];
 
         $user = User::find($user_id);
 

@@ -31,8 +31,13 @@ class AdminController extends Controller
     */
     public function PasswordUpdate(Request $request)
     {
+        $this->validate($request, [
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required'
+            ]);
+
         $password = $request['password'];
-        $newpass = $request['newpass'];
+        $newpass = $request['password_confirmation'];
 
         $id = Auth::user()->id;
 
@@ -59,6 +64,14 @@ class AdminController extends Controller
     */
     public function ProfileUpdate(Request $request)
     {
+
+        $this->validate($request, [
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'mobile' => 'required',
+            'bday' => 'required'
+            ]);
+
         $firstname = $request['firstname'];
         $lastname = $request['lastname'];
         $mobile = $request['mobile'];
