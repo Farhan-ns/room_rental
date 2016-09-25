@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="javascript:void(0);">Welcome Seeker's </a>
+			<a class="navbar-brand" href="javascript:void(0);">Welcome @ Neofita's Rooms & Apartelle</a>
 		</div>
 		<div class="collapse navbar-collapse" id="appNavbar">
 			<div class="container-fluid">
@@ -15,6 +15,7 @@
 					<li><span class="icon-bar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li> -->
 					<li class="{{ $homeactive }}"><a href="{{ route('home') }}">Home</a></li>
 					<li class="{{ $aboutactive }}"><a href="{{ route('about') }}">About</a></li>
+					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<!-- <li class="{{ $signinactive }}"><a href="{{ route('signin') }}">Signin</a></li>

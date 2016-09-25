@@ -1,5 +1,5 @@
 @extends('pages.about')
 
 @section('navigation')
-	@include('includes.navin')
+@include('includes.navin')
 @endsection
