@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top id=navigation">
+<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#appNavbar">
@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ route('home_user') }}">Welcome Seeker's </a>
+			<a class="navbar-brand" href="{{ route('home_user') }}">Welcome @ Neofita's Rooms & Apartelle</a>
 		</div>
 		<div class="collapse navbar-collapse" id="appNavbar">
 			<div class="container-fluid">

@@ -30,7 +30,7 @@
 							<input type="text" name="title" id="title" placeholder="Title" value="{{ old('title') }}" class="form-control" />
 						</div>
 						<div class="form-group">
-							<input type="text" name="price" id="price" placeholder="Price Rate" value="{{ old('price') }}" class="form-control" />
+							<input type="text" name="price" id="price" placeholder="Price Rate" value="{{ old('price') }}" class="form-control" required="numbers" />
 						</div>
 						<div class="form-group">
 							<textarea name="description" id="description" class="form-control" value="{{ old('description') }}" placeholder="Please Descibe your Property/Place." rows="8"></textarea>

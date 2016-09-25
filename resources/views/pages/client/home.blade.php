@@ -4,17 +4,9 @@
 
 @section('content')
 @include('includes.navin')
-<!DOCTYPE html>
-<html>
-<head>
- <style>
-    @font-face {
-        font-family: CastroScript;
-        src: url('{{ public_path('fonts/CastroScript.tff') }}');
-    }
-  </style>
+<br>
 <div class="container conbody">
-	<div class="col-md-6 col-xs-6 headline" >Make your move</div>
+<div class="col-md-6 col-xs-6 headline" >Make your move</div>
 	<div class="col-md-6 col-xs-6 sub-headline">Search and apply to Hundreds of apartments</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
@@ -32,7 +24,7 @@
 				<div class="form-group">
 					<div class="input-group">
 
-						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Search for...">
+						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Find your Home now!">
 
 						<span class="input-group-btn">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -83,52 +75,6 @@
 		</div>
 		<!-- <hr/> -->
 		</div>
-<!-- 		<div class="row">
-	<section class="footer">
-   			<div class="container">
-   				<div class="row">
-   					<div class="col-lg-3">
-   						<ul class="nav navbar-sidebar sidebar">
-   							<li><a href="">Home Page</a></li>
-   							<li><a href="">About Us</a></li>
-   							<li><a href="">Location & Contacts</a></li>
-   						</ul>
-   					</div>
-   					<div class="col-lg-3">
-   						<ul class="nav navbar-sidebar sidebar">
-   							<li><a href="">Facebook</a></li>
-   							<li><a href="">Twitter</a></li>
-   							<li><a href="">Instagram</a></li>
-   							<li><a href="">Youtube</a></li>
-   						</ul>
-   					</div> -->
-   		<!-- <div class="col-lg-6">
-   						<div class="row">
-   							<div class="col-lg-4"></div>
-   							<div class="col-lg-8">
-   							<h6>Contact Us</h6>
-   								<form action="" method="">
-   									<div class="form-group">
-   										<input type="email" class="form-control gry" id="email" placeholder = "Email" required>
-   									</div>
-   									<div class="form-group">
-   										<textarea class="form-control gry" id="comment" Placeholder="Comment" required></textarea>
-   									</div>
-   									<div class="form-group">
-   										<button class="btn btn-default btns"  style="width:inheret;" type="submit">Submit</button>
-   									</div>
-   								</form>
-   							</div>
-   						</div>
-   					</div> 
-   				</div>-->
-   	<!-- 			<div class="row copyright">
-   					<div class="col-lg-12">
-   						<center><h6 class="gr">© By Neofita Room And Apartel 2016</h6></center>
-   					</div>
-   				</div>
-   			</div> -->
-   			</section>
 
 
 @endsection

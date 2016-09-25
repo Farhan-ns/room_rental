@@ -24,7 +24,7 @@
 			<div class="row"> 
 			@foreach($post->postImage as $img)
 				<div class="col-md-6 post-img">
-					<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts responsive circle" />
+					<img src="/uploads/posts/{{ $img->name }}" alt="{{ $post->title }}" class="img-posts responsive " />
 				</div>
 			@endforeach
 			</div>

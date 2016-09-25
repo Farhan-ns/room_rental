@@ -59,8 +59,6 @@ a:hover {
     margin-top: -137px;
     font-family:CastroScript;
     src: url('/fonts/CastroScript.tff');
-
-
 }
 .foot{
   margin-top:10px;
@@ -208,3 +206,21 @@ background-color: #5bc0de;
 #navigation,.navbar .navbar-fixed-top{
       background-color: #5bc0de;
     }
+
+  .form_bg{
+
+  background:#f7f7f7;
+  box-shadow: 5px 7px 11px rgba(0, 0, 0, 0.3);
+  padding:12px;
+  border-radius: 2px;
+  margin-left:0px;
+}
+
+ .form_bg2{
+  background:#f7f7f7;
+  box-shadow: 5px 7px 11px rgba(0, 0, 0, 0.3);
+  border-radius:2px;
+  margin-left:0px;
+  margin-top: 35px;
+  padding:12px;
+}

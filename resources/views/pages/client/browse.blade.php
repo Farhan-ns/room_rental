@@ -24,7 +24,7 @@
 				<span class="btn btn-warning btn-xs">Reserved</span>
 			@endif
 			@if($post->availability == 'Occupied')
-				<span class="btn btn-warning btn-xs">Occupied</span>
+				<span class="btn btn-danger btn-xs">Occupied</span>
 			@endif
 			<br/><br/>
 			<a href="{{ route('post', ['id' => $post->id]) }}">
@@ -47,6 +47,7 @@
 					<td>Location:</td>
 					<td>{{ $post->location }}</td>
 				</tr>
+				
 			</table>
 		</div>
 		@endforeach

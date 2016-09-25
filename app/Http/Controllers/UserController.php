@@ -338,7 +338,7 @@ class UserController extends Controller
     	$user->password = bcrypt($password);
 
     	if($user->save()) {
-            return redirect()->route('home')->with('message', 'Successfully Signedup!');    
+            return redirect()->route('home')->with('message', 'Successfully Signed Up!');    
         }
 
         return redirect()->route('home')->with('error_msg', 'Errors!')->withInput(); 

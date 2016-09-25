@@ -18,7 +18,7 @@
 				<div class="form-group">
 					<input type="hidden" name="id" value="{{ $id }}" />
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-					<button type="submit" class="btn btn-primary">Change Password</button>
+					<button type="submit" class="btn btn-info">Change Password</button>
 				</div>
 			</form>
 		</div>
