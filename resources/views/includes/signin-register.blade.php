@@ -143,4 +143,5 @@ function openForm(formName) {
 		  openForm('Register');
 		});
 	</script>
+
 @endif

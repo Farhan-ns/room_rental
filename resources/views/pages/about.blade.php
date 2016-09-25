@@ -24,6 +24,7 @@
 
       </div>
 	</div>
+
 <div class="col-md-3 form_bg">
 		<h4>Neofitas's Rooms & Apartelle</h4>
 		<hr/>
@@ -51,6 +52,8 @@
     	</div>
 		<hr/> 
 		
+	<br>
+	<hr/>
 @include('includes.signin-register')
 
 @endsection

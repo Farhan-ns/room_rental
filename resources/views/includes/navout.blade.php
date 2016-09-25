@@ -6,7 +6,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="javascript:void(0);">Welcome @ Neofita's Rooms & Apartelle</a>
+			<a class="navbar-brand" href="javascript:void(0);">Neofita's Rooms & Apartelle</a>
 		</div>
 		<div class="collapse navbar-collapse" id="appNavbar">
 			<div class="container-fluid">

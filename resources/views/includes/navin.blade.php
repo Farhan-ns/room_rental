@@ -6,12 +6,11 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ route('home_user') }}">Welcome @ Neofita's Rooms & Apartelle</a>
+			<a class="navbar-brand" href="{{ route('home_user') }}">Neofita's Rooms & Apartelle</a>
 		</div>
 		<div class="collapse navbar-collapse" id="appNavbar">
 			<div class="container-fluid">
-				<ul class="nav navbar-nav">
-					<!-- <li><img src="img/logo.png" alt="processing" class="img-responsive rest"></a></li> 
+				<ul class="nav navbar-nav">	
 					<li><span class="icon-bar">&nbsp;&nbsp;&nbsp;&nbsp;</span></li> -->
 					<li class=""><a href="{{ route('home_user') }}">Home</a></li>
 					<li class=""><a href="{{ route('browse') }}">Browse Posts</a></li>
@@ -37,7 +36,7 @@
 
 						<ul class="dropdown-menu" aria-labelledby="dLabel">
 							<li><a href="{{ route('inbox') }}">Inbox <span class="label label-danger label-as-badge">{{ count($unread) }}</span></a></li>
-							<li><a href="{{ route('sent_msg') }}">Sent Inquiry Message</a></li>
+							<!-- <li><a href="{{ route('sent_msg') }}">Sent Inquiry Message</a></li> -->
 						</ul>
 					</li>
 					<li class=""><a href="{{ route('client_about') }}">About</a></li>

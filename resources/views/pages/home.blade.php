@@ -23,7 +23,7 @@
 				<div class="form-group">
 					<div class="input-group ">
 
-						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Find your Home now!">
+						<input type="text" name="keyword" id="keyword" class="form-control" placeholder="Find your Home now! e.g Tagbilaran">
 
 						<span class="input-group-btn">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
