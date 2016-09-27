@@ -148,10 +148,10 @@ class GeneralController extends Controller
 		});
 
 		// SMS Part
-		$api_user = "APIFLTG243Q9X"; // This is the api username of onewaysms.ph
-		$api_pass = "APIFLTG243Q9XP8GML"; // This is the api password of onewaysms.ph
+		$api_user = "APIYIOEZT2Q14"; // This is the api username of onewaysms.ph
+		$api_pass = "APIYIOEZT2Q14YIOEZ"; // This is the api password of onewaysms.ph
 		$recipient = $user->mobile;
-		$sms_msg = $message;  // customize your message here
+		$sms_msg = $message."(P.S Check your email and inbox Fr:NeofitaRoomsAndApartelle)";  // customize your message here
 	
 
 		 $this->sendSMS($api_user, $api_pass, "M&R Rentals", $recipient, $sms_msg);

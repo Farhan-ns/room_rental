@@ -16,8 +16,9 @@
 	@endif
 	@include('includes.showerror')
 	@include('includes.showsuccess')
-	@include('includes.showerrors')
+	@include('includes.showerrors')	
 	<div class="row"> 
+	
 		@foreach($posts as $post)
 		<div class="col-md-3">
 			@if($post->availability == 'Available')
@@ -84,11 +85,11 @@
 			<br/>
 			Type: <strong>{{ $post->type }}</strong>
 			<br/>
-			Price: <strong>{{ $post->price }}</strong>
+			Monthly: <strong>‎₱{{ $post->price }}</strong>
 			<br/>
 			Location: <strong>{{ $post->location }}</strong>
 			<br/>
-			Description: <p><i>{{ $post->description }}</i></p>
+			Description: <p><i>‎{{ $post->description }}</i></p>
 
 			Status: <strong>{{ $post->status }}</strong>
 			<br/>

@@ -68,7 +68,7 @@ class AdminController extends Controller
         $this->validate($request, [
             'firstname' => 'required',
             'lastname' => 'required',
-            'mobile' => 'required',
+            'mobile' => 'required | max:11',
             'bday' => 'required'
             ]);
 

@@ -203,35 +203,38 @@ background-color: #5bc0de;
 }
 
 #popup {
-  background-color: rgba(46, 204, 113,0.3);
   height: 100%;
   width: 100%;
   position: fixed;
   left: 0px;
   top: 0px;
   z-index: 10 !important;
+  background-color: gray;
+  opacity: 0.9 !important;
 }
 
 #popup_msg {
-  background-color: #ffffff;
-  opacity: 1.0 !important;
-  border-radius: 5px;
-  border: 2px dotted grey;
-  color: black;
-  height: 200px;
+ background-image: url('../img/qwe.jpg');
+ opacity: 1.0 !important;
+  border-radius: 8px;
+  size: 20px;
+  height:380px;
+  color: black ;
+  font-family:all;
+  font-style: italic;
+  font-size: 34px;
+  font-size-adjust: 50ex;
   width: 600px;
   top: 80px;
   margin: 0 auto;
+  margin-top: 10px;
   z-index: 11 !important;
   padding: 10px;
+   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
- 
-
   .form_bg{
-       background-color: #5bc0de;
-    }
-
+  background-color: #5bc0de;
   background:#f7f7f7;
   box-shadow: 5px 7px 11px rgba(0, 0, 0, 0.3);
   padding:12px;

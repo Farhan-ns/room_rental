@@ -13,6 +13,7 @@
 <div class="container">
 	<div class="col-md-9">
 	<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:440px;width:800px;'><div id='gmap_canvas' style='height:440px;width:850px;'></div><div><small><a href="http://www.embedgooglemaps.com/en/">Generate your map here, quick and easy!									Give your customers directions									Get found</a></small></div><div><small><a href="https://binaireoptieservaringen.nl/">Wilt u geld verdienen met de handel in binaire opties, maar is het allemaal onduidelijk hoe dit precies werkt, en welke aanbieders betrouwbaar zijn? Lees dan verder op onze site: wij vergelijken aanbieders op betrouwbaarheid en kwaliteit. Zo komt u nooit voor verrassingen te staan. Wij van binaireoptieservaringen.nl helpen u graag!</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(9.6616165,123.84950149999997),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(9.6616165,123.84950149999997)});infowindow = new google.maps.InfoWindow({content:'<strong>My Location</strong><br>booy tagbilaran city<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+
 	<br>
 		<div class="caption">
         <h2>Neofita Apartelle & Rooms Advertisement And Informtion</h2>
@@ -24,7 +25,6 @@
 
       </div>
 	</div>
-
 <div class="col-md-3 form_bg">
 		<h4>Neofitas's Rooms & Apartelle</h4>
 		<hr/>
@@ -52,9 +52,6 @@
     	</div>
 		<hr/> 
 		
-	<br>
-	<hr/>
 @include('includes.signin-register')
 
 @endsection
-

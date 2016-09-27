@@ -21,13 +21,13 @@
 							<input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required="required" class="form-control" />
 						</div>
 						<div class="form-group">
-							<input type="text" name="firstname" id="firstname" value="{{ old('firstname') }}" placeholder="First Name" required="required" class="form-control" />
+							<input type="text" name="firstname" id="firstname" value="{{ old('firstname') }}" placeholder="First Name" required="required | regex:/^[\p{L} .'-]+$/u" class="form-control" />
 						</div>
 						<div class="form-group">
 							<input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" placeholder="Last Name" required="required" class="form-control" />
 						</div>
 						<div class="form-group">
-							<input type="text" name="bday" id="bday" value="{{ old('bday') }}" placeholder="Birth Day" required="required" class="form-control" />
+							<input type="text" name="bday" id="bday" value="{{ old('bday') }}" placeholder="mm/dd/yy e.g 4/28/1995" required="required" class="form-control" />
 						</div>
 						<div class="form-group">
 							<label for="gender-male">Male</label>

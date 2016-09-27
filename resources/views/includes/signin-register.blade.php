@@ -72,7 +72,7 @@
 								<input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" placeholder="Last Name" required="required" class="form-control" />
 							</div>
 							<div class="form-group">
-								<input type="text" name="bday" id="bday" value="{{ old('bday') }}" placeholder="Birth Day" required="required" class="form-control" />
+								<input type="text" name="bday" id="bday" value="{{ old('bday') }}" placeholder="mm/dd/yy e.g 4/28/1995" required="required" class="form-control" />
 							</div>
 							<div class="form-group">
 								<label for="gender-male">Male</label>

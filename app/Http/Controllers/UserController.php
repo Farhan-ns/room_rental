@@ -249,10 +249,10 @@ class UserController extends Controller
         
         $this->validate($request, [
             'email' => 'required|email',
-            'firstname' => 'required',
+            'firstname' => "required|regex:/^[\p{L} . '-]+$/u",
             'lastname' => 'required',
-            'bday' => 'required|date',
-            'mobile' => 'required',
+            'bday' => 'required|after:date',
+            'mobile' => 'required | max:11',
             'gender' => 'required',
             'user_id' => 'required'
             ]);
@@ -309,11 +309,11 @@ class UserController extends Controller
     {
     	$this->validate($request, [
     		'email' => 'required|email|unique:users',
-    		'firstname' => 'required',
+    		'firstname' => "required|regex:/^[\p{L} . '-]+$/u",
     		'lastname' => 'required',
-    		'bday' => 'required|date',
+    		'bday' => 'required|after:date',
     		'gender' => 'required',
-    		'mobile' => 'required',
+    		'mobile' => 'required | max:11',
     		'password' => 'required|confirmed|min:6|max:64',
     		'password_confirmation' => 'required|min:6|max:64'
     		]);

@@ -12,7 +12,7 @@
 	@include('includes.showsuccess')
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
-			<div class="panel panel-primary">
+			<div class="panel panel-info">
 				<div class="panel-heading">
 					<b>Change Password</b>
 				</div>
@@ -30,8 +30,8 @@
 						<div class="form-group">
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 							<input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
-							<button type="submit" class="btn btn-primary">Apply Change</button>
-							<button type="reset" class="btn btn-danger">Clear</button>
+							<button type="submit" class="btn btn-info">Apply Change</button>
+							<button type="reset" class="btn btn-info">Clear</button>
 						</div>
 					</form>
 				</div>

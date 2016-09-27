@@ -7,14 +7,16 @@
 
 @extends('layouts.app')
 
-@section('title') Title @endsection
+@section('title') Browse @endsection
 
 @section('content')
 @include('includes.navout')
 <div class="container guestpost">
 	<div class="row" ng-app ng-init="price={{$post->price}}">
 		<div class="col-md-8">
-			<a href="javascript:void(0)" onclick="window.history.back();" class="btn btn-primary btn-xs">Back</a>
+		<center><h5>(please Sign In to Check this Post if still available!!!)</h5></center>
+			<a href="javascript:void(0)" onclick="window.history.back();" class="btn btn-info btn-md">Back</a>
+			
 			<h3>{{ $post->title }}</h3>
 			<p>Type: <strong>{{ $post->type }}</strong></p>
 			<p>Location: <strong>{{ $post->location }}</strong></p>

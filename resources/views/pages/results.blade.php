@@ -16,7 +16,8 @@
 	<h2>Search Result</h2>
 	<div class="row">
 		@if($posts->isEmpty())
-			<h3>No Result for your search</h3>
+	
+			<h3>No Result for your search</h3></br>
 			<p>Back to <a href="{{ route('home') }}">search</a></p>
 		@endif
 		@foreach($posts as $post)

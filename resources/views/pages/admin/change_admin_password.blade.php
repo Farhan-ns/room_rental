@@ -20,7 +20,7 @@
 				</div>
 				<div class="form-group">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
-					<button class="btn btn-primary" type="submit">Change Password</button>
+					<button class="btn btn-info" type="submit">Change Password</button>
 					<a href="{{ route('admin_home') }}" class="btn btn-default">Home</a>
 				</div>
 			</form>

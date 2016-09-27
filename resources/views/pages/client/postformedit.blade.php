@@ -21,7 +21,7 @@
 							<input type="text" name="title" id="title" placeholder="Title" value="{{ $title }}" class="form-control" />
 						</div>
 						<div class="form-group">
-							<input type="text" name="price" id="price" placeholder="Price Rate" value="{{ $price }}" class="form-control" />
+							<input type="number" min="0" name="price" id="price" placeholder="Price Rate" value="{{ $price }}" class="form-control" />
 						</div>
 						<div class="form-group">
 							<textarea name="description" id="description" class="form-control" placeholder="Enter Description" rows="8">{{ $description }}</textarea>

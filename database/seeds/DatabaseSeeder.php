@@ -29,20 +29,6 @@ class DatabaseSeeder extends Seeder
         	'password' => bcrypt('paredes')
         	]);
 
-        DB::table('users')->insert([
-            'firstname' => 'Adam',
-            'lastname' => 'Trinidad',
-            'email' => 'madamt0001@gmail.com',
-            'mobile' => '09156119134',
-            'password' => bcrypt('adam')
-            ]);
-
-        DB::table('users')->insert([
-            'firstname' => 'Michael',
-            'lastname' => 'Adam',
-            'email' => 'michaeladamtrinidad@gmail.com',
-            'mobile' => '09156119134',
-            'password' => bcrypt('adam')
-            ]);
+    
     }
 }

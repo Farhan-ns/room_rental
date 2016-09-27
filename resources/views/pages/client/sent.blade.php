@@ -36,7 +36,7 @@
 								</form>
 								</div>
 								<div class="col-md-6 nopadding">
-								<form action="{{ route('delte_sent') }}" method="POST">
+								<form action="{{ route('delete_sent') }}" method="POST">
 									<input type="hidden" name="msg_id" value="{{ $msg->id }}" />
 									<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 									<button class="btn btn-danger btn-xs" type="submit">Delete</button>

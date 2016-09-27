@@ -27,14 +27,14 @@
 					<p>Mobile: <strong>{{ $user->mobile }}</strong></p>
 					<p>Type:  <strong>{{ $post->type }}</strong></p>
 					<p>Location:  <strong>{{ $post->location }}</strong></p>
-					<p>Price:  <strong>{{ $post->price }}</strong></p>
-					<p>Dexcription:  <i>{{ $post->description }}</i></p>
+					<p>Monthly:  <strong>‎₱{{ $post->price }}</strong></p>
+					<p>Dexcription:  <u><i>{{ $post->description }}</i></u></p>
 				</div>
 				<div class="col-md-4">
 					<label>Month of Stay: <br>
 					(please input 1 for 1 month
 					and for half of a month or 15 days just put .5)<br>For example: 1 and a half month just put 1.5</label>
-					<input type="number" name="number" id="number" value=0 ng-model="month_num" autofocus=""  required="numbers" />
+					<input type="number" min="0.01" step="0.01" name="number" id="number" value=0 ng-model="month_num" autofocus=""  required="numbers" />
 					<!-- <input type="hidden" name="value" value={{ $post->price }} ng-model="price" /> -->
 					<h3>Estimated Cost: @{{ month_num * price }}</h3>
 				</div>

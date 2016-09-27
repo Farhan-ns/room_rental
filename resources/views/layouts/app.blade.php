@@ -10,13 +10,13 @@
 	<link rel="stylesheet" href="{{asset('css/bootstrap-social.css') }}"/>
 	<link rel="stylesheet" href="{{asset('css/font-awesome.css') }}"/>
 	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css') }}"/> 
-	<link rel="stylesheet" href="{{ asset('css/custom.css') }}" />
+	<link rel="stylesheet" href="{{ asset('css/custom.css')}}" />
 	<script src="{{ asset('js/angular.min.js') }}"></script>
 	<link rel="stylesheet" href="{{ asset('css/w3.css') }}">
-	<link rel="stylesheet" href="{{ asset('fonts/CastroScript.ttf')}}"/>
+	<link rel="stylesheet" href="{{ asset('fonts/CastroScript.ttf') }}"/>
 	<script src="{{ asset('js/modernizr.min.js') }}"></script>
-<script src="{{ asset('js/jquery.js') }}"></script>
-<script src="{{ asset('js/bootstrap.js') }}"></script>
+	<script src="{{ asset('js/jquery.js') }}"></script>
+	<script src="{{ asset('js/bootstrap.js') }}"></script>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
 	<div style="display:none" id="popup">
 		<br/><br/><br/><br/>
 		<div id="popup_msg">
-			<h3 class="text-center">"Welcome to Neofita's Rooms &amp; Apartelle we will Help you find your Sweet Home"</h3>
+		<!-- <br/><br/><br/><br/><br/><br/><br/><br/>	<h3 class="text-center">"Welcome to Neofita's Rooms &amp; Apartelle we will Help you find your Sweet Home"</h3> -->
 		</div>
 	</div>
 	<script>
