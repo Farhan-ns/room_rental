@@ -5,6 +5,7 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
+	<br/><br/>
 	<h2 class="">My Profile</h2>
 	@include('includes.showerrors')
 	@include('includes.showerror')

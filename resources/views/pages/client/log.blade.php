@@ -5,9 +5,10 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
-	<br/><br/><br/>
+	<br/><br/>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
+			<h3>Logs</h3>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -25,6 +26,7 @@
 				</tbody>
 				
 			</table>
+			<strong>{{ $logs->count() }} of {{ $logs->total() }}</strong>
 			{{ $logs->render() }}
 		</div>
 	</div>

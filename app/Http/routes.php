@@ -247,6 +247,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	|--------------------------------------------------------------------------
 	*/
 	Route::get('posts', ['uses' => 'PostController@index'], function () {
+       if(Auth::user()->status == 'Inactive') {
+            return view('pages.inactive_user');
+        }
 		return view('pages.client.posts');
 	})->name('myposts');
 
@@ -272,6 +275,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		]);
 
 	Route::get('postaddpost', function () {
+        if(Auth::user()->status == 'Inactive') {
+            return view('pages.inactive_user');
+        }
 		return redirect()->route('addpost');
 	});
 
@@ -281,6 +287,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 	|--------------------------------------------------------------------------
 	*/
 	Route::get('addpost', function () {
+        if(Auth::user()->status == 'Inactive') {
+            return view('pages.inactive_user');
+        }
 		return view('pages.client.addpost');
 	})->name('addpost');
 
@@ -603,6 +612,22 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function () {
 		return redirect()->route('sent_msg');
 	});
 
+	/*
+	|--------------------------------------------------------------------------
+	| Route use to activation payment method
+	|--------------------------------------------------------------------------	
+	*/
+	Route::get('activate-member-account', [
+		'uses' => 'GeneralController@selectActivation',
+		'as' => 'select_payment'
+		]);
+
+
+	Route::post('activate-member-account', [
+		'uses' => 'GeneralController@paymentMethod',
+		'as' => 'payment_method'
+		]);
+
 });
 /*
 |--------------------------------------------------------------------------
@@ -730,6 +755,29 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     	'uses' => 'AdminController@adminLog',
     	'as' => 'admin_log'
     	]);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Route to search and activate members
+    |--------------------------------------------------------------------------
+    */
+    Route::get('activate-member', function () {
+    	return view('pages.admin.activate');
+    })->name('activate_member');
+
+    Route::get('search-member', function () {
+    	return view('pages.admin.activate');
+    });
+    Route::post('search-member', [
+    	'uses' => 'GeneralController@searchMember',
+    	'as' => 'search_member'
+    	]);
+
+    Route::post('activate-member', [
+    	'uses' => 'GeneralController@postActivateMember',
+    	'as' => 'post_activate_member'
+    	]);
+
 
 });
 

@@ -20,9 +20,103 @@ use App\Message;
 
 use App\UserLog;
 
+use App\Payment;
+
 
 class GeneralController extends Controller
 {
+
+	// activate by admin
+	public function postActivateMember(Request $request)
+	{
+		$id = $request['payment_id'];
+
+		$payment = Payment::findorfail($id);
+
+		$user_id = $payment->user_id;
+
+		$payment->payment_status = 'Paid';
+
+		$payment->save();
+
+		$user = User::findorfail($user_id);
+
+		$user->status = 'Active';
+
+		if($user->save()) {
+			return redirect()->back()->with('message', 'Member Account Active!');
+		}
+
+		return 'Error Occured!';
+		
+	}
+
+
+	// Method use to search member by their reference number 
+    public function searchMember(Request $request)
+    {
+        $this->validate($request, [
+            'ref_num' => 'required'
+            ]);
+
+        $ref = $request['ref_num'];
+
+        $payment = Payment::where('reference_number', $ref)->first();
+
+        return view('pages.admin.activate', ['payment' => $payment]);
+        
+    }
+
+
+    // This method used to requesed payment for admin
+	public function paymentMethod(Request $request)
+	{
+		$this->validate($request, [
+			'payment' => 'required'
+			]);
+
+		$payment = $request['payment'];
+		$user_id = Auth::user()->id;
+		$ref_num = strtoupper(uniqid());
+
+		$p = new Payment();
+
+		$p->user_id = $user_id;
+		$p->payment_method = $payment;
+		$p->reference_number = $ref_num;
+
+		if($p->save()) {
+
+			$user_log = new UserLog();
+
+			$user_log->action = 'Request Account Activation';
+			$user_log->user_id = Auth::user()->id;
+
+			$user_log->save();
+
+			// openlink
+			if($payment == 'paypal') {
+				return redirect('https://www.paypal.me/Joparpards/1');
+			}
+			else {
+				return redirect()->route('select_payment')->with('message', 'Payment Generated. Reference Number: ' . $ref_num);
+			}
+
+		}
+
+		return 'Error Occured. Please repeat process.';
+		
+	}
+
+	// select activation
+	// if member already set a payment method, this will show the payment method chosen by the member
+	public function selectActivation()
+	{
+		$payment = Payment::where('user_id', Auth::user()->id)->first();
+
+		return view('pages.client.selectpayment', ['payment' => $payment]);
+	}
+
 
 	// this method is use to delete sent items messages
 	public function deleteSentMsg(Request $request)

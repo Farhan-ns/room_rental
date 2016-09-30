@@ -48,7 +48,7 @@
 					@endforeach
 				</tbody>				
 			</table>
-			{{ $messages->count() }} of {{ $messages->total() }}
+			<strong>{{ $messages->count() }} of {{ $messages->total() }}</strong>
 			{{ $messages->render() }}
 		</div>
 	</div>

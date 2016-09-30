@@ -46,9 +46,7 @@
 		</div>
 		@endforeach
 	</div>
-	<p>
-		<strong>{{ $posts->count() }} of {{ $posts->total() }}</strong>
-	</p>
+	<strong>{{ $posts->count() }} of {{ $posts->total() }}</strong>
 	{{ $posts->links() }}
 </div>
 

@@ -14,7 +14,7 @@
 				<thead>
 					<tr>
 						<th>Sender</th>
-						<th>on Post</th>
+						<th>On Your Post</th>
 						<th>Status</th>
 						<th>Date Received</th>
 						<th>Action</th>
@@ -24,16 +24,10 @@
 					@foreach($messages as $msg)
 						<tr>
 							<td>
-								<?php 
-									$sender = App\User::find($msg->sender);
-								?>
-								<a href="{{ route('show_profile',$sender->id) }}">{{ $sender->firstname . ' ' . $sender->lastname}}</a>
+								<a href="{{ route('show_profile',$msg->sendBy->id) }}">{{ $msg->sendBy->firstname . ' ' . $msg->sendBy->lastname}}</a>
 							</td>
 							<td>
-								<?php
-									$post = App\Post::find($msg->post_id);
-								?>
-								{{ $post->title }}
+								{{ $msg->post->title }}
 							</td>
 							<td>{{ $msg->status }}</td>
 							<td>{{ $msg->created_at }}</td>
@@ -61,8 +55,7 @@
 				
 			</table>
 
-
-			{{ $messages->count() }} of {{ $messages->total() }}
+			<strong>{{ $messages->count() }} of {{ $messages->total() }}</strong>
 			{{ $messages->render() }}
 		</div>
 		

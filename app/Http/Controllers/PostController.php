@@ -32,7 +32,11 @@ class PostController extends Controller
     {
         $id = $request['post_id'];
 
-        $post = Post::find($id);
+        $post = Post::findorfail($id);
+        // check ownership
+        if($post->user_id != Auth::user()->id) {
+            return 'Error Occured. Try reloading this page.';
+        }
 
         $post->availability = 'Occupied';
 
@@ -50,7 +54,11 @@ class PostController extends Controller
     {
         $id = $request['post_id'];
 
-        $post = Post::find($id);
+        $post = Post::findorfail($id);
+        // check ownership
+        if($post->user_id != Auth::user()->id) {
+            return 'Error Occured. Try reloading this page.';
+        }        
 
         $post->availability = 'Not Available';
 
@@ -69,7 +77,12 @@ class PostController extends Controller
     {
         $id = $request['post_id'];
 
-        $post = Post::find($id);
+        $post = Post::findorfail($id);
+
+        // check ownership
+        if($post->user_id != Auth::user()->id) {
+            return 'Error Occured. Try reloading this page.';
+        }
 
         $post->availability = 'Available';
 
@@ -84,9 +97,9 @@ class PostController extends Controller
     | Method use to show link in search result on guest
     |--------------------------------------------------------------------------
     */
-    public function showGuestResult($id)
+    public function showGuestResult($id = null)
     {
-        $post = Post::find($id);
+        $post = Post::findorfail($id);
 
         return view('pages.post', ['post' => $post]);
     }
@@ -98,7 +111,7 @@ class PostController extends Controller
     */
     public function showActivePosts()
     {
-        $posts = DB::table('posts')->where('status', 'Active')->orderby('updated_at','desc')->paginate(4);
+        $posts = Post::where('status', 'Active')->orderby('updated_at','desc')->paginate(4);
 
         return view('pages.admin.active_posts', ['posts' => $posts]);
     }
@@ -108,7 +121,7 @@ class PostController extends Controller
     | This method is delete pending posts by admin
     |--------------------------------------------------------------------------
     */
-    public function deletePendingPost($id)
+    public function deletePendingPost($id = null)
     {
         $delete = DB::table('posts')->delete($id);
 
@@ -132,9 +145,9 @@ class PostController extends Controller
     | This method is use to aprove pending posts by admin
     |--------------------------------------------------------------------------
     */
-    public function aprovePendingPost($id)
+    public function aprovePendingPost($id = null)
     {
-        $post = \App\Post::find($id);
+        $post = Post::findorfail($id);
 
         $post->status = 'Active';
 
@@ -161,7 +174,7 @@ class PostController extends Controller
     */
     public function showPendingPosts()
     {
-        $result = DB::table('posts')->where('status','Inactive')
+        $result = Post::where('status','Inactive')
                                     ->paginate(4);
 
         return view('pages.admin.pending_posts',['posts' => $result]);
@@ -246,6 +259,11 @@ class PostController extends Controller
     */
     public function postDeleteMultiplePost(Request $request)
     {
+
+        if(Auth::user()->status == 'Inactive') {
+            return view('pages.inactive_user');
+        }
+        
         $ids = $request->input('postid');
 
         if(DB::table('posts')->whereIn('id',$ids)->delete()) {
@@ -270,6 +288,11 @@ class PostController extends Controller
     */
     public function showPostToDelete()
     {
+
+        if(Auth::user()->status == 'Inactive') {
+            return view('pages.inactive_user');
+        }
+
         $posts = Post::where('user_id', '=',Auth::user()->id)->paginate(10);
 
         return view('pages.client.showdelete',['posts' => $posts]);
@@ -284,6 +307,11 @@ class PostController extends Controller
     */
     public function postUpdatePost(Request $request)
     {
+
+        if(Auth::user()->status == 'Inactive') {
+            return view('pages.inactive_user');
+        }
+
         $this->validate($request, [
             'title' => 'required|min:6|max:150',
             'price' => 'required',
@@ -300,7 +328,12 @@ class PostController extends Controller
         $location = $request['location'];
         $images = $request['images'];
 
-        $post = Post::find($id);
+        $post = Post::findorfail($id);
+
+        // check ownership
+        if($post->user_id != Auth::user()->id) {
+            return 'Error Occured. Try reloading this page.';
+        }
 
         $post->title = $title;
         $post->price = $price;
@@ -347,8 +380,20 @@ class PostController extends Controller
     | This method is use to edit post of the client/user
     |--------------------------------------------------------------------------
     */
-    public function editPost($id)
+    public function editPost($id = null)
     {
+
+        if(Auth::user()->status == 'Inactive') {
+            return view('pages.inactive_user');
+        }
+
+        // check ownership
+        $post = Post::findorfail($id);
+
+        if($post->user_id != Auth::user()->id) {
+            return 'Error Occured. Try reloading this page.';
+        }
+
         $post = DB::table('posts')->where('id', $id)->first();
 
         if(!empty($post)) {
@@ -369,8 +414,19 @@ class PostController extends Controller
     | This is on the route('myposts') by the client
     |--------------------------------------------------------------------------------
     */
-    public function deletePost($id)
+    public function deletePost($id = null)
     {
+        if(Auth::user()->status == 'Inactive') {
+            return view('pages.inactive_user');
+        }
+
+        // check ownership
+        $post = Post::findorfail($id);
+
+        if($post->user_id != Auth::user()->id) {
+            return 'Error Occured. Try reloading this page.';
+        }
+
         $delete = DB::table('posts')->delete($id);
 
         if($delete) {
@@ -398,6 +454,7 @@ class PostController extends Controller
     {
     	$id = Auth::user()->id;
         $posts = Post::where('user_id', $id)->paginate(4);
+
         return view('pages.client.posts', ['posts' => $posts]);
     }
 
@@ -407,13 +464,15 @@ class PostController extends Controller
     | This methods is use to view the specific post
     |--------------------------------------------------------------------------------
     */
-    public function postView($id)
+    public function postView($id = null)
     {
-    	$post = Post::find($id);
+        if($id == '') {
+            return redirect()->back();
+        }
 
-        $user = User::find($post->user_id);
+    	$post = Post::findorfail($id);
 
-        return view('pages.client.post', ['post' => $post, 'user' => $user]);
+        return view('pages.client.post', ['post' => $post]);
 
     }
 
@@ -440,6 +499,11 @@ class PostController extends Controller
     */
     public function postAddPost(Request $request)
     {
+        if(Auth::user()->status == 'Inactive') {
+            return view('pages.inactive_user');
+        }
+
+
     	$this->validate($request, [
             'type' => 'required',
     		'title' => 'required|min:6|max:150',
@@ -502,4 +566,6 @@ class PostController extends Controller
         $posts = Post::where('status', 'Inactive')->orderby('updated_at','desc')->paginate(4);
         return view('pages.admin.pending_posts', ['posts' => $posts]);
     }
+
+
 }

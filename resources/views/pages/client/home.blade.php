@@ -4,7 +4,6 @@
 
 @section('content')
 @include('includes.navin')
-<br>
 <div class="container conbody">
 <div class="col-md-6 col-xs-6 headline" >Make your move</div>
 	<div class="col-md-6 col-xs-6 sub-headline">Search and apply to Hundreds of apartments</div>

@@ -22,9 +22,9 @@
 					@endif
 
 					<h3>{{ $post->title }}</h3>
-					<p>by <a href="{{ route('post-user-profile', $post->user_id) }}" target="_blank"><strong>{{ $user->firstname . ' ' . $user->lastname }}</strong></a></p>
-					<p>Email: <strong>{{ $user->email }}</strong></p>
-					<p>Mobile: <strong>{{ $user->mobile }}</strong></p>
+					<p>by <a href="{{ route('post-user-profile', $post->user_id) }}" target="_blank"><strong>{{ $post->user->firstname . ' ' . $post->user->lastname }}</strong></a></p>
+					<p>Email: <strong>{{ $post->user->email }}</strong></p>
+					<p>Mobile: <strong>{{ $post->user->mobile }}</strong></p>
 					<p>Type:  <strong>{{ $post->type }}</strong></p>
 					<p>Location:  <strong>{{ $post->location }}</strong></p>
 					<p>Monthly:  <strong>‎₱{{ $post->price }}</strong></p>
@@ -84,7 +84,7 @@
 						<textarea class="form-control" rows="10" name="message" id="message" placeholder="You message here..." required=""></textarea>
 						</div>
 						<div class="form-group text-right">
-							<input type="hidden" name="id" value="{{ $user->id }}" />
+							<input type="hidden" name="id" value="{{ $post->user->id }}" />
 							<input type="hidden" name="post_id" value="{{ $post->id }}" />
 							<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 							<button type="sumbit" class="btn btn-info">Send</button>

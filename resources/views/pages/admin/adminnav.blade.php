@@ -12,9 +12,24 @@
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ route('admin_home') }}">Home</a></li>
-					<li><a href="{{ route('members') }}">Members</a></li>
-					<li><a href="{{ route('pending-posts') }}">Pending Posts</a></li>
-					<li><a href="{{ route('active-posts') }}">Active Posts</a></li>
+					<li class="dropdown">
+						<a id="dLabel" data-target="#" href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						    Members <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dLabel">
+							<li><a href="{{ route('members') }}">Member's List</a></li>
+							<li><a href="{{ route('search_member') }}">Activate Member</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a id="dLabel" data-target="#" href="javascript:void(0)" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+						    Member's Posts <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="dLabel">
+							<li><a href="{{ route('pending-posts') }}">Pending Posts</a></li>
+							<li><a href="{{ route('active-posts') }}">Active Posts</a></li>
+						</ul>
+					</li>
 					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">

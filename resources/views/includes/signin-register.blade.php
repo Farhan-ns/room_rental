@@ -63,6 +63,13 @@
 						@include('includes.showsuccess')
 						<form action="{{ route('user_signup') }}" method="POST" role="form" autocomplete="off">
 							<div class="form-group">
+								<select name="user_type" id="user_type" class="form-control">
+									<option value="">User Type</option>
+									<option value="Border">Border</option>
+									<option value="Member">Member</option>
+								</select>
+							</div>
+							<div class="form-group">
 								<input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Email" required="required" class="form-control" />
 							</div>
 							<div class="form-group">
@@ -72,7 +79,7 @@
 								<input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" placeholder="Last Name" required="required" class="form-control" />
 							</div>
 							<div class="form-group">
-								<input type="text" name="bday" id="bday" value="{{ old('bday') }}" placeholder="mm/dd/yy e.g 4/28/1995" required="required" class="form-control" />
+								<input type="text" name="bday" id="datepicker" data-date="" data-date-format="dd-mm-yyyy" value="{{ old('bday') }}" placeholder="mm/dd/yy e.g 4/28/1995" required="required" class="form-control" />
 							</div>
 							<div class="form-group">
 								<label for="gender-male">Male</label>

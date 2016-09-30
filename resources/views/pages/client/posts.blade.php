@@ -5,14 +5,13 @@
 @section('content')
 @include('includes.navin')
 <div class="container">
-	<br/><br/><br/>
+	<br/><br/>
 	@if($posts->isEmpty())
 		<h3>No Post to Show</h3>
 		<a href="{{ route('addpost') }}" class="btn btn-link">Create Post</a>
 	@endif
 	@if(count($posts) > 0)
-		<strong>My Posts</strong>
-		<br/><br/>
+		<h3>My Posts</h3>
 	@endif
 	@include('includes.showerror')
 	@include('includes.showsuccess')
@@ -40,7 +39,7 @@
 					<input type="hidden" name="post_id" value="{{ $post->id }}" />
 					<button type="submit" class="btn btn-info btn-xs">Mark as Available</button>
 				</form>
-				<form action="{{ route('make_occupied') }}"" method="POST>
+				<form action="{{ route('make_occupied') }}"" method="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}" />
 					<input type="hidden" name="post_id" value="{{ $post->id }}" />
 					<button type="submit" class="btn btn-info btn-xs">Mark as Occupied</button>
@@ -89,8 +88,9 @@
 			<br/>
 			Location: <strong>{{ $post->location }}</strong>
 			<br/>
+			<div style="float:left;">
 			Description: <p><i>‎{{ $post->description }}</i></p>
-
+			</div>
 			Status: <strong>{{ $post->status }}</strong>
 			<br/>
 			<a href="{{ route('edit-post',$post->id) }}"><button class="btn btn-info btn-xs">Update</button></a>

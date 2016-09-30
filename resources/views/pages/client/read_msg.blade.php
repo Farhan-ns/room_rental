@@ -15,18 +15,12 @@
 					<strong>Message Details</strong>
 				</div>
 				<div class="panel-body">
-					<?php 
-						$sender = App\User::find($message->sender);
-					?>
-					<p>Sender: <strong><a href="{{ route('profile') }}">{{ $sender->firstname . ' ' . $sender->lastname}}</a></strong></p>
-					<p>Email: <strong>{{ $sender->email }}</strong></p>
-					<p>Mobile: <strong>{{ $sender->mobile }}</strong></p>
+					<p>Sender: <strong><a href="{{ route('profile') }}">{{ $message->sendBy->firstname . ' ' . $message->sendBy->lastname}}</a></strong></p>
+					<p>Email: <strong>{{ $message->sendBy->email }}</strong></p>
+					<p>Mobile: <strong>{{ $message->sendBy->mobile }}</strong></p>
 					<p>Message: <i>{{ $message->message }}</i></p>
 					<br/>
-					<?php
-						$post = App\Post::find($message->post_id);
-					?>
-					<p>Post Title: <strong>{{ $post->title }}</strong></p>
+					<p>Post Title: <strong>{{ $message->post->title }}</strong></p>
 					<br/>
 					<p>Date Send: <strong>{{ $message->created_at }}</strong></p>
 					

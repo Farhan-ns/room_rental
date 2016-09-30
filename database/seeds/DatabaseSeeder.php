@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
         	'lastname' => 'Paredes',
         	'email' => 'joshuapards@gmail.com',
             'mobile' => '09502810005',
-        	'password' => bcrypt('paredes')
+        	'password' => bcrypt('paredes'),
+            'privelege' => 'Member',
+            'status' => 'Active'
         	]);
 
     

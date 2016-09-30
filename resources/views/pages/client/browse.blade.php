@@ -5,7 +5,7 @@
 @section('content')
 @include('includes.navin')
 <div class="container browsepage">
-	<br/><br/><br/>
+	<br/><br/>
 	@if(count($posts) > 0)
 		<strong>Room and Appartments</strong>
 	@endif

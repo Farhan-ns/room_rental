@@ -20,10 +20,12 @@ use Illuminate\Support\Facades\Mail;
 
 use App\PasswordReset;
 
-
+use App\Payment;
 
 class UserController extends Controller
 {
+
+    // password reset
    public function postPasswordReset(Request $request)
    {
         $this->validate($request,[
@@ -186,7 +188,7 @@ class UserController extends Controller
     */
     public function showMembers()
     {
-        $members = User::where('privelege', 'User')->orderBy('created_at','asc')->paginate(9);
+        $members = User::where('privelege', 'Member')->orderBy('created_at','asc')->paginate(9);
 
         return view('pages.admin.members', ['members' => $members]);
     }
@@ -314,6 +316,7 @@ class UserController extends Controller
     		'bday' => 'required|after:date',
     		'gender' => 'required',
     		'mobile' => 'required | max:11',
+            'user_type' => 'required',
     		'password' => 'required|confirmed|min:6|max:64',
     		'password_confirmation' => 'required|min:6|max:64'
     		]);
@@ -324,8 +327,19 @@ class UserController extends Controller
     	$bday = $request['bday'];
     	$gender = $request['gender'];
     	$mobile = $request['mobile'];
+        $user_type = $request['user_type'];
     	$password = $request['password'];
     	$password2 = $request['password2'];
+
+        if($user_type == 'Member') {
+            $status = 'Inactive';
+        }
+        elseif ($user_type == 'Border') {
+            $status = 'Not Applicable';
+        }
+        else {
+            return 'Something Wrong. Got to Home';
+        }
 
     	$user = new User();
 
@@ -335,6 +349,8 @@ class UserController extends Controller
     	$user->gender = $gender;
     	$user->birthday = $bday;
     	$user->mobile = $mobile;
+        $user->privelege = $user_type;
+        $user->status = $status;
     	$user->password = bcrypt($password);
 
     	if($user->save()) {

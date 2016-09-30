@@ -6,7 +6,8 @@
 @include('pages.admin.adminnav')
 <div class="container">
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
+		<div class="col-md-10 col-md-offset-1">
+			<h3>Member's List</h3>
 			<table class="table table-hover">
 				<thead>
 				<tr>
@@ -14,6 +15,7 @@
 					<th>Email</th>
 					<th>Mobile</th>
 					<th>Birthday</th>
+					<th>Status</th>
 				</tr>
 				</thead>
 				<tbody>
@@ -23,10 +25,18 @@
 					<td>{{ $member->email }}</td>
 					<td>{{ $member->mobile }}</td>
 					<td>{{ $member->birthday }}</td>
+					<td>
+						@if($member->status == 'Active')
+							<span class="btn btn-success btn-xs">Active</span>
+						@else
+							<span class="btn btn-warning btn-xs">Inactive</span>
+						@endif
+					</td>
 				</tr>
 				@endforeach
 				</tbody>
 			</table>
+			<strong>{{ $members->count() }} of {{ $members->total() }}</strong>
 			{{ $members->render() }}
 		</div>
 	</div>

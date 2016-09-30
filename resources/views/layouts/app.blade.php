@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" font="CastroScript">
 <head>
-	<title>Welcome to @yield('title')</title>
+	<title>@yield('title') Neofita's Appartment and Room Rental</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta name="Keywords" content="appartment, room, rentals, rental, board, bording, house" />
@@ -17,6 +17,11 @@
 	<script src="{{ asset('js/modernizr.min.js') }}"></script>
 	<script src="{{ asset('js/jquery.js') }}"></script>
 	<script src="{{ asset('js/bootstrap.js') }}"></script>
+
+	<!-- Bootstrap Datepicker -->
+	<link rel="stylesheet" href="{{ asset('css/datepicker.css') }}">
+	<script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+	
 </head>
 <body>
 
@@ -29,6 +34,8 @@
 	</div>
 	<script>
 		$(document).ready(function() {
+			$('.datepicker').datepicker('show');
+
 		    if(localStorage.getItem('popState') != 'shown'){
 		        $("#popup").delay(2000).fadeIn();
 		        localStorage.setItem('popState','shown')
