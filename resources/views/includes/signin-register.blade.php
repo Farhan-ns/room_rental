@@ -79,7 +79,7 @@
 								<input type="text" name="lastname" id="lastname" value="{{ old('lastname') }}" placeholder="Last Name" required="required" class="form-control" />
 							</div>
 							<div class="form-group">
-								<input type="text" name="bday" id="datepicker" data-date="" data-date-format="dd-mm-yyyy" value="{{ old('bday') }}" placeholder="mm/dd/yy e.g 4/28/1995" required="required" class="form-control" />
+								<input type="text" name="bday" id="datepicker1" data-date="" data-date-format="dd-mm-yyyy" value="{{ old('bday') }}" placeholder="mm/dd/yy e.g 4/28/1995" readonly="" required="required" class="form-control" />
 							</div>
 							<div class="form-group">
 								<label for="gender-male">Male</label>
@@ -117,6 +117,11 @@
 		</div>
 	</div>
 	<div class="fluid-container"></div>
+<script>
+	$('#datepicker1').datepicker({
+		format: 'mm-dd-yyyy'
+	});
+</script>
 <script>	
 openForm("Login");
 function openForm(formName) {

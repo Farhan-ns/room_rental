@@ -250,13 +250,16 @@ background-color: #5bc0de;
   margin-top: 35px;
   padding:12px;
 }
-<<<<<<< HEAD
+
+
 .browsepage{
 
   border-radius:2px;
   margin-top: : 75px;
   
 }
-=======
 
->>>>>>> e281243dc38637bdf3642c218b22b6223c3df3bd
+
+input.form-control:disabled {
+  background-color: #fff;
+}

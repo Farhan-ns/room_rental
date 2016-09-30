@@ -34,7 +34,6 @@
 	</div>
 	<script>
 		$(document).ready(function() {
-			$('.datepicker').datepicker('show');
 
 		    if(localStorage.getItem('popState') != 'shown'){
 		        $("#popup").delay(2000).fadeIn();
