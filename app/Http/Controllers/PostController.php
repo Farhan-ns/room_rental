@@ -216,7 +216,7 @@ class PostController extends Controller
     {
         $this->validate($request, [
             'type' => 'required',
-            'max_price' => 'required|number',
+            'max_price' => 'required',
             'location' => 'required'
             ]);
 
